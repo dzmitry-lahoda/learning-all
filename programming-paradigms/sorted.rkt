@@ -1,0 +1,5 @@
+(define (sorted? num-list comp)
+  (or (< (length num-list) 2)
+      (and (comp (car num-list) (cadr num-list))
+               (sorted? ( cdr num-list) comp))
+      ))

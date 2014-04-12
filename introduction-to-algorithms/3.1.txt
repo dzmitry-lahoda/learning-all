@@ -1,0 +1,47 @@
+
+3.1-1
+That:
+max (f(n), g(n)) =  Theta (f(n) + g(n))
+Given:
+f(n) and g(n) - asymptotically nonnegative
+Proof:
+
+c1 (f(n) + g(n) <= max (f(n) , g(n) )<= c2 (f(n)+g(n))
+
+let max (f(n), g(n)) = f(n)
+c1 (f(n) + g(n) <= f(n) <= c2 (f(fn) + g(n))
+holds Given c1 = 1/2 and c2 = 1
+
+let max (f(n), g(n)) = g(n)
+c1 (f(n) + g(n) <= g(n) <= c2 (f(fn) + g(n))
+holds Given c1 = 1/2 and c2 = 1
+
+All in any case max c1 = 1/2 and c2 =1  satisfy
+
+DONE
+
+3.1-2
+Given: 
+For any real constants a and b, b> 0
+Given:
+(n+a)^b = Theta(n^b)
+Proof:
+c1 n^b <= (n+a)^b <= c2 n^b
+
+let n0 > a (beginning)
+
+CASE1:
+when a>0, 
+n^b <= n^b + a^b <= (n+a)^b, 
+c1=1
+
+http://www.intmath.com/series-binomial-theorem/4-binomial-theorem.php
+(n+a)^b <= (b+1)*max(Cr for ceil(b))*n^b, 
+c2 = (b+1)*max(C for ceil(b))
+
+when a<0 then b mod 1 = 0 valid
+b mod 2 = 0 then CASE1
+b mod 1 = 0 then replace a with n0>0>a
+
+DONE
+

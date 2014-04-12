@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1355134542 source:h:\src\essentialcpp\excercise\stdafx.cpp
+	"stdafx.h"
+
+1355146993 h:\src\essentialcpp\excercise\stdafx.h
+	<stdio.h>
+	<tchar.h>
+	<cstdlib>
+	<iostream>
+

@@ -1,0 +1,49 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="B.txt">
+    <Files>
+      <File FileName="main.cpp" Line="51" Column="61" />
+      <File FileName="1.1.txt" Line="1" Column="1" />
+      <File FileName="1.2.txt" Line="1" Column="1" />
+      <File FileName="2.1.txt" Line="1" Column="1" />
+      <File FileName="2.c" Line="1" Column="1" />
+      <File FileName="2.h" Line="1" Column="1" />
+      <File FileName="Problems_2.txt" Line="1" Column="1" />
+      <File FileName="2.3.txt" Line="1" Column="1" />
+      <File FileName="utils.c" Line="1" Column="1" />
+      <File FileName="utils.h" Line="1" Column="1" />
+      <File FileName="3.1.txt" Line="1" Column="1" />
+      <File FileName="7.h" Line="1" Column="1" />
+      <File FileName="7.c" Line="1" Column="1" />
+      <File FileName="7.2.txt" Line="1" Column="1" />
+      <File FileName="9.c" Line="1" Column="1" />
+      <File FileName="9.h" Line="1" Column="1" />
+      <File FileName="10.h" Line="1" Column="1" />
+      <File FileName="B.txt" Line="91" Column="1" />
+      <File FileName="IntegerArray2.txt" Line="1" Column="1" />
+      <File FileName="2.2.txt" Line="1" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State expanded="True">
+          <Node name="introduction-to-algorithms" expanded="True">
+            <Option id="ShowAllFiles" value="True" />
+            <Node name="B.txt" selected="True" />
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="ClassPad">
+        <State expanded="True" selected="True" />
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint enabled="false" file="/home/asd/Checkouts/introduction-to-algorithms/3.1.txt" line="13" />
+      <Breakpoint file="/home/asd/Checkouts/introduction-to-algorithms/main.cpp" line="32" />
+      <Breakpoint file="/home/asd/Checkouts/introduction-to-algorithms/main.cpp" line="77" />
+      <Breakpoint file="/home/asd/Checkouts/introduction-to-algorithms/main.cpp" line="98" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{2857B73E-F847-4B02-9238-064979017E93}") = "introduction-to-algorithms", "introduction-to-algorithms.cproj", "{2A979CFE-DBF2-4905-AD50-B13CD9438A0A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2A979CFE-DBF2-4905-AD50-B13CD9438A0A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A979CFE-DBF2-4905-AD50-B13CD9438A0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A979CFE-DBF2-4905-AD50-B13CD9438A0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A979CFE-DBF2-4905-AD50-B13CD9438A0A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = introduction-to-algorithms.cproj
+	EndGlobalSection
+EndGlobal
