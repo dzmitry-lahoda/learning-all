@@ -1,0 +1,42 @@
+<Configuration>
+  <SettingsComponent>
+    <string />
+    <integer />
+    <boolean>
+      <setting name="SolutionAnalysisEnabled">False</setting>
+    </boolean>
+  </SettingsComponent>
+  <RecentFiles>
+    <RecentFiles>
+      <File id="032BCA5C-D5BB-4B50-8B50-B89DF077367E/f:Program.fs" caret="0" fromTop="0" />
+      <File id="032BCA5C-D5BB-4B50-8B50-B89DF077367E/f:State.fs" caret="0" fromTop="0" />
+      <File id="032BCA5C-D5BB-4B50-8B50-B89DF077367E/f:SpatialPoolingSupportingRoutines.fs" caret="264" fromTop="12" />
+      <File id="032BCA5C-D5BB-4B50-8B50-B89DF077367E/f:SpatialPooling.fs" caret="578" fromTop="17" />
+    </RecentFiles>
+    <RecentEdits>
+      <File id="032BCA5C-D5BB-4B50-8B50-B89DF077367E/f:SpatialPooling.fs" caret="578" fromTop="15" />
+      <File id="032BCA5C-D5BB-4B50-8B50-B89DF077367E/f:SpatialPooling.fs" caret="543" fromTop="14" />
+      <File id="032BCA5C-D5BB-4B50-8B50-B89DF077367E/f:SpatialPooling.fs" caret="563" fromTop="15" />
+      <File id="032BCA5C-D5BB-4B50-8B50-B89DF077367E/f:State.fs" caret="207" fromTop="13" />
+      <File id="032BCA5C-D5BB-4B50-8B50-B89DF077367E/f:State.fs" caret="33" fromTop="2" />
+      <File id="032BCA5C-D5BB-4B50-8B50-B89DF077367E/f:State.fs" caret="84" fromTop="4" />
+      <File id="032BCA5C-D5BB-4B50-8B50-B89DF077367E/f:SpatialPoolingSupportingRoutines.fs" caret="124" fromTop="3" />
+      <File id="032BCA5C-D5BB-4B50-8B50-B89DF077367E/f:SpatialPooling.fs" caret="524" fromTop="13" />
+      <File id="032BCA5C-D5BB-4B50-8B50-B89DF077367E/f:State.fs" caret="201" fromTop="17" />
+      <File id="032BCA5C-D5BB-4B50-8B50-B89DF077367E/f:State.fs" caret="129" fromTop="9" />
+      <File id="032BCA5C-D5BB-4B50-8B50-B89DF077367E/f:SpatialPooling.fs" caret="444" fromTop="12" />
+      <File id="032BCA5C-D5BB-4B50-8B50-B89DF077367E/f:SpatialPoolingSupportingRoutines.fs" caret="264" fromTop="12" />
+    </RecentEdits>
+  </RecentFiles>
+  <NAntValidationSettings>
+    <NAntPath value="" />
+  </NAntValidationSettings>
+  <UnitTestRunner>
+    <Providers />
+  </UnitTestRunner>
+  <UnitTestRunnerNUnit>
+    <NUnitInstallDir IsNull="False">
+    </NUnitInstallDir>
+    <UseAddins>Never</UseAddins>
+  </UnitTestRunnerNUnit>
+</Configuration>

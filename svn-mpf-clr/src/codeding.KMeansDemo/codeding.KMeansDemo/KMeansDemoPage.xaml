@@ -1,0 +1,139 @@
+﻿<UserControl xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls"
+             xmlns:inputToolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Input.Toolkit"
+             xmlns:chartingToolkit="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=System.Windows.Controls.DataVisualization.Toolkit"
+             x:Class="codeding.KMeansDemo.KMeansDemoPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Width="Auto"
+             Height="Auto">
+
+    <UserControl.Resources>
+        <DataTemplate x:Key="PointTemplate">
+            <StackPanel Orientation="Horizontal">
+                <HyperlinkButton x:Name="RemovePointHyperlink"
+                                 Content="x"
+                                 IsTabStop="False"
+                                 Margin="2,0,0,0"
+                                 ToolTipService.ToolTip="Remove this Point"
+                                 Click="RemovePointHyperlink_Click">
+                </HyperlinkButton>
+
+                <TextBlock Text="{Binding}"
+                           Margin="4,0,0,0">
+                </TextBlock>
+            </StackPanel>
+        </DataTemplate>
+    </UserControl.Resources>
+
+    <Border BorderBrush="LightGray">
+        <Grid x:Name="LayoutRoot">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition Height="30" />
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="120" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <!-- PointsListBox and ClustersTree -->
+            <Grid Grid.Row="0"
+                  Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="20" />
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+
+                <TextBlock Text="Points"
+                           FontWeight="Bold"
+                           Grid.Row="0">
+                </TextBlock>
+
+                <ListBox x:Name="PointsListBox"
+                         ItemsSource="{Binding AllPoints}"
+                         ItemTemplate="{StaticResource PointTemplate}"
+                         Grid.Row="1">
+                </ListBox>
+
+                <controls:TreeView x:Name="ClustersTree"
+                                   Margin="0,6,0,0"
+                                   Grid.Row="2">
+                </controls:TreeView>
+            </Grid>
+
+            <!-- KMeans Chart -->
+            <ScrollViewer Grid.Row="0"
+                          Grid.Column="1"
+                          Margin="6,0,0,0"
+                          HorizontalScrollBarVisibility="Hidden"
+                          VerticalScrollBarVisibility="Hidden">
+                <chartingToolkit:Chart x:Name="PointsChart"
+                                       Title="KMeans Algorithm Demo"
+                                       BorderThickness="0">
+                    <chartingToolkit:Chart.Axes>
+                        <chartingToolkit:LinearAxis Orientation="Y" />
+                        <chartingToolkit:LinearAxis Orientation="X" />
+                    </chartingToolkit:Chart.Axes>
+                </chartingToolkit:Chart>
+            </ScrollViewer>
+
+            <!-- Control Panel (Input Controls) -->
+            <StackPanel Orientation="Horizontal"
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        Margin="0,4,0,0">
+                <TextBlock Text="Clusters:"
+                           VerticalAlignment="Center"
+                           FontWeight="Bold"
+                           Margin="8,0,0,0">
+                </TextBlock>
+
+                <inputToolkit:NumericUpDown x:Name="ClusterCountNumericUpDown"
+                                            Minimum="2"
+                                            Width="50"
+                                            Margin="4,0,0,0">
+                </inputToolkit:NumericUpDown>
+
+                <TextBlock Text="Add Point:"
+                           VerticalAlignment="Center"
+                           FontWeight="Bold"
+                           Margin="12,0,0,0">
+                </TextBlock>
+
+                <TextBlock Text="X"
+                           VerticalAlignment="Center"
+                           Margin="8,0,0,0">
+                </TextBlock>
+
+                <TextBox x:Name="XTextBox"
+                         Width="40"
+                         Height="22"
+                         Margin="4,0,0,0">
+                </TextBox>
+
+                <TextBlock Text="Y"
+                           VerticalAlignment="Center"
+                           Margin="8,0,0,0">
+                </TextBlock>
+
+                <TextBox x:Name="YTextBox"
+                         Width="40"
+                         Height="22"
+                         Margin="4,0,0,0">
+                </TextBox>
+
+                <Button x:Name="AddPointButton"
+                        Width="80"
+                        Height="22"
+                        Content="Add Point"
+                        Margin="8,0,0,0"
+                        Cursor="Hand"
+                        Click="AddPointButton_Click">
+                </Button>
+            </StackPanel>
+        </Grid>
+    </Border>
+</UserControl>

@@ -1,0 +1,6 @@
+﻿<%@ ServiceHost 
+Language="C#" 
+Debug="true" 
+Service="ML.Service.NaiveBayesService" 
+CodeBehind="NaiveBayesService.svc.cs" 
+%>
