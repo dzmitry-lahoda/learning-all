@@ -1,0 +1,50 @@
+Technical documntation library
+
+ASP.NET IIS Deployable
+2 visual themes
+2 languages English Russian
+
+SQL Server 2005
+ Membership for users
+ 
+
+NHibenate
+2 tables:
+ Tags
+    ID
+   NAME
+     Time_stamp(raw_version)
+ Documents
+   ID
+   Athour
+   Title
+   Body
+   Date Time
+   Connection to many to tags
+   Time_stamp(raw_version)
+
+Optimistics lock+ Time stamps(raw_version)
+
+Guest
+Can search and read
+
+User- Using Profile
+Can add documents
+
+Administrator
+Can add and delete users. Create admins
+
+Notofication: Forms Notification
+
+Using aximal number of existing components
+
+tinyMCE -for creating format text documents
+Each documents described by tags(delimeted by commas and spaces)
+
+TagCloud on page-most recently are biggest
+Rigth top corners Searching
+
+Case incensitive searching using tags+ASP.NET AJAX autocomplition Tags
+
+CompanyName.Training.Data
+CompanyName.Training.Web

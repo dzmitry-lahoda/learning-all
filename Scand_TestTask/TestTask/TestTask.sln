@@ -1,0 +1,38 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToolbarsWebApplication", "ToolbarsWebApplication\ToolbarsWebApplication.csproj", "{8404418A-5F48-4205-BCF3-71D27403C005}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Toolbars", "Toolbars\Toolbars.csproj", "{3DB8B7AA-426F-4167-99B2-CA8969135FEC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToolbarsTestWindowsApplication", "ToolbarsTestWindowsApplication\ToolbarsTestWindowsApplication.csproj", "{32ADA144-0E04-46D0-BE25-E1340BF7859D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToolbarsTestProject", "ToolbarsTestProject\ToolbarsTestProject.csproj", "{588E919C-859B-4BF6-907E-870C3889B887}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8404418A-5F48-4205-BCF3-71D27403C005}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8404418A-5F48-4205-BCF3-71D27403C005}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8404418A-5F48-4205-BCF3-71D27403C005}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8404418A-5F48-4205-BCF3-71D27403C005}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3DB8B7AA-426F-4167-99B2-CA8969135FEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3DB8B7AA-426F-4167-99B2-CA8969135FEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3DB8B7AA-426F-4167-99B2-CA8969135FEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3DB8B7AA-426F-4167-99B2-CA8969135FEC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{32ADA144-0E04-46D0-BE25-E1340BF7859D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32ADA144-0E04-46D0-BE25-E1340BF7859D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32ADA144-0E04-46D0-BE25-E1340BF7859D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32ADA144-0E04-46D0-BE25-E1340BF7859D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{588E919C-859B-4BF6-907E-870C3889B887}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{588E919C-859B-4BF6-907E-870C3889B887}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{588E919C-859B-4BF6-907E-870C3889B887}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{588E919C-859B-4BF6-907E-870C3889B887}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

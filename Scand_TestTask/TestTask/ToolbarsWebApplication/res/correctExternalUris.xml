@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<toolbar>
+  <button id="btn1" img="http://www.google.com/intl/en_ALL/images/logo.gif" text="Кнопка 1" />
+  <button id="btn2" img="http://www.google.com/intl/en_ALL/images/logo.gif" text="Кнопка 2"/>
+  <button id="btn3" img="http://www.google.com/intl/en_ALL/images/logo.gif" text="Кнопка 3"/>
+  <button id="btn4" img="http://www.google.com/intl/en_ALL/images/logo.gif" text="Кнопка 4"/>
+</toolbar>

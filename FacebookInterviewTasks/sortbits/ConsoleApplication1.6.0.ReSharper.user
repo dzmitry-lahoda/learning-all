@@ -1,0 +1,103 @@
+<Configuration>
+  <RecentFiles>
+    <RecentFiles>
+      <File id="B1894903-DCB1-4488-B728-AB91F819DF43/f:Program.cs" caret="927" fromTop="24" />
+    </RecentFiles>
+    <RecentEdits>
+      <File id="B1894903-DCB1-4488-B728-AB91F819DF43/f:Program.cs" caret="162" fromTop="7" />
+      <File id="B1894903-DCB1-4488-B728-AB91F819DF43/f:Program.cs" caret="715" fromTop="17" />
+      <File id="B1894903-DCB1-4488-B728-AB91F819DF43/f:Program.cs" caret="1209" fromTop="17" />
+      <File id="B1894903-DCB1-4488-B728-AB91F819DF43/f:Program.cs" caret="2228" fromTop="22" />
+      <File id="B1894903-DCB1-4488-B728-AB91F819DF43/f:Program.cs" caret="1614" fromTop="17" />
+      <File id="B1894903-DCB1-4488-B728-AB91F819DF43/f:Program.cs" caret="1600" fromTop="16" />
+      <File id="B1894903-DCB1-4488-B728-AB91F819DF43/f:Program.cs" caret="1133" fromTop="6" />
+      <File id="B1894903-DCB1-4488-B728-AB91F819DF43/f:Program.cs" caret="1600" fromTop="12" />
+      <File id="B1894903-DCB1-4488-B728-AB91F819DF43/f:Program.cs" caret="1943" fromTop="18" />
+      <File id="B1894903-DCB1-4488-B728-AB91F819DF43/f:Program.cs" caret="1776" fromTop="7" />
+      <File id="B1894903-DCB1-4488-B728-AB91F819DF43/f:Program.cs" caret="419" fromTop="10" />
+      <File id="B1894903-DCB1-4488-B728-AB91F819DF43/f:Program.cs" caret="245" fromTop="12" />
+    </RecentEdits>
+  </RecentFiles>
+  <CompletionStatisticsManager>
+    <ItemStatistics item="CSharpCodeCompletionContext">
+      <Item value="int" priority="383" />
+      <Item value="n" priority="161" />
+      <Item value="Convert`0" priority="31" />
+      <Item value="foreach" priority="95" />
+      <Item value="for" priority="95" />
+      <Item value="KeyNotFoundException`0" priority="30" />
+      <Item value="var" priority="127" />
+      <Item value="Dictionary" priority="31" />
+      <Item value="new" priority="31" />
+      <Item value="Dictionary&lt;int,int&gt;" priority="28" />
+      <Item value="previous" priority="95" />
+      <Item value="else" priority="63" />
+      <Item value="k" priority="63" />
+      <Item value="Console`0" priority="127" />
+      <Item value="result" priority="63" />
+      <Item value="prev" priority="31" />
+      <Item value="if" priority="63" />
+      <Item value="i" priority="63" />
+      <Item value="string" priority="159" />
+      <Item value="intMask" priority="31" />
+      <Item value="static" priority="31" />
+      <Item value="continue" priority="31" />
+      <Item value="res" priority="126" />
+      <Item value="return" priority="31" />
+      <Item value="nk" priority="62" />
+      <Item value="Count`1" priority="26" />
+      <Item value="Directory`0" priority="31" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Int32">
+      <Item value="Parse`0" priority="26" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Convert">
+      <Item value="ToString`0" priority="26" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Collections.Generic.Dictionary`2">
+      <Item value="Intersect`1" priority="53" />
+      <Item value="Count" priority="26" />
+      <Item value="Values" priority="26" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Console">
+      <Item value="WriteLine`0" priority="107" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.String">
+      <Item value="First`1" priority="26" />
+      <Item value="Substring`0" priority="27" />
+      <Item value="Length" priority="26" />
+      <Item value="Trim`0" priority="26" />
+      <Item value="Replace`0" priority="26" />
+      <Item value="Split`0" priority="26" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Collections.Generic.KeyValuePair`2">
+      <Item value="Value" priority="26" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.IO.Path">
+      <Item value="Combine`0" priority="26" />
+      <Item value="GetPathRoot`0" priority="26" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.IO.Directory">
+      <Item value="GetParent`0" priority="26" />
+    </ItemStatistics>
+  </CompletionStatisticsManager>
+  <NAntValidationSettings>
+    <NAntPath value="" />
+  </NAntValidationSettings>
+  <UnitTestRunner>
+    <Providers />
+  </UnitTestRunner>
+  <UnitTestRunnerNUnit>
+    <NUnitInstallDir IsNull="False">
+    </NUnitInstallDir>
+    <UseAddins>Never</UseAddins>
+  </UnitTestRunnerNUnit>
+  <SettingsComponent>
+    <string />
+    <integer />
+    <boolean>
+      <setting name="livetemplates.csharp.usevar">True</setting>
+      <setting name="SolutionAnalysisEnabled">False</setting>
+    </boolean>
+  </SettingsComponent>
+</Configuration>

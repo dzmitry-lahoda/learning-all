@@ -1,0 +1,119 @@
+<Configuration>
+  <SettingsComponent>
+    <string />
+    <integer />
+    <boolean>
+      <setting name="SolutionAnalysisEnabled">False</setting>
+    </boolean>
+  </SettingsComponent>
+  <CompletionStatisticsManager>
+    <ItemStatistics item="Default">
+      <Item value="class" priority="2" />
+      <Item value="Node" priority="5" />
+      <Item value="public" priority="11" />
+      <Item value="void" priority="1" />
+      <Item value="T`0" priority="3" />
+      <Item value="if" priority="4" />
+      <Item value="null" priority="4" />
+      <Item value="return" priority="3" />
+      <Item value="new" priority="13" />
+      <Item value="Node&lt;T&gt;" priority="4" />
+      <Item value="top" priority="5" />
+      <Item value="n" priority="2" />
+      <Item value="var" priority="3" />
+      <Item value="res" priority="1" />
+      <Item value="Queue`0" priority="0" />
+      <Item value="ThreadStaticAttribute`0" priority="0" />
+      <Item value="first" priority="2" />
+      <Item value="last" priority="5" />
+      <Item value="else" priority="0" />
+      <Item value="front" priority="6" />
+      <Item value="oldeFront" priority="0" />
+      <Item value="back" priority="1" />
+      <Item value="ital" priority="0" />
+      <Item value="throw" priority="0" />
+      <Item value="Exception" priority="0" />
+      <Item value="Array`0" priority="0" />
+      <Item value="ArrayList" priority="0" />
+      <Item value="List" priority="0" />
+      <Item value="int" priority="0" />
+      <Item value="BGNode" priority="1" />
+      <Item value="string" priority="0" />
+      <Item value="using" priority="0" />
+      <Item value="N" priority="6" />
+      <Item value="BGNode&lt;string&gt;" priority="6" />
+      <Item value="f" priority="2" />
+      <Item value="b" priority="2" />
+      <Item value="a" priority="0" />
+      <Item value="d" priority="0" />
+      <Item value="g" priority="0" />
+      <Item value="IAppDomainSetup`0" priority="0" />
+      <Item value="i" priority="1" />
+      <Item value="h" priority="0" />
+      <Item value="root" priority="2" />
+      <Item value="inorder`0" priority="0" />
+      <Item value="Console`0" priority="0" />
+      <Item value="c" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:PreparingToInterview.Node`1">
+      <Item value="Next" priority="4" />
+      <Item value="Data" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:PreparingToInterview.NodeP`1">
+      <Item value="Previous" priority="2" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:PreparingToInterview.BGNode`1">
+      <Item value="ChildLeft" priority="5" />
+      <Item value="ChildRight" priority="5" />
+      <Item value="Value" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Console">
+      <Item value="WriteLine`0" priority="0" />
+    </ItemStatistics>
+  </CompletionStatisticsManager>
+  <RecentFiles>
+    <RecentFiles>
+      <File id="CEDA5E11-130F-4729-A9C2-859D5A6B9418/f:Task2.cs" caret="754" fromTop="26" />
+      <File id="CEDA5E11-130F-4729-A9C2-859D5A6B9418/f:Task3.cs" caret="1771" fromTop="22" />
+      <File id="CEDA5E11-130F-4729-A9C2-859D5A6B9418/f:Task1.cs" caret="0" fromTop="0" />
+      <File id="CEDA5E11-130F-4729-A9C2-859D5A6B9418/f:Program.cs" caret="264" fromTop="12" />
+      <File id="CEDA5E11-130F-4729-A9C2-859D5A6B9418/f:Task4.cs" caret="1127" fromTop="20" />
+    </RecentFiles>
+    <RecentEdits>
+      <File id="CEDA5E11-130F-4729-A9C2-859D5A6B9418/f:Task3.cs" caret="1822" fromTop="10" />
+      <File id="CEDA5E11-130F-4729-A9C2-859D5A6B9418/f:Task3.cs" caret="332" fromTop="12" />
+      <File id="CEDA5E11-130F-4729-A9C2-859D5A6B9418/f:Task3.cs" caret="613" fromTop="13" />
+      <File id="CEDA5E11-130F-4729-A9C2-859D5A6B9418/f:Task3.cs" caret="1412" fromTop="24" />
+      <File id="CEDA5E11-130F-4729-A9C2-859D5A6B9418/f:Task3.cs" caret="1311" fromTop="16" />
+      <File id="CEDA5E11-130F-4729-A9C2-859D5A6B9418/f:Task3.cs" caret="782" fromTop="9" />
+      <File id="CEDA5E11-130F-4729-A9C2-859D5A6B9418/f:Task3.cs" caret="926" fromTop="18" />
+      <File id="CEDA5E11-130F-4729-A9C2-859D5A6B9418/f:Task3.cs" caret="1086" fromTop="16" />
+      <File id="CEDA5E11-130F-4729-A9C2-859D5A6B9418/f:Task3.cs" caret="1830" fromTop="21" />
+      <File id="CEDA5E11-130F-4729-A9C2-859D5A6B9418/f:Task3.cs" caret="1638" fromTop="22" />
+      <File id="CEDA5E11-130F-4729-A9C2-859D5A6B9418/f:Task3.cs" caret="1460" fromTop="10" />
+      <File id="CEDA5E11-130F-4729-A9C2-859D5A6B9418/f:Task3.cs" caret="1771" fromTop="22" />
+      <File id="CEDA5E11-130F-4729-A9C2-859D5A6B9418/f:Task4.cs" caret="357" fromTop="17" />
+      <File id="CEDA5E11-130F-4729-A9C2-859D5A6B9418/f:Task4.cs" caret="156" fromTop="4" />
+      <File id="CEDA5E11-130F-4729-A9C2-859D5A6B9418/f:Task4.cs" caret="1803" fromTop="19" />
+      <File id="CEDA5E11-130F-4729-A9C2-859D5A6B9418/f:Program.cs" caret="264" fromTop="12" />
+      <File id="CEDA5E11-130F-4729-A9C2-859D5A6B9418/f:Task4.cs" caret="1469" fromTop="17" />
+      <File id="CEDA5E11-130F-4729-A9C2-859D5A6B9418/f:Task4.cs" caret="612" fromTop="6" />
+      <File id="CEDA5E11-130F-4729-A9C2-859D5A6B9418/f:Task4.cs" caret="748" fromTop="8" />
+      <File id="CEDA5E11-130F-4729-A9C2-859D5A6B9418/f:Task4.cs" caret="950" fromTop="17" />
+      <File id="CEDA5E11-130F-4729-A9C2-859D5A6B9418/f:Task4.cs" caret="1123" fromTop="6" />
+      <File id="CEDA5E11-130F-4729-A9C2-859D5A6B9418/f:Task4.cs" caret="1346" fromTop="22" />
+      <File id="CEDA5E11-130F-4729-A9C2-859D5A6B9418/f:Task4.cs" caret="1787" fromTop="14" />
+    </RecentEdits>
+  </RecentFiles>
+  <NAntValidationSettings>
+    <NAntPath value="" />
+  </NAntValidationSettings>
+  <UnitTestRunner>
+    <Providers />
+  </UnitTestRunner>
+  <UnitTestRunnerNUnit>
+    <NUnitInstallDir IsNull="False">
+    </NUnitInstallDir>
+    <UseAddins>Never</UseAddins>
+  </UnitTestRunnerNUnit>
+</Configuration>

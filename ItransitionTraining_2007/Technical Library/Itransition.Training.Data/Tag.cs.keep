@@ -1,0 +1,140 @@
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Configuration;
+using System.Web;
+using NHibernate;
+using NHibernate.Cfg;
+using NHibernate.Expression;
+
+namespace Itransition.Training.Data
+{
+    /// <summary>
+    /// Summary description for Tag
+    /// </summary>
+    public class Tag
+    {
+        private int id;
+
+        private String title;
+
+        private IList<Article> articles=new List<Article>();
+
+        protected Tag()
+        {
+        }
+
+        public Tag(String title)
+        {
+            this.title = title;
+            this.id = title.GetHashCode();
+        }
+
+        public virtual int Id
+        {
+            get
+            {
+                return id;
+            }
+            protected set
+            {
+                id = value;
+            }
+        }
+
+        public virtual String Title
+        {
+            get
+            {
+                return title;
+            }
+            set
+            {
+                title = value;
+            }
+        }
+
+        public virtual IList<Article> Articles
+        {
+            get
+            {
+                return articles;
+            }
+            set
+            {
+                articles = value;
+            }
+        }
+
+        public override string ToString()
+        {
+            return title.ToString();
+        }
+
+        public override int GetHashCode()
+        {
+            return title.GetHashCode();
+        }
+
+        public override bool Equals(object obj)
+        {
+            Tag that = obj as Tag;
+            if (that != null)
+            {
+                return this.title == that.title;
+            }
+            return false;
+        }
+
+        public static void Add(Tag tag)
+        {
+            ISessionFactory sessionFactory = new Configuration().Configure().BuildSessionFactory();
+            ISession session = sessionFactory.OpenSession();
+            using (session)
+            {
+                ITransaction transaction = session.BeginTransaction();
+                session.SaveOrUpdate(tag);
+                transaction.Commit();
+            }
+        }
+
+        public static bool Contains(String tagTitle)
+        {
+            ISessionFactory sessionFactory = new Configuration().Configure().BuildSessionFactory();
+            ISession session = sessionFactory.OpenSession();
+            using (session)
+            {
+                IList<Tag> list = session.CreateCriteria(typeof (Tag)).Add(Expression.Eq("Title", tagTitle)).List<Tag>();
+                return list.Count > 0;
+            }
+        }
+
+        public static void Delete(String tagTitle)
+        {
+            ISessionFactory sessionFactory = new Configuration().Configure().BuildSessionFactory();
+            ISession session = sessionFactory.OpenSession();
+            using (session)
+            {
+                ITransaction transaction = session.BeginTransaction();
+                session.Delete(
+                     String.Format(@"from Tag as tag where tag.Title='{0}'",tagTitle)
+                    );
+                transaction.Commit();
+            }
+        }
+
+        public static IList<Tag> GetAll()
+        {
+            ISessionFactory sessionFactory = new Configuration().Configure().BuildSessionFactory();
+            ISession session = sessionFactory.OpenSession();
+            IList<Tag> list = new List<Tag>();
+            using (session)
+            {
+                list = session.CreateCriteria(typeof(Tag)).List<Tag>();
+            }
+            return list;
+        }
+
+
+    }
+}

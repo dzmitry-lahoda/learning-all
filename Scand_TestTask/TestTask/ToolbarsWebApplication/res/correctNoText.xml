@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<toolbar>
+  <button id="btn1" img="http://localhost/mysite/img/img1.gif" text="Кнопка 1" />
+  <button id="btn2" img="http://localhost/mysite/img/img2.gif"/>
+</toolbar>

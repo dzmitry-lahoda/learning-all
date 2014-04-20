@@ -1,0 +1,1 @@
+/target:library /addmodule:Zadanie1_1a.netmodule /out:Zadanie1.1.dll Zadanie1_1.cs
