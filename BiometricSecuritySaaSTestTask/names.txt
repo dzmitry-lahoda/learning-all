@@ -1,4 +1,0 @@
-﻿1.	name11
-2.	name12
-a.	nameaa
-6.	name66

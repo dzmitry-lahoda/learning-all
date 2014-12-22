@@ -8,3 +8,5 @@ release
 ipch
 _ReSharper.*
 desktop.ini
+*.suo
+*.user

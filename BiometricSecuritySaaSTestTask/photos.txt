@@ -1,4 +1,0 @@
-﻿PHOTO1.JPG	name1	name2	1	name3	2
-PHOTO2.JPG	2	name1
-PHOTO3	2	3
-PhotoN.PNG	4	6
