@@ -10,3 +10,4 @@ _ReSharper.*
 desktop.ini
 *.suo
 *.user
+packages

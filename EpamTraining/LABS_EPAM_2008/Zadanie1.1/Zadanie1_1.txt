@@ -1,1 +1,0 @@
-csc @Zadanie1.1.rsp
