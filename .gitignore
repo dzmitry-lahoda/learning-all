@@ -1,3 +1,7 @@
+# .NET and Windows
+packages
+.paket/paket.exe
+paket.lock
 bin
 obj
 exe
@@ -10,4 +14,5 @@ _ReSharper.*
 desktop.ini
 *.suo
 *.user
-packages
+
+

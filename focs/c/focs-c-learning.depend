@@ -1,8 +1,0 @@
-# depslib dependency file v1.0
-1387384008 source:/home/lnx/Ubuntu One/focs-c-learning/main.c
-	<stdio.h>
-	<stdlib.h>
-	"Focs.h"
-
-1387382809 /home/lnx/Ubuntu One/focs-c-learning/Focs.h
-
