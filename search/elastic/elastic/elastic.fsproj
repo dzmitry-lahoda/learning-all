@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -29,6 +29,12 @@
     <DefineConstants>
     </DefineConstants>
   </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\..\Microsoft SDKs\F#\3.1\Framework\v4.0\Microsoft.FSharp.Targets" />
+  <ItemGroup>
+    <Compile Include="Tutorial.fs" />
+    <None Include="install.fsx" />
+    <None Include="initialization.fsx" />
+  </ItemGroup>
   <ItemGroup>
     <Reference Include="mscorlib" />
     <Reference Include="FSharp.Core, Version=4.3.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
@@ -43,12 +49,5 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>W:\src\learning\search\elastic\packages\Newtonsoft.Json\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Tutorial.fs" />
-  </ItemGroup>
-  <Import Project="$(MSBuildExtensionsPath32)\..\Microsoft SDKs\F#\3.1\Framework\v4.0\Microsoft.FSharp.Targets" />
-  <ItemGroup>
-    <None Include="install.fsx" />
   </ItemGroup>
 </Project>

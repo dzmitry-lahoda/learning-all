@@ -5,13 +5,15 @@ open System.IO.Compression
 open Elasticsearch.Net
 open Elasticsearch.Net.Connection
 
-type IAudited =  abstract member operationtime : DateTime 
+type IAudited =  abstract member operationtimestamp : DateTime 
 
 type Bookmark = 
-  { title:string; operationtime : DateTime} 
-  interface IAudited with member x.operationtime = x.operationtime
+  { title:string; operationtimestamp : DateTime} 
+  interface IAudited with member x.operationtimestamp = x.operationtimestamp
 
 let connection = ConnectionConfiguration().ExposeRawResponse()
 let client = new ElasticsearchClient(connection)
-let body = {  title = "Home23"; operationtime = DateTime.UtcNow }
+let now = DateTime.UtcNow;
+let body = {  title = "Home23"; operationtimestamp = now }
 let indexed = client.Index("myindex3", body.GetType().Name, Guid.NewGuid().ToString("N"), body)
+let result = client.Search<Bookmark>()
