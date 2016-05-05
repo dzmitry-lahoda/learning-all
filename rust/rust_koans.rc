@@ -1,0 +1,11 @@
+#[crate_id =  "rust_koans#0.1"];
+#[crate_type = "test"];
+
+pub mod rust_koans;
+
+
+
+fn main(){
+ println!("{:d}", 1);//type checked by macro - will fail if try to print string
+}
+

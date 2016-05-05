@@ -1,0 +1,4 @@
+#!/bin/sh
+# compiles rust coant into `bin` folder
+mkdir -p bin
+rustc $@ --out-dir bin
