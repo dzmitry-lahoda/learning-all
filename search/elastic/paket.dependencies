@@ -2,4 +2,4 @@ source https://www.nuget.org/api/v2/
 
 nuget FSharp.Text.RegexProvider   >= 0.0.7
 nuget FSharp.Data   >= 2.2.5
-nuget NEST >= 2.0.5
+nuget NEST >= 2.1.1

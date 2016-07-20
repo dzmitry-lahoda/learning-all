@@ -1,10 +1,10 @@
-﻿#r "../packages/Elasticsearch.Net/lib/net45/Elasticsearch.Net.dll"
+﻿#r "../../packages/Elasticsearch.Net/lib/net45/Elasticsearch.Net.dll"
 open System
 open System.Net
 open System.IO.Compression
 open Elasticsearch.Net
-open Elasticsearch.Net.Connection
 
-let client = new ElasticsearchClient(null,null,null)
+
+let client = new ElasticLowLevelClient()
 printfn "%s" (client.ToString())
-client.Index("test","test","test")
+client.Index("test","test", new PostData<Object>("data"))

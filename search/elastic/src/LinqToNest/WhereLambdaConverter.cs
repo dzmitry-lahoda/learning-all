@@ -1,23 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
-
 using Nest;
 
 namespace Nest
 {
-	internal class WhereLambdaConverter : ExpressionVisitor, IExpressionConverter<IEnumerable<Func<FilterDescriptor<object>, FilterContainer>>>
+	internal class WhereLambdaConverter : ExpressionVisitor, IExpressionConverter<IEnumerable<Func<QueryContainerDescriptor<object>, FilterContainer>>>
 	{
 		private readonly IPropertyNameResolver _propertyNameResolver;
-		private readonly List<Func<FilterDescriptor<object>, FilterContainer>> _result; 
+		private readonly List<Func<QueryContainerDescriptor<object>, FilterContainer>> _result; 
 		
 		public WhereLambdaConverter(IPropertyNameResolver propertyNameResolver)
 		{
 			this._propertyNameResolver = propertyNameResolver;
-			this._result = new List<Func<FilterDescriptor<object>, FilterContainer>>();
+			this._result = new List<Func<QueryContainerDescriptor<object>, FilterContainer>>();
 		}
 
-		public IEnumerable<Func<FilterDescriptor<object>, FilterContainer>> Convert(Expression expression)
+		public IEnumerable<Func<QueryContainerDescriptor<object>, FilterContainer>> Convert(Expression expression)
 		{
 			this.Visit(expression);
 			return this._result;
