@@ -1,4 +1,4 @@
-
+-- https://github.com/datajunkie007/fusql/blob/master/Oracle/oracle_table_size.sql
 -- http://stackoverflow.com/questions/18701984/displaying-the-hex-value-of-a-string-from-a-oracle-varchar2
 -- http://stackoverflow.com/questions/5871369/oracle-how-do-i-get-the-actual-size-of-a-specific-row
 -- https://github.com/datajunkie007/fusql/blob/master/Oracle/oracle_table_size.sql
@@ -21,7 +21,6 @@ with n as
 select vsize(n.DUMMY), LENGTH(n.dummy),LENGTH(n.R), UTL_RAW.LENGTH(n.R), n.* from n;
 
 
-
 SELECT 
   coalesce(vsize(sf.FNAME),0),  
   LENGTH(sf.FNAME), 
@@ -29,19 +28,24 @@ SELECT
   FROM SYS.SYSFILES sf;
 
 select * from V$PARAMETER where NAME like '%size%';
-
+select * from all_tables s;
 select * from SYS.SYSFILES; 
+select sum(BLOCKS) from SYS.SYSFILES; 
 select * from SYS.SYSTEM_PRIVILEGE_MAP;
 select * from SYS.SYSCATALOG;
 select * from SYS.SYSSEGOBJ;
 select * from dba_tables;
-select sum(dba_tables.blocks),dba_tables.TABLE_NAME from dba_tables group by dba_tables.TABLE_NAME order by sum(dba_tables.blocks) desc;
+
 select * from sys.dba_Data_files order by blocks desc;
 
-select s.blocks as SYSFILES_BLOCKS, f.blocks as dba_Data_files_BLOCKS, s.*, f.* from SYS.SYSFILES s join sys.dba_Data_files f on s.fname = f.FILE_NAME  order by f.blocks desc;
+select s.blocks as SYSFILES_BLOCKS, f.blocks as dba_Data_files_BLOCKS, s.*, f.* 
+from SYS.SYSFILES s 
+join sys.dba_Data_files f on s.fname = f.FILE_NAME  
+order by f.blocks desc;
+
+select sum(bytes)/1024/1024/1024, sum(user_bytes)/1024/1024/1024, sum(blocks*8192)/1024/1024/1024 from sys.dba_Data_files;
 
 select * from dba_segments;
-
 select * from V$SYSTEM_PARAMETER;
 SHOW PARAMETERS;
 SHOW SPPARAMETERS;
