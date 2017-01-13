@@ -50,6 +50,7 @@
     <None Include="Class1.csx" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <None Include="time.csx" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\core\core.fsproj">
