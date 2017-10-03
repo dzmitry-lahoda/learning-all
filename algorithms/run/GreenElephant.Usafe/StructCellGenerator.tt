@@ -1,0 +1,155 @@
+﻿<#@ output extension=".cs" #>  
+using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Numerics;
+<# 
+var structs = new [] {"int","long","float","double", "decimal","BigInteger", "Complex","char"};
+var allocators = new [] { Tuple.Create("bit16","ushort"), Tuple.Create("bit32","uint"), Tuple.Create("bit64","ulong") } ;
+#>
+
+namespace GreenElephant.Usafe
+{
+
+<#   
+foreach(var allocator in allocators)
+{
+#>
+namespace <#= allocator.Item1 #>
+{
+
+    public unsafe partial interface IAllocator
+    {
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        void** Apply(<#= allocator.Item2 #> count);
+    }
+
+
+
+<#   
+foreach(var structName in structs)
+{
+#>
+  public unsafe  struct <#= structName #>Cell
+  {
+    public <#= structName #> element;
+    public <#= structName #>Cell* next;
+  }
+
+  public unsafe  struct <#= structName #>CellCell
+  {
+    public <#= structName #>Cell element;
+    public <#= structName #>CellCell* next;
+  }
+
+  	public unsafe struct <#= structName #>Array
+    {
+        public <#= allocator.Item2 #> lenght;
+        public <#= structName #>* index;
+    }
+
+<#   
+}
+#>
+
+
+
+<#   
+foreach(var structName in structs)
+{
+#>
+        public unsafe partial interface I<#= structName #>CellAllocator
+        {
+            [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+            <#= structName #>Cell* Apply(<#= allocator.Item2 #> count);
+        }
+
+		public unsafe partial interface I<#= structName #>CellCellAllocator
+        {
+            [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+            <#= structName #>CellCell* Apply(<#= allocator.Item2 #> count);
+        }
+
+public unsafe partial class <#= structName #>CellExtensions
+  {
+    public <#= allocator.Item2 #> length(<#= structName #>Cell* cell)
+    {
+            <#= allocator.Item2 #> counter = 0;
+            while (cell != null)
+            {
+                counter++;
+                cell = (*cell).next;
+            };
+            return counter;
+        }
+
+        public <#= structName #>Cell* empty
+        {
+            get
+            {
+                return null;
+            }
+        }
+
+		public <#= structName #> head(<#= structName #>Cell* forwardLinkedList)
+        {
+            return (*forwardLinkedList).element;
+        }
+
+		
+        public <#= structName #>Array toArray(<#= structName #>Cell* abc, IAllocator allocator)
+        {
+            var total = this.length(abc);
+            var arr = (<#= structName #>*)allocator.Apply(total);
+            var counter = 0;
+            while (abc != null)
+            {
+                arr[counter] = (*abc).element;
+                abc = (*abc).next;
+                counter++;
+            }
+
+            return new <#= structName #>Array { lenght = total, index = arr };
+        }
+
+        public <#= structName #>Cell* tail(<#= structName #>Cell* forwardLinkedList)
+        {
+            return (*forwardLinkedList).next;
+        }
+
+        public <#= structName #>Cell* last(<#= structName #>Cell* forwardLinkedList)
+        {
+            while (true)
+            {
+                if ((*forwardLinkedList).next == null) return forwardLinkedList;
+                forwardLinkedList = (*forwardLinkedList).next;
+            }
+        }
+
+        public void toCells(<#= structName #>[] array, <#= structName #>Cell* memory)
+        {
+            <#= structName #>Cell* previous = null;
+
+            foreach (var item in array)
+            {
+                (*memory) = new <#= structName #>Cell { element = item };
+                if (previous != null)
+                {
+                    (*previous).next = memory;
+                }
+
+                previous = memory;
+
+                memory++;
+            }
+        }
+    }
+<#   
+}
+#>
+}
+<#   
+}
+#>
+}
+

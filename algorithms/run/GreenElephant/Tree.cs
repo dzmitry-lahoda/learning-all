@@ -30,24 +30,14 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace run
-{
-
-    public class Tree
-    {
-        public int x;
-        public Tree l;
-        public Tree r;
-    };
-
+{    
     public static class TreeExtensions
     {
-        public static Tree _(int value, Tree left, Tree right)
+        public static BinaryTree _(int value, BinaryTree left, BinaryTree right)
         {
-            return new Tree { x = value, l = left, r = right };
+            return new BinaryTree { x = value, l = left, r = right };
         }
     }
-
-
     public struct minmax
     {
         int minValue, maxValue;

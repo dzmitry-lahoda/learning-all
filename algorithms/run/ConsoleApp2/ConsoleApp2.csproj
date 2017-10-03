@@ -6,20 +6,15 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="MaxMinExtremesCount.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="xunit" Version="2.2.0" />
-    <PackageReference Include="xunit.runner.console" Version="2.2.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\GreenElephant\GreenElephant.csproj" />
+    <ProjectReference Include="..\GreenElephant.Usafe\GreenElephant.Usafe.csproj" />
   </ItemGroup>
 
 </Project>

@@ -151,10 +151,10 @@ namespace run
             Assert.Equal(1000, DirectionLenght(t));
         }
 
-        public int DirectionLenght(Tree T) => T == null ? -1  : Math.Max(curse(0, T.l, false), curse(0, T.r, true));
+        public int DirectionLenght(BinaryTree T) => T == null ? -1  : Math.Max(curse(0, T.l, false), curse(0, T.r, true));
         
 
-        private int curse(int length, Tree t, bool right)
+        private int curse(int length, BinaryTree t, bool right)
         {
             if (t == null)
                 return length;

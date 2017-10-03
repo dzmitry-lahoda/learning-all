@@ -84,7 +84,7 @@ namespace run
         }
   
         // recursion, grawing stack, getting depth and then doing stack allow upfront, replicate tree with align of parent on demand and prune as soon as searched
-        public int Amplitude(Tree T)
+        public int Amplitude(BinaryTree T)
         {
             if (null == T)
                 return 0;
@@ -125,7 +125,7 @@ namespace run
             return curse(new minmax(T.x, T.x), T).abs();
         }
 
-        private minmax curse(minmax minMax, Tree t) =>
+        private minmax curse(minmax minMax, BinaryTree t) =>
             t == null ?
                 minMax
                 : curse(minMax.minMax(t.l?.x), t.l).greaterOf(curse(minMax.minMax(t.r?.x), t.r));        

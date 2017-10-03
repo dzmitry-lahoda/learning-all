@@ -6,7 +6,18 @@ namespace run
     {
         static void Main(string[] args)
         {
-            var sut = new GraphProgram();
+            try
+            {
+                long al = 1L + Int32.MaxValue;
+                var a = new bool[al];
+            }
+            catch (System.OverflowException ex)
+            {
+                
+            }
+
+
+            var sut = new TreeHeightMerge();
             sut.Test();
         }
     }

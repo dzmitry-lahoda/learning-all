@@ -34,7 +34,7 @@ namespace run
             Assert.Equal(solution(0, new[] { 0 }), 0);
             Assert.Equal(0, solution(1, new[] { 1, 0 }));
 
-            Assert.Equal(0, solution(3, new[] { 1, 2 , 3, 0,0 ,0 }));
+            Assert.Equal(0, solution(3, new[] { 1, 2, 3, 0, 0, 0 }));
         }
 
         public int solution(int M, int[] A)

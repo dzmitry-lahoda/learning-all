@@ -1,0 +1,70 @@
+﻿/*
+
+*/
+using System;
+using System.Linq;
+
+using Xunit;
+
+namespace ConsoleApp1
+{
+    class Program
+    {
+
+
+        static void Main(string[] args)
+        {
+            var s = new Solution();
+            Assert.Equal(1, s.solution(0, 0));
+            Assert.Equal(2, s.solution(0, 1));
+            Assert.Equal(3, s.solution(4, 17));
+            Assert.Equal(0, s.solution(-3, -1));
+            Assert.Equal(2, s.solution(-3, 1));
+            Assert.Equal(1, s.solution(1, 1));
+            Assert.Equal(46341, s.solution(Int32.MinValue, Int32.MaxValue));
+
+            Assert.Equal(s.solution2(0, 0), s.solution(0, 0));
+            Assert.Equal(s.solution2(0, 1), s.solution(0, 1));
+            Assert.Equal(s.solution2(4, 17), s.solution(4, 17));
+            Assert.Equal(s.solution2(-3, -1), s.solution(-3, -1));
+            Assert.Equal(s.solution2(-3, 1), s.solution(-3, 1));
+            Assert.Equal(s.solution2(1, 1), s.solution(1, 1));
+            Assert.Equal(s.solution2(Int32.MinValue, Int32.MaxValue), s.solution(Int32.MinValue, Int32.MaxValue));
+        }
+
+        class Solution
+        {
+            public int solution(int A, int B)
+            {
+                if (A > B) throw new ArgumentException();
+                if (A < 0 && B < 0) return 0;
+                if (A < 0)
+                {
+                    A = 0;
+                }
+
+                var rootOfB = (int)Math.Floor(Math.Sqrt(B));
+                var rootOfA = (int)Math.Ceiling(Math.Sqrt(A));
+                return rootOfB - rootOfA + 1;
+            }
+
+            public int solution2(int A, int B)
+            {
+                if (A < 0 && B < 0) return 0;
+                if (A < 0)
+                {
+                    A = 0;
+                }
+
+                if (A > B) throw new ArgumentException();
+
+                int result = 0;
+                for (int i = A; i <= B; i++)
+                    for (int j = 0; j * j <= i; j++)
+                        if (j * j == i)
+                            result++;
+                return result;
+            }
+        }
+    }
+}
