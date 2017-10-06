@@ -1,12 +1,14 @@
 ﻿<#@ output extension=".cs" #>  
+<#@ assembly name="System.Core" #>  
+<#@ import namespace="System" #>  
+<#@ import namespace="System.Linq" #>  
+<#@ import namespace="System.Text" #>  
+<#@ import namespace="System.Collections.Generic" #>  
+<#@ include file="Configuration.ttinclude" #>
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Numerics;
-<# 
-var structs = new [] {"int","long","float","double", "decimal","BigInteger", "Complex","char"};
-var allocators = new [] { Tuple.Create("bit16","ushort"), Tuple.Create("bit32","uint"), Tuple.Create("bit64","ulong") } ;
-#>
 
 namespace GreenElephant.Usafe
 {
@@ -17,13 +19,6 @@ foreach(var allocator in allocators)
 #>
 namespace <#= allocator.Item1 #>
 {
-
-    public unsafe partial interface IAllocator
-    {
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
-        void** Apply(<#= allocator.Item2 #> count);
-    }
-
 
 
 <#   
@@ -38,15 +33,9 @@ foreach(var structName in structs)
 
   public unsafe  struct <#= structName #>CellCell
   {
-    public <#= structName #>Cell element;
+    public <#= structName #>Cell* element;
     public <#= structName #>CellCell* next;
   }
-
-  	public unsafe struct <#= structName #>Array
-    {
-        public <#= allocator.Item2 #> lenght;
-        public <#= structName #>* index;
-    }
 
 <#   
 }
@@ -83,6 +72,33 @@ public unsafe partial class <#= structName #>CellExtensions
             return counter;
         }
 
+        public bool equals(<#= structName #>Cell* a, <#= structName #>Cell* b)
+        {
+            if (a == b) return true;
+            while (true)
+                if (a == this.empty && b == this.empty)
+                    return true;
+                else if (a != this.empty && b == this.empty)
+                    return false;
+                else if (a == this.empty && b != this.empty)
+                    return false;
+                else if ((*a).element != (*b).element)
+                    return false;
+                else
+                  { a = (*a).next; b = (*b).next; };
+        }
+
+    public <#= allocator.Item2 #> length(<#= structName #>CellCell* cell)
+    {
+            <#= allocator.Item2 #> counter = 0;
+            while (cell != null)
+            {
+                counter++;
+                cell = (*cell).next;
+            };
+            return counter;
+        }
+
         public <#= structName #>Cell* empty
         {
             get
@@ -97,10 +113,10 @@ public unsafe partial class <#= structName #>CellExtensions
         }
 
 		
-        public <#= structName #>Array toArray(<#= structName #>Cell* abc, IAllocator allocator)
+        public <#= structName #>Array toArray(<#= structName #>Cell* abc, I<#= structName #>New allocator)
         {
             var total = this.length(abc);
-            var arr = (<#= structName #>*)allocator.Apply(total);
+            var arr = allocator.Apply(total);
             var counter = 0;
             while (abc != null)
             {

@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\GreenElephant.Usafe\GreenElephant.Usafe.csproj" />
+    <ProjectReference Include="..\GreenElephant.Usafe\TastyBread.Usafe.csproj" />
   </ItemGroup>
 
 </Project>

@@ -9,9 +9,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "usafefx", "..\usafefx\usafe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp1", "ConsoleApp1\ConsoleApp1.csproj", "{194314FE-5038-45A3-8A55-354E87727FBA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GreenElephant", "GreenElephant\GreenElephant.csproj", "{197F554E-4337-4B82-A6F9-184AD1C6ABF5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tasy", "GreenElephant\Tasy.csproj", "{197F554E-4337-4B82-A6F9-184AD1C6ABF5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GreenElephant.Usafe", "GreenElephant.Usafe\GreenElephant.Usafe.csproj", "{E490FA8C-73FE-479C-BB83-D775BF68A5CD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TastyBread.Usafe", "GreenElephant.Usafe\TastyBread.Usafe.csproj", "{E490FA8C-73FE-479C-BB83-D775BF68A5CD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp2", "ConsoleApp2\ConsoleApp2.csproj", "{C66C7859-F7D6-4D7C-B54F-0F6686FC05DA}"
 EndProject

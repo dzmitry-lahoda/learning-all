@@ -21,6 +21,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="ArrayGenerator.tt">
+      <LastGenOutput>ArrayGenerator.cs</LastGenOutput>
+      <Generator>TextTemplatingFileGenerator</Generator>
+    </None>
     <None Update="StructCellGenerator.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>StructCellGenerator.cs</LastGenOutput>
@@ -32,6 +36,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="ArrayGenerator.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ArrayGenerator.tt</DependentUpon>
+    </Compile>
     <Compile Update="StructCellGenerator.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>

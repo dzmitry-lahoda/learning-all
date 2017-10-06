@@ -1,4 +1,12 @@
 ﻿  
+  
+  
+  
+  
+  
+  
+  
+  
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -10,13 +18,6 @@ namespace GreenElephant.Usafe
 namespace bit16
 {
 
-    public unsafe partial interface IAllocator
-    {
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
-        void** Apply(ushort count);
-    }
-
-
 
   public unsafe  struct intCell
   {
@@ -26,15 +27,9 @@ namespace bit16
 
   public unsafe  struct intCellCell
   {
-    public intCell element;
+    public intCell* element;
     public intCellCell* next;
   }
-
-  	public unsafe struct intArray
-    {
-        public ushort lenght;
-        public int* index;
-    }
 
   public unsafe  struct longCell
   {
@@ -44,15 +39,9 @@ namespace bit16
 
   public unsafe  struct longCellCell
   {
-    public longCell element;
+    public longCell* element;
     public longCellCell* next;
   }
-
-  	public unsafe struct longArray
-    {
-        public ushort lenght;
-        public long* index;
-    }
 
   public unsafe  struct floatCell
   {
@@ -62,15 +51,9 @@ namespace bit16
 
   public unsafe  struct floatCellCell
   {
-    public floatCell element;
+    public floatCell* element;
     public floatCellCell* next;
   }
-
-  	public unsafe struct floatArray
-    {
-        public ushort lenght;
-        public float* index;
-    }
 
   public unsafe  struct doubleCell
   {
@@ -80,15 +63,9 @@ namespace bit16
 
   public unsafe  struct doubleCellCell
   {
-    public doubleCell element;
+    public doubleCell* element;
     public doubleCellCell* next;
   }
-
-  	public unsafe struct doubleArray
-    {
-        public ushort lenght;
-        public double* index;
-    }
 
   public unsafe  struct decimalCell
   {
@@ -98,15 +75,9 @@ namespace bit16
 
   public unsafe  struct decimalCellCell
   {
-    public decimalCell element;
+    public decimalCell* element;
     public decimalCellCell* next;
   }
-
-  	public unsafe struct decimalArray
-    {
-        public ushort lenght;
-        public decimal* index;
-    }
 
   public unsafe  struct BigIntegerCell
   {
@@ -116,15 +87,9 @@ namespace bit16
 
   public unsafe  struct BigIntegerCellCell
   {
-    public BigIntegerCell element;
+    public BigIntegerCell* element;
     public BigIntegerCellCell* next;
   }
-
-  	public unsafe struct BigIntegerArray
-    {
-        public ushort lenght;
-        public BigInteger* index;
-    }
 
   public unsafe  struct ComplexCell
   {
@@ -134,15 +99,9 @@ namespace bit16
 
   public unsafe  struct ComplexCellCell
   {
-    public ComplexCell element;
+    public ComplexCell* element;
     public ComplexCellCell* next;
   }
-
-  	public unsafe struct ComplexArray
-    {
-        public ushort lenght;
-        public Complex* index;
-    }
 
   public unsafe  struct charCell
   {
@@ -152,15 +111,9 @@ namespace bit16
 
   public unsafe  struct charCellCell
   {
-    public charCell element;
+    public charCell* element;
     public charCellCell* next;
   }
-
-  	public unsafe struct charArray
-    {
-        public ushort lenght;
-        public char* index;
-    }
 
 
 
@@ -190,6 +143,33 @@ public unsafe partial class intCellExtensions
             return counter;
         }
 
+        public bool equals(intCell* a, intCell* b)
+        {
+            if (a == b) return true;
+            while (true)
+                if (a == this.empty && b == this.empty)
+                    return true;
+                else if (a != this.empty && b == this.empty)
+                    return false;
+                else if (a == this.empty && b != this.empty)
+                    return false;
+                else if ((*a).element != (*b).element)
+                    return false;
+                else
+                  { a = (*a).next; b = (*b).next; };
+        }
+
+    public ushort length(intCellCell* cell)
+    {
+            ushort counter = 0;
+            while (cell != null)
+            {
+                counter++;
+                cell = (*cell).next;
+            };
+            return counter;
+        }
+
         public intCell* empty
         {
             get
@@ -204,10 +184,10 @@ public unsafe partial class intCellExtensions
         }
 
 		
-        public intArray toArray(intCell* abc, IAllocator allocator)
+        public intArray toArray(intCell* abc, IintNew allocator)
         {
             var total = this.length(abc);
-            var arr = (int*)allocator.Apply(total);
+            var arr = allocator.Apply(total);
             var counter = 0;
             while (abc != null)
             {
@@ -276,6 +256,33 @@ public unsafe partial class longCellExtensions
             return counter;
         }
 
+        public bool equals(longCell* a, longCell* b)
+        {
+            if (a == b) return true;
+            while (true)
+                if (a == this.empty && b == this.empty)
+                    return true;
+                else if (a != this.empty && b == this.empty)
+                    return false;
+                else if (a == this.empty && b != this.empty)
+                    return false;
+                else if ((*a).element != (*b).element)
+                    return false;
+                else
+                  { a = (*a).next; b = (*b).next; };
+        }
+
+    public ushort length(longCellCell* cell)
+    {
+            ushort counter = 0;
+            while (cell != null)
+            {
+                counter++;
+                cell = (*cell).next;
+            };
+            return counter;
+        }
+
         public longCell* empty
         {
             get
@@ -290,10 +297,10 @@ public unsafe partial class longCellExtensions
         }
 
 		
-        public longArray toArray(longCell* abc, IAllocator allocator)
+        public longArray toArray(longCell* abc, IlongNew allocator)
         {
             var total = this.length(abc);
-            var arr = (long*)allocator.Apply(total);
+            var arr = allocator.Apply(total);
             var counter = 0;
             while (abc != null)
             {
@@ -362,6 +369,33 @@ public unsafe partial class floatCellExtensions
             return counter;
         }
 
+        public bool equals(floatCell* a, floatCell* b)
+        {
+            if (a == b) return true;
+            while (true)
+                if (a == this.empty && b == this.empty)
+                    return true;
+                else if (a != this.empty && b == this.empty)
+                    return false;
+                else if (a == this.empty && b != this.empty)
+                    return false;
+                else if ((*a).element != (*b).element)
+                    return false;
+                else
+                  { a = (*a).next; b = (*b).next; };
+        }
+
+    public ushort length(floatCellCell* cell)
+    {
+            ushort counter = 0;
+            while (cell != null)
+            {
+                counter++;
+                cell = (*cell).next;
+            };
+            return counter;
+        }
+
         public floatCell* empty
         {
             get
@@ -376,10 +410,10 @@ public unsafe partial class floatCellExtensions
         }
 
 		
-        public floatArray toArray(floatCell* abc, IAllocator allocator)
+        public floatArray toArray(floatCell* abc, IfloatNew allocator)
         {
             var total = this.length(abc);
-            var arr = (float*)allocator.Apply(total);
+            var arr = allocator.Apply(total);
             var counter = 0;
             while (abc != null)
             {
@@ -448,6 +482,33 @@ public unsafe partial class doubleCellExtensions
             return counter;
         }
 
+        public bool equals(doubleCell* a, doubleCell* b)
+        {
+            if (a == b) return true;
+            while (true)
+                if (a == this.empty && b == this.empty)
+                    return true;
+                else if (a != this.empty && b == this.empty)
+                    return false;
+                else if (a == this.empty && b != this.empty)
+                    return false;
+                else if ((*a).element != (*b).element)
+                    return false;
+                else
+                  { a = (*a).next; b = (*b).next; };
+        }
+
+    public ushort length(doubleCellCell* cell)
+    {
+            ushort counter = 0;
+            while (cell != null)
+            {
+                counter++;
+                cell = (*cell).next;
+            };
+            return counter;
+        }
+
         public doubleCell* empty
         {
             get
@@ -462,10 +523,10 @@ public unsafe partial class doubleCellExtensions
         }
 
 		
-        public doubleArray toArray(doubleCell* abc, IAllocator allocator)
+        public doubleArray toArray(doubleCell* abc, IdoubleNew allocator)
         {
             var total = this.length(abc);
-            var arr = (double*)allocator.Apply(total);
+            var arr = allocator.Apply(total);
             var counter = 0;
             while (abc != null)
             {
@@ -534,6 +595,33 @@ public unsafe partial class decimalCellExtensions
             return counter;
         }
 
+        public bool equals(decimalCell* a, decimalCell* b)
+        {
+            if (a == b) return true;
+            while (true)
+                if (a == this.empty && b == this.empty)
+                    return true;
+                else if (a != this.empty && b == this.empty)
+                    return false;
+                else if (a == this.empty && b != this.empty)
+                    return false;
+                else if ((*a).element != (*b).element)
+                    return false;
+                else
+                  { a = (*a).next; b = (*b).next; };
+        }
+
+    public ushort length(decimalCellCell* cell)
+    {
+            ushort counter = 0;
+            while (cell != null)
+            {
+                counter++;
+                cell = (*cell).next;
+            };
+            return counter;
+        }
+
         public decimalCell* empty
         {
             get
@@ -548,10 +636,10 @@ public unsafe partial class decimalCellExtensions
         }
 
 		
-        public decimalArray toArray(decimalCell* abc, IAllocator allocator)
+        public decimalArray toArray(decimalCell* abc, IdecimalNew allocator)
         {
             var total = this.length(abc);
-            var arr = (decimal*)allocator.Apply(total);
+            var arr = allocator.Apply(total);
             var counter = 0;
             while (abc != null)
             {
@@ -620,6 +708,33 @@ public unsafe partial class BigIntegerCellExtensions
             return counter;
         }
 
+        public bool equals(BigIntegerCell* a, BigIntegerCell* b)
+        {
+            if (a == b) return true;
+            while (true)
+                if (a == this.empty && b == this.empty)
+                    return true;
+                else if (a != this.empty && b == this.empty)
+                    return false;
+                else if (a == this.empty && b != this.empty)
+                    return false;
+                else if ((*a).element != (*b).element)
+                    return false;
+                else
+                  { a = (*a).next; b = (*b).next; };
+        }
+
+    public ushort length(BigIntegerCellCell* cell)
+    {
+            ushort counter = 0;
+            while (cell != null)
+            {
+                counter++;
+                cell = (*cell).next;
+            };
+            return counter;
+        }
+
         public BigIntegerCell* empty
         {
             get
@@ -634,10 +749,10 @@ public unsafe partial class BigIntegerCellExtensions
         }
 
 		
-        public BigIntegerArray toArray(BigIntegerCell* abc, IAllocator allocator)
+        public BigIntegerArray toArray(BigIntegerCell* abc, IBigIntegerNew allocator)
         {
             var total = this.length(abc);
-            var arr = (BigInteger*)allocator.Apply(total);
+            var arr = allocator.Apply(total);
             var counter = 0;
             while (abc != null)
             {
@@ -706,6 +821,33 @@ public unsafe partial class ComplexCellExtensions
             return counter;
         }
 
+        public bool equals(ComplexCell* a, ComplexCell* b)
+        {
+            if (a == b) return true;
+            while (true)
+                if (a == this.empty && b == this.empty)
+                    return true;
+                else if (a != this.empty && b == this.empty)
+                    return false;
+                else if (a == this.empty && b != this.empty)
+                    return false;
+                else if ((*a).element != (*b).element)
+                    return false;
+                else
+                  { a = (*a).next; b = (*b).next; };
+        }
+
+    public ushort length(ComplexCellCell* cell)
+    {
+            ushort counter = 0;
+            while (cell != null)
+            {
+                counter++;
+                cell = (*cell).next;
+            };
+            return counter;
+        }
+
         public ComplexCell* empty
         {
             get
@@ -720,10 +862,10 @@ public unsafe partial class ComplexCellExtensions
         }
 
 		
-        public ComplexArray toArray(ComplexCell* abc, IAllocator allocator)
+        public ComplexArray toArray(ComplexCell* abc, IComplexNew allocator)
         {
             var total = this.length(abc);
-            var arr = (Complex*)allocator.Apply(total);
+            var arr = allocator.Apply(total);
             var counter = 0;
             while (abc != null)
             {
@@ -792,6 +934,33 @@ public unsafe partial class charCellExtensions
             return counter;
         }
 
+        public bool equals(charCell* a, charCell* b)
+        {
+            if (a == b) return true;
+            while (true)
+                if (a == this.empty && b == this.empty)
+                    return true;
+                else if (a != this.empty && b == this.empty)
+                    return false;
+                else if (a == this.empty && b != this.empty)
+                    return false;
+                else if ((*a).element != (*b).element)
+                    return false;
+                else
+                  { a = (*a).next; b = (*b).next; };
+        }
+
+    public ushort length(charCellCell* cell)
+    {
+            ushort counter = 0;
+            while (cell != null)
+            {
+                counter++;
+                cell = (*cell).next;
+            };
+            return counter;
+        }
+
         public charCell* empty
         {
             get
@@ -806,10 +975,10 @@ public unsafe partial class charCellExtensions
         }
 
 		
-        public charArray toArray(charCell* abc, IAllocator allocator)
+        public charArray toArray(charCell* abc, IcharNew allocator)
         {
             var total = this.length(abc);
-            var arr = (char*)allocator.Apply(total);
+            var arr = allocator.Apply(total);
             var counter = 0;
             while (abc != null)
             {
@@ -857,13 +1026,6 @@ public unsafe partial class charCellExtensions
 namespace bit32
 {
 
-    public unsafe partial interface IAllocator
-    {
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
-        void** Apply(uint count);
-    }
-
-
 
   public unsafe  struct intCell
   {
@@ -873,15 +1035,9 @@ namespace bit32
 
   public unsafe  struct intCellCell
   {
-    public intCell element;
+    public intCell* element;
     public intCellCell* next;
   }
-
-  	public unsafe struct intArray
-    {
-        public uint lenght;
-        public int* index;
-    }
 
   public unsafe  struct longCell
   {
@@ -891,15 +1047,9 @@ namespace bit32
 
   public unsafe  struct longCellCell
   {
-    public longCell element;
+    public longCell* element;
     public longCellCell* next;
   }
-
-  	public unsafe struct longArray
-    {
-        public uint lenght;
-        public long* index;
-    }
 
   public unsafe  struct floatCell
   {
@@ -909,15 +1059,9 @@ namespace bit32
 
   public unsafe  struct floatCellCell
   {
-    public floatCell element;
+    public floatCell* element;
     public floatCellCell* next;
   }
-
-  	public unsafe struct floatArray
-    {
-        public uint lenght;
-        public float* index;
-    }
 
   public unsafe  struct doubleCell
   {
@@ -927,15 +1071,9 @@ namespace bit32
 
   public unsafe  struct doubleCellCell
   {
-    public doubleCell element;
+    public doubleCell* element;
     public doubleCellCell* next;
   }
-
-  	public unsafe struct doubleArray
-    {
-        public uint lenght;
-        public double* index;
-    }
 
   public unsafe  struct decimalCell
   {
@@ -945,15 +1083,9 @@ namespace bit32
 
   public unsafe  struct decimalCellCell
   {
-    public decimalCell element;
+    public decimalCell* element;
     public decimalCellCell* next;
   }
-
-  	public unsafe struct decimalArray
-    {
-        public uint lenght;
-        public decimal* index;
-    }
 
   public unsafe  struct BigIntegerCell
   {
@@ -963,15 +1095,9 @@ namespace bit32
 
   public unsafe  struct BigIntegerCellCell
   {
-    public BigIntegerCell element;
+    public BigIntegerCell* element;
     public BigIntegerCellCell* next;
   }
-
-  	public unsafe struct BigIntegerArray
-    {
-        public uint lenght;
-        public BigInteger* index;
-    }
 
   public unsafe  struct ComplexCell
   {
@@ -981,15 +1107,9 @@ namespace bit32
 
   public unsafe  struct ComplexCellCell
   {
-    public ComplexCell element;
+    public ComplexCell* element;
     public ComplexCellCell* next;
   }
-
-  	public unsafe struct ComplexArray
-    {
-        public uint lenght;
-        public Complex* index;
-    }
 
   public unsafe  struct charCell
   {
@@ -999,15 +1119,9 @@ namespace bit32
 
   public unsafe  struct charCellCell
   {
-    public charCell element;
+    public charCell* element;
     public charCellCell* next;
   }
-
-  	public unsafe struct charArray
-    {
-        public uint lenght;
-        public char* index;
-    }
 
 
 
@@ -1037,6 +1151,33 @@ public unsafe partial class intCellExtensions
             return counter;
         }
 
+        public bool equals(intCell* a, intCell* b)
+        {
+            if (a == b) return true;
+            while (true)
+                if (a == this.empty && b == this.empty)
+                    return true;
+                else if (a != this.empty && b == this.empty)
+                    return false;
+                else if (a == this.empty && b != this.empty)
+                    return false;
+                else if ((*a).element != (*b).element)
+                    return false;
+                else
+                  { a = (*a).next; b = (*b).next; };
+        }
+
+    public uint length(intCellCell* cell)
+    {
+            uint counter = 0;
+            while (cell != null)
+            {
+                counter++;
+                cell = (*cell).next;
+            };
+            return counter;
+        }
+
         public intCell* empty
         {
             get
@@ -1051,10 +1192,10 @@ public unsafe partial class intCellExtensions
         }
 
 		
-        public intArray toArray(intCell* abc, IAllocator allocator)
+        public intArray toArray(intCell* abc, IintNew allocator)
         {
             var total = this.length(abc);
-            var arr = (int*)allocator.Apply(total);
+            var arr = allocator.Apply(total);
             var counter = 0;
             while (abc != null)
             {
@@ -1123,6 +1264,33 @@ public unsafe partial class longCellExtensions
             return counter;
         }
 
+        public bool equals(longCell* a, longCell* b)
+        {
+            if (a == b) return true;
+            while (true)
+                if (a == this.empty && b == this.empty)
+                    return true;
+                else if (a != this.empty && b == this.empty)
+                    return false;
+                else if (a == this.empty && b != this.empty)
+                    return false;
+                else if ((*a).element != (*b).element)
+                    return false;
+                else
+                  { a = (*a).next; b = (*b).next; };
+        }
+
+    public uint length(longCellCell* cell)
+    {
+            uint counter = 0;
+            while (cell != null)
+            {
+                counter++;
+                cell = (*cell).next;
+            };
+            return counter;
+        }
+
         public longCell* empty
         {
             get
@@ -1137,10 +1305,10 @@ public unsafe partial class longCellExtensions
         }
 
 		
-        public longArray toArray(longCell* abc, IAllocator allocator)
+        public longArray toArray(longCell* abc, IlongNew allocator)
         {
             var total = this.length(abc);
-            var arr = (long*)allocator.Apply(total);
+            var arr = allocator.Apply(total);
             var counter = 0;
             while (abc != null)
             {
@@ -1209,6 +1377,33 @@ public unsafe partial class floatCellExtensions
             return counter;
         }
 
+        public bool equals(floatCell* a, floatCell* b)
+        {
+            if (a == b) return true;
+            while (true)
+                if (a == this.empty && b == this.empty)
+                    return true;
+                else if (a != this.empty && b == this.empty)
+                    return false;
+                else if (a == this.empty && b != this.empty)
+                    return false;
+                else if ((*a).element != (*b).element)
+                    return false;
+                else
+                  { a = (*a).next; b = (*b).next; };
+        }
+
+    public uint length(floatCellCell* cell)
+    {
+            uint counter = 0;
+            while (cell != null)
+            {
+                counter++;
+                cell = (*cell).next;
+            };
+            return counter;
+        }
+
         public floatCell* empty
         {
             get
@@ -1223,10 +1418,10 @@ public unsafe partial class floatCellExtensions
         }
 
 		
-        public floatArray toArray(floatCell* abc, IAllocator allocator)
+        public floatArray toArray(floatCell* abc, IfloatNew allocator)
         {
             var total = this.length(abc);
-            var arr = (float*)allocator.Apply(total);
+            var arr = allocator.Apply(total);
             var counter = 0;
             while (abc != null)
             {
@@ -1295,6 +1490,33 @@ public unsafe partial class doubleCellExtensions
             return counter;
         }
 
+        public bool equals(doubleCell* a, doubleCell* b)
+        {
+            if (a == b) return true;
+            while (true)
+                if (a == this.empty && b == this.empty)
+                    return true;
+                else if (a != this.empty && b == this.empty)
+                    return false;
+                else if (a == this.empty && b != this.empty)
+                    return false;
+                else if ((*a).element != (*b).element)
+                    return false;
+                else
+                  { a = (*a).next; b = (*b).next; };
+        }
+
+    public uint length(doubleCellCell* cell)
+    {
+            uint counter = 0;
+            while (cell != null)
+            {
+                counter++;
+                cell = (*cell).next;
+            };
+            return counter;
+        }
+
         public doubleCell* empty
         {
             get
@@ -1309,10 +1531,10 @@ public unsafe partial class doubleCellExtensions
         }
 
 		
-        public doubleArray toArray(doubleCell* abc, IAllocator allocator)
+        public doubleArray toArray(doubleCell* abc, IdoubleNew allocator)
         {
             var total = this.length(abc);
-            var arr = (double*)allocator.Apply(total);
+            var arr = allocator.Apply(total);
             var counter = 0;
             while (abc != null)
             {
@@ -1381,6 +1603,33 @@ public unsafe partial class decimalCellExtensions
             return counter;
         }
 
+        public bool equals(decimalCell* a, decimalCell* b)
+        {
+            if (a == b) return true;
+            while (true)
+                if (a == this.empty && b == this.empty)
+                    return true;
+                else if (a != this.empty && b == this.empty)
+                    return false;
+                else if (a == this.empty && b != this.empty)
+                    return false;
+                else if ((*a).element != (*b).element)
+                    return false;
+                else
+                  { a = (*a).next; b = (*b).next; };
+        }
+
+    public uint length(decimalCellCell* cell)
+    {
+            uint counter = 0;
+            while (cell != null)
+            {
+                counter++;
+                cell = (*cell).next;
+            };
+            return counter;
+        }
+
         public decimalCell* empty
         {
             get
@@ -1395,10 +1644,10 @@ public unsafe partial class decimalCellExtensions
         }
 
 		
-        public decimalArray toArray(decimalCell* abc, IAllocator allocator)
+        public decimalArray toArray(decimalCell* abc, IdecimalNew allocator)
         {
             var total = this.length(abc);
-            var arr = (decimal*)allocator.Apply(total);
+            var arr = allocator.Apply(total);
             var counter = 0;
             while (abc != null)
             {
@@ -1467,6 +1716,33 @@ public unsafe partial class BigIntegerCellExtensions
             return counter;
         }
 
+        public bool equals(BigIntegerCell* a, BigIntegerCell* b)
+        {
+            if (a == b) return true;
+            while (true)
+                if (a == this.empty && b == this.empty)
+                    return true;
+                else if (a != this.empty && b == this.empty)
+                    return false;
+                else if (a == this.empty && b != this.empty)
+                    return false;
+                else if ((*a).element != (*b).element)
+                    return false;
+                else
+                  { a = (*a).next; b = (*b).next; };
+        }
+
+    public uint length(BigIntegerCellCell* cell)
+    {
+            uint counter = 0;
+            while (cell != null)
+            {
+                counter++;
+                cell = (*cell).next;
+            };
+            return counter;
+        }
+
         public BigIntegerCell* empty
         {
             get
@@ -1481,10 +1757,10 @@ public unsafe partial class BigIntegerCellExtensions
         }
 
 		
-        public BigIntegerArray toArray(BigIntegerCell* abc, IAllocator allocator)
+        public BigIntegerArray toArray(BigIntegerCell* abc, IBigIntegerNew allocator)
         {
             var total = this.length(abc);
-            var arr = (BigInteger*)allocator.Apply(total);
+            var arr = allocator.Apply(total);
             var counter = 0;
             while (abc != null)
             {
@@ -1553,6 +1829,33 @@ public unsafe partial class ComplexCellExtensions
             return counter;
         }
 
+        public bool equals(ComplexCell* a, ComplexCell* b)
+        {
+            if (a == b) return true;
+            while (true)
+                if (a == this.empty && b == this.empty)
+                    return true;
+                else if (a != this.empty && b == this.empty)
+                    return false;
+                else if (a == this.empty && b != this.empty)
+                    return false;
+                else if ((*a).element != (*b).element)
+                    return false;
+                else
+                  { a = (*a).next; b = (*b).next; };
+        }
+
+    public uint length(ComplexCellCell* cell)
+    {
+            uint counter = 0;
+            while (cell != null)
+            {
+                counter++;
+                cell = (*cell).next;
+            };
+            return counter;
+        }
+
         public ComplexCell* empty
         {
             get
@@ -1567,10 +1870,10 @@ public unsafe partial class ComplexCellExtensions
         }
 
 		
-        public ComplexArray toArray(ComplexCell* abc, IAllocator allocator)
+        public ComplexArray toArray(ComplexCell* abc, IComplexNew allocator)
         {
             var total = this.length(abc);
-            var arr = (Complex*)allocator.Apply(total);
+            var arr = allocator.Apply(total);
             var counter = 0;
             while (abc != null)
             {
@@ -1639,6 +1942,33 @@ public unsafe partial class charCellExtensions
             return counter;
         }
 
+        public bool equals(charCell* a, charCell* b)
+        {
+            if (a == b) return true;
+            while (true)
+                if (a == this.empty && b == this.empty)
+                    return true;
+                else if (a != this.empty && b == this.empty)
+                    return false;
+                else if (a == this.empty && b != this.empty)
+                    return false;
+                else if ((*a).element != (*b).element)
+                    return false;
+                else
+                  { a = (*a).next; b = (*b).next; };
+        }
+
+    public uint length(charCellCell* cell)
+    {
+            uint counter = 0;
+            while (cell != null)
+            {
+                counter++;
+                cell = (*cell).next;
+            };
+            return counter;
+        }
+
         public charCell* empty
         {
             get
@@ -1653,10 +1983,10 @@ public unsafe partial class charCellExtensions
         }
 
 		
-        public charArray toArray(charCell* abc, IAllocator allocator)
+        public charArray toArray(charCell* abc, IcharNew allocator)
         {
             var total = this.length(abc);
-            var arr = (char*)allocator.Apply(total);
+            var arr = allocator.Apply(total);
             var counter = 0;
             while (abc != null)
             {
@@ -1704,13 +2034,6 @@ public unsafe partial class charCellExtensions
 namespace bit64
 {
 
-    public unsafe partial interface IAllocator
-    {
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
-        void** Apply(ulong count);
-    }
-
-
 
   public unsafe  struct intCell
   {
@@ -1720,15 +2043,9 @@ namespace bit64
 
   public unsafe  struct intCellCell
   {
-    public intCell element;
+    public intCell* element;
     public intCellCell* next;
   }
-
-  	public unsafe struct intArray
-    {
-        public ulong lenght;
-        public int* index;
-    }
 
   public unsafe  struct longCell
   {
@@ -1738,15 +2055,9 @@ namespace bit64
 
   public unsafe  struct longCellCell
   {
-    public longCell element;
+    public longCell* element;
     public longCellCell* next;
   }
-
-  	public unsafe struct longArray
-    {
-        public ulong lenght;
-        public long* index;
-    }
 
   public unsafe  struct floatCell
   {
@@ -1756,15 +2067,9 @@ namespace bit64
 
   public unsafe  struct floatCellCell
   {
-    public floatCell element;
+    public floatCell* element;
     public floatCellCell* next;
   }
-
-  	public unsafe struct floatArray
-    {
-        public ulong lenght;
-        public float* index;
-    }
 
   public unsafe  struct doubleCell
   {
@@ -1774,15 +2079,9 @@ namespace bit64
 
   public unsafe  struct doubleCellCell
   {
-    public doubleCell element;
+    public doubleCell* element;
     public doubleCellCell* next;
   }
-
-  	public unsafe struct doubleArray
-    {
-        public ulong lenght;
-        public double* index;
-    }
 
   public unsafe  struct decimalCell
   {
@@ -1792,15 +2091,9 @@ namespace bit64
 
   public unsafe  struct decimalCellCell
   {
-    public decimalCell element;
+    public decimalCell* element;
     public decimalCellCell* next;
   }
-
-  	public unsafe struct decimalArray
-    {
-        public ulong lenght;
-        public decimal* index;
-    }
 
   public unsafe  struct BigIntegerCell
   {
@@ -1810,15 +2103,9 @@ namespace bit64
 
   public unsafe  struct BigIntegerCellCell
   {
-    public BigIntegerCell element;
+    public BigIntegerCell* element;
     public BigIntegerCellCell* next;
   }
-
-  	public unsafe struct BigIntegerArray
-    {
-        public ulong lenght;
-        public BigInteger* index;
-    }
 
   public unsafe  struct ComplexCell
   {
@@ -1828,15 +2115,9 @@ namespace bit64
 
   public unsafe  struct ComplexCellCell
   {
-    public ComplexCell element;
+    public ComplexCell* element;
     public ComplexCellCell* next;
   }
-
-  	public unsafe struct ComplexArray
-    {
-        public ulong lenght;
-        public Complex* index;
-    }
 
   public unsafe  struct charCell
   {
@@ -1846,15 +2127,9 @@ namespace bit64
 
   public unsafe  struct charCellCell
   {
-    public charCell element;
+    public charCell* element;
     public charCellCell* next;
   }
-
-  	public unsafe struct charArray
-    {
-        public ulong lenght;
-        public char* index;
-    }
 
 
 
@@ -1884,6 +2159,33 @@ public unsafe partial class intCellExtensions
             return counter;
         }
 
+        public bool equals(intCell* a, intCell* b)
+        {
+            if (a == b) return true;
+            while (true)
+                if (a == this.empty && b == this.empty)
+                    return true;
+                else if (a != this.empty && b == this.empty)
+                    return false;
+                else if (a == this.empty && b != this.empty)
+                    return false;
+                else if ((*a).element != (*b).element)
+                    return false;
+                else
+                  { a = (*a).next; b = (*b).next; };
+        }
+
+    public ulong length(intCellCell* cell)
+    {
+            ulong counter = 0;
+            while (cell != null)
+            {
+                counter++;
+                cell = (*cell).next;
+            };
+            return counter;
+        }
+
         public intCell* empty
         {
             get
@@ -1898,10 +2200,10 @@ public unsafe partial class intCellExtensions
         }
 
 		
-        public intArray toArray(intCell* abc, IAllocator allocator)
+        public intArray toArray(intCell* abc, IintNew allocator)
         {
             var total = this.length(abc);
-            var arr = (int*)allocator.Apply(total);
+            var arr = allocator.Apply(total);
             var counter = 0;
             while (abc != null)
             {
@@ -1970,6 +2272,33 @@ public unsafe partial class longCellExtensions
             return counter;
         }
 
+        public bool equals(longCell* a, longCell* b)
+        {
+            if (a == b) return true;
+            while (true)
+                if (a == this.empty && b == this.empty)
+                    return true;
+                else if (a != this.empty && b == this.empty)
+                    return false;
+                else if (a == this.empty && b != this.empty)
+                    return false;
+                else if ((*a).element != (*b).element)
+                    return false;
+                else
+                  { a = (*a).next; b = (*b).next; };
+        }
+
+    public ulong length(longCellCell* cell)
+    {
+            ulong counter = 0;
+            while (cell != null)
+            {
+                counter++;
+                cell = (*cell).next;
+            };
+            return counter;
+        }
+
         public longCell* empty
         {
             get
@@ -1984,10 +2313,10 @@ public unsafe partial class longCellExtensions
         }
 
 		
-        public longArray toArray(longCell* abc, IAllocator allocator)
+        public longArray toArray(longCell* abc, IlongNew allocator)
         {
             var total = this.length(abc);
-            var arr = (long*)allocator.Apply(total);
+            var arr = allocator.Apply(total);
             var counter = 0;
             while (abc != null)
             {
@@ -2056,6 +2385,33 @@ public unsafe partial class floatCellExtensions
             return counter;
         }
 
+        public bool equals(floatCell* a, floatCell* b)
+        {
+            if (a == b) return true;
+            while (true)
+                if (a == this.empty && b == this.empty)
+                    return true;
+                else if (a != this.empty && b == this.empty)
+                    return false;
+                else if (a == this.empty && b != this.empty)
+                    return false;
+                else if ((*a).element != (*b).element)
+                    return false;
+                else
+                  { a = (*a).next; b = (*b).next; };
+        }
+
+    public ulong length(floatCellCell* cell)
+    {
+            ulong counter = 0;
+            while (cell != null)
+            {
+                counter++;
+                cell = (*cell).next;
+            };
+            return counter;
+        }
+
         public floatCell* empty
         {
             get
@@ -2070,10 +2426,10 @@ public unsafe partial class floatCellExtensions
         }
 
 		
-        public floatArray toArray(floatCell* abc, IAllocator allocator)
+        public floatArray toArray(floatCell* abc, IfloatNew allocator)
         {
             var total = this.length(abc);
-            var arr = (float*)allocator.Apply(total);
+            var arr = allocator.Apply(total);
             var counter = 0;
             while (abc != null)
             {
@@ -2142,6 +2498,33 @@ public unsafe partial class doubleCellExtensions
             return counter;
         }
 
+        public bool equals(doubleCell* a, doubleCell* b)
+        {
+            if (a == b) return true;
+            while (true)
+                if (a == this.empty && b == this.empty)
+                    return true;
+                else if (a != this.empty && b == this.empty)
+                    return false;
+                else if (a == this.empty && b != this.empty)
+                    return false;
+                else if ((*a).element != (*b).element)
+                    return false;
+                else
+                  { a = (*a).next; b = (*b).next; };
+        }
+
+    public ulong length(doubleCellCell* cell)
+    {
+            ulong counter = 0;
+            while (cell != null)
+            {
+                counter++;
+                cell = (*cell).next;
+            };
+            return counter;
+        }
+
         public doubleCell* empty
         {
             get
@@ -2156,10 +2539,10 @@ public unsafe partial class doubleCellExtensions
         }
 
 		
-        public doubleArray toArray(doubleCell* abc, IAllocator allocator)
+        public doubleArray toArray(doubleCell* abc, IdoubleNew allocator)
         {
             var total = this.length(abc);
-            var arr = (double*)allocator.Apply(total);
+            var arr = allocator.Apply(total);
             var counter = 0;
             while (abc != null)
             {
@@ -2228,6 +2611,33 @@ public unsafe partial class decimalCellExtensions
             return counter;
         }
 
+        public bool equals(decimalCell* a, decimalCell* b)
+        {
+            if (a == b) return true;
+            while (true)
+                if (a == this.empty && b == this.empty)
+                    return true;
+                else if (a != this.empty && b == this.empty)
+                    return false;
+                else if (a == this.empty && b != this.empty)
+                    return false;
+                else if ((*a).element != (*b).element)
+                    return false;
+                else
+                  { a = (*a).next; b = (*b).next; };
+        }
+
+    public ulong length(decimalCellCell* cell)
+    {
+            ulong counter = 0;
+            while (cell != null)
+            {
+                counter++;
+                cell = (*cell).next;
+            };
+            return counter;
+        }
+
         public decimalCell* empty
         {
             get
@@ -2242,10 +2652,10 @@ public unsafe partial class decimalCellExtensions
         }
 
 		
-        public decimalArray toArray(decimalCell* abc, IAllocator allocator)
+        public decimalArray toArray(decimalCell* abc, IdecimalNew allocator)
         {
             var total = this.length(abc);
-            var arr = (decimal*)allocator.Apply(total);
+            var arr = allocator.Apply(total);
             var counter = 0;
             while (abc != null)
             {
@@ -2314,6 +2724,33 @@ public unsafe partial class BigIntegerCellExtensions
             return counter;
         }
 
+        public bool equals(BigIntegerCell* a, BigIntegerCell* b)
+        {
+            if (a == b) return true;
+            while (true)
+                if (a == this.empty && b == this.empty)
+                    return true;
+                else if (a != this.empty && b == this.empty)
+                    return false;
+                else if (a == this.empty && b != this.empty)
+                    return false;
+                else if ((*a).element != (*b).element)
+                    return false;
+                else
+                  { a = (*a).next; b = (*b).next; };
+        }
+
+    public ulong length(BigIntegerCellCell* cell)
+    {
+            ulong counter = 0;
+            while (cell != null)
+            {
+                counter++;
+                cell = (*cell).next;
+            };
+            return counter;
+        }
+
         public BigIntegerCell* empty
         {
             get
@@ -2328,10 +2765,10 @@ public unsafe partial class BigIntegerCellExtensions
         }
 
 		
-        public BigIntegerArray toArray(BigIntegerCell* abc, IAllocator allocator)
+        public BigIntegerArray toArray(BigIntegerCell* abc, IBigIntegerNew allocator)
         {
             var total = this.length(abc);
-            var arr = (BigInteger*)allocator.Apply(total);
+            var arr = allocator.Apply(total);
             var counter = 0;
             while (abc != null)
             {
@@ -2400,6 +2837,33 @@ public unsafe partial class ComplexCellExtensions
             return counter;
         }
 
+        public bool equals(ComplexCell* a, ComplexCell* b)
+        {
+            if (a == b) return true;
+            while (true)
+                if (a == this.empty && b == this.empty)
+                    return true;
+                else if (a != this.empty && b == this.empty)
+                    return false;
+                else if (a == this.empty && b != this.empty)
+                    return false;
+                else if ((*a).element != (*b).element)
+                    return false;
+                else
+                  { a = (*a).next; b = (*b).next; };
+        }
+
+    public ulong length(ComplexCellCell* cell)
+    {
+            ulong counter = 0;
+            while (cell != null)
+            {
+                counter++;
+                cell = (*cell).next;
+            };
+            return counter;
+        }
+
         public ComplexCell* empty
         {
             get
@@ -2414,10 +2878,10 @@ public unsafe partial class ComplexCellExtensions
         }
 
 		
-        public ComplexArray toArray(ComplexCell* abc, IAllocator allocator)
+        public ComplexArray toArray(ComplexCell* abc, IComplexNew allocator)
         {
             var total = this.length(abc);
-            var arr = (Complex*)allocator.Apply(total);
+            var arr = allocator.Apply(total);
             var counter = 0;
             while (abc != null)
             {
@@ -2486,6 +2950,33 @@ public unsafe partial class charCellExtensions
             return counter;
         }
 
+        public bool equals(charCell* a, charCell* b)
+        {
+            if (a == b) return true;
+            while (true)
+                if (a == this.empty && b == this.empty)
+                    return true;
+                else if (a != this.empty && b == this.empty)
+                    return false;
+                else if (a == this.empty && b != this.empty)
+                    return false;
+                else if ((*a).element != (*b).element)
+                    return false;
+                else
+                  { a = (*a).next; b = (*b).next; };
+        }
+
+    public ulong length(charCellCell* cell)
+    {
+            ulong counter = 0;
+            while (cell != null)
+            {
+                counter++;
+                cell = (*cell).next;
+            };
+            return counter;
+        }
+
         public charCell* empty
         {
             get
@@ -2500,10 +2991,10 @@ public unsafe partial class charCellExtensions
         }
 
 		
-        public charArray toArray(charCell* abc, IAllocator allocator)
+        public charArray toArray(charCell* abc, IcharNew allocator)
         {
             var total = this.length(abc);
-            var arr = (char*)allocator.Apply(total);
+            var arr = allocator.Apply(total);
             var counter = 0;
             while (abc != null)
             {
