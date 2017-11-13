@@ -1,67 +1,86 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using static System.Collections.Unsafe.bit64.stdlib;
 
-namespace GreenElephant.Usafe.bit64
+
+namespace System.Collections.Unsafe.bit64
 {
-    public unsafe partial class intCellExtensions
+
+    public static unsafe partial class longCellExtensions
     {
 
+        public static longCellPtr ctor(longCell* cell)
+        {
+            return new longCellPtr(cell);
+        }
+
+        public struct longCellPtr : IDisposable
+        {
+            public longCell* cell;
+
+            public longCellPtr(longCell* cell)
+            {
+                this.cell = cell;
+            }
+
+            public void Dispose()
+            {
+                fixed (longCell** c = &this.cell)
+                {
+                    free(c);
+                }
+            }
+        }
+
+        public static long pop(longCell** headRef)
+        {
+            var head = (*headRef);
+            var result = head->element;
+            (*headRef) = head->next;
+            stdlib.free(head);
+            return result;
+        }
+
+
+
+        public static long index(longCell* head, ulong i)
+        {
+            ulong counter = 0;
+            while (head != null)
+            {
+                if (counter == i) break;
+                counter++;
+                head = (*head).next;
+            }
+
+            return head->element;
+        }
     }
 
-    public unsafe partial class charCellExtensions
+    public static unsafe partial class charCellExtensions
     {
-        /// <summary>
-        /// Copies payload of <paramref name="cell"/> into newly allocated cell header, <paramref name="cells"/> is set <see cref="charCell.next"/>.
-        /// </summary>
-        /// <param name="cell"></param>
-        /// <param name="cells"></param>
-        /// <param name="allocator"></param>
-        /// <returns></returns>
-        public charCellresult push(charCell cell, charCell* cells, IcharCellAllocator allocator)
+        public static charCellresult pop_(charCell* charCell)
         {
-            var mem = allocator.Apply(1);
-            (*mem).element = cell.element;
-            (*mem).next = cells;
-            return new charCellresult { __value = mem };
-        }
-
-        public charCellresult pop_(charCell* charCell)
-        {
-            if (charCell == this.empty)
-            {
+            if (charCell == NULL)
                 return new charCellresult { error = CellError.cannot_pop_empty_list };
-            }
-            return new charCellresult { __value = this._pop_(charCell) };
+            return new charCellresult { __value = _pop_(charCell) };
         }
 
-        public charCell* _pop_(charCell* charCell)
+        public static charCell* _pop_(charCell* charCell)
         {
             var next = (*charCell).next;
             (*charCell).next = null;
             return next;
         }
 
-        public CellError push_(charCell* cell, charCell* cells)
-        {
-            if ((*cell).next != this.empty)
-            {
-                return CellError.cannot_push_onto_filled_list;
-            };
-            _push_(cell, cells);
-            return CellError.ok;
-        }
 
-        public void _push_(charCell* cell, charCell* cells)
-        {
-            (*cell).next = cells;
-        }
 
-        public charCellCell* prefixes(charCell* original, IcharCellCellAllocator alloc, IcharNew allocator)
+        public static charCellCell* prefixes(charCell* original)
         {
             var head = new charCellCell { element = null };
             var previous = head;
-            while (original != this.empty)
+            while (original != NULL)
             {
                 var next = new charCellCell { element = original };
                 previous.next = &next;
@@ -88,10 +107,10 @@ namespace GreenElephant.Usafe.bit64
             //return a;
         }
 
-        public charCell* _concat_(charCell* a, charCell* b)
+        public static charCell* _concat_(charCell* a, charCell* b)
         {
-            if (a == this.empty) return b;
-            if (b == this.empty) return a;
+            if (a == NULL) return b;
+            if (b == NULL) return a;
             //            this.last)
             return null;
         }

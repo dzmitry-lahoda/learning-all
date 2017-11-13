@@ -4,18 +4,9 @@ using System.Text;
 
 namespace run
 {
-    public class HeightTree
-    {
-        public int Height { get; set; }
-        public HeightTree Parent { get; set; }
-    }
 
-    public class BinaryTree
-    {
-        public int x;
-        public BinaryTree l;
-        public BinaryTree r;
-    };
+
+
 
     public interface IVertex<out TId, in TKey, out TValue>
     {

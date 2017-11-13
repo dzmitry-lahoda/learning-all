@@ -3,17 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26403.7
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "run", "run\run.csproj", "{8660AEA5-242B-4A9B-81D9-DEFB1F9839AD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "System.Collections.Graph.Tests", "run\System.Collections.Graph.Tests.csproj", "{8660AEA5-242B-4A9B-81D9-DEFB1F9839AD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "usafefx", "..\usafefx\usafefx.csproj", "{D8899490-9FBF-480E-999F-1BB361CD8F4B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "System.Collections.Graph", "GreenElephant\System.Collections.Graph.csproj", "{197F554E-4337-4B82-A6F9-184AD1C6ABF5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp1", "ConsoleApp1\ConsoleApp1.csproj", "{194314FE-5038-45A3-8A55-354E87727FBA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "System.Collections.Unsafe", "GreenElephant.Usafe\System.Collections.Unsafe.csproj", "{E490FA8C-73FE-479C-BB83-D775BF68A5CD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tasy", "GreenElephant\Tasy.csproj", "{197F554E-4337-4B82-A6F9-184AD1C6ABF5}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TastyBread.Usafe", "GreenElephant.Usafe\TastyBread.Usafe.csproj", "{E490FA8C-73FE-479C-BB83-D775BF68A5CD}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp2", "ConsoleApp2\ConsoleApp2.csproj", "{C66C7859-F7D6-4D7C-B54F-0F6686FC05DA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "System.Collections.Unsafe.Tests", "ConsoleApp2\System.Collections.Unsafe.Tests.csproj", "{C66C7859-F7D6-4D7C-B54F-0F6686FC05DA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,14 +21,6 @@ Global
 		{8660AEA5-242B-4A9B-81D9-DEFB1F9839AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8660AEA5-242B-4A9B-81D9-DEFB1F9839AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8660AEA5-242B-4A9B-81D9-DEFB1F9839AD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D8899490-9FBF-480E-999F-1BB361CD8F4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D8899490-9FBF-480E-999F-1BB361CD8F4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D8899490-9FBF-480E-999F-1BB361CD8F4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D8899490-9FBF-480E-999F-1BB361CD8F4B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{194314FE-5038-45A3-8A55-354E87727FBA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{194314FE-5038-45A3-8A55-354E87727FBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{194314FE-5038-45A3-8A55-354E87727FBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{194314FE-5038-45A3-8A55-354E87727FBA}.Release|Any CPU.Build.0 = Release|Any CPU
 		{197F554E-4337-4B82-A6F9-184AD1C6ABF5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{197F554E-4337-4B82-A6F9-184AD1C6ABF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{197F554E-4337-4B82-A6F9-184AD1C6ABF5}.Release|Any CPU.ActiveCfg = Release|Any CPU

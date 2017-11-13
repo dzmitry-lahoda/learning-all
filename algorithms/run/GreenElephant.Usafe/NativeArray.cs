@@ -1,12 +1,10 @@
-﻿using GreenElephant.Usafe.bit32;
+﻿using System.Collections.Unsafe.bit32;
 using System;
 using System.Collections.Generic;
 using System.Text;
-
-namespace GreenElephant.Usafe
+using static System.Collections.Unsafe.bit32.stdlib;
+namespace System.Collections.Unsafe
 {
-
-
     //public unsafe interface IFatAllocator
     //{
     //    memory Apply(uint length);
@@ -31,6 +29,67 @@ namespace GreenElephant.Usafe
 
     public  unsafe partial class intArrayExtensions
     {
-      
+        public int* counts(int nums_size, int* nums, int maxes_size, int* maxes, int* result_size)
+        {
+            return null;
+        }
+
+        int* oddNumbers(int l, int r, int* result_size)
+        {
+            *result_size = r - l;
+            if (l % 2 != 0)
+            {
+                (*result_size)++;
+            }
+            else
+            {
+                l += 1;
+            }
+
+            if (r % 2 != 0)
+            {
+                (*result_size)++;
+            }
+            else
+            {
+                r -= 1;
+            }
+
+            *result_size /= 2;
+            int* res = (int*)malloc(*result_size * sizeof(int));
+            int counter = 0;
+            while (l <= r)
+            {
+                res[counter] = l;
+                l += 2;
+                counter += 1;
+            }
+
+            return res;
+        }
+
+        static char* NO;
+        static char* YES;
+        
+        static intArrayExtensions()
+        {
+            NO = (char*)malloc(2 * sizeof(char));
+            NO[0] = 'N';
+            NO[1] = 'O';
+
+            YES = (char*)malloc(3 * sizeof(char));
+            YES[0] = 'Y';
+            YES[1] = 'E';
+            YES[2] = 'S';
+        }
+
+        char* findNumber(int arr_size, int* arr, int k)
+        {
+            for (int i = 0; i < arr_size; i++)
+                if (arr[i] == k) return YES;
+            return NO;
+            // C can return %"string literal", bug C# cannot
+        }
+
     }
 }

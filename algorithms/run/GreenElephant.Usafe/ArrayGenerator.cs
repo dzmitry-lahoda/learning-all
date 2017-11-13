@@ -12,16 +12,17 @@ using System.Collections.Generic;
 using System.Text;
 using System.Numerics;
 
-namespace GreenElephant.Usafe
+namespace System.Collections.Unsafe
 {
 
 namespace bit16
 {
     public static class bits
 	{
-	
+	    /// TODO: find best for checked/unchecked and signed/usinged for performance
+		/// expects steps < lenght
 			        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
-	 		public static ushort leftShiftRing(ushort current, ushort steps, ushort length)
+	 		public static ushort _leftShiftRing(ushort current, ushort steps, ushort length)
 			 // https://stackoverflow.com/questions/2726920/c-sharp-xor-on-two-byte-variables-will-not-compile-without-a-cast
 			 => current < steps ? (ushort)(length - steps + current) : (ushort)(current - steps);
 			 
@@ -101,7 +102,7 @@ namespace bit16
             var memArr = allocator.Apply(length);
             for (ushort j = 0; j < length; j++)
             {
-                var shift = bits.leftShiftRing(j, steps, length);
+                var shift = bits._leftShiftRing(j, steps, length);
                 memArr[shift] = array[j];
             }
 
@@ -198,7 +199,7 @@ namespace bit16
             var memArr = allocator.Apply(length);
             for (ushort j = 0; j < length; j++)
             {
-                var shift = bits.leftShiftRing(j, steps, length);
+                var shift = bits._leftShiftRing(j, steps, length);
                 memArr[shift] = array[j];
             }
 
@@ -295,7 +296,7 @@ namespace bit16
             var memArr = allocator.Apply(length);
             for (ushort j = 0; j < length; j++)
             {
-                var shift = bits.leftShiftRing(j, steps, length);
+                var shift = bits._leftShiftRing(j, steps, length);
                 memArr[shift] = array[j];
             }
 
@@ -392,7 +393,7 @@ namespace bit16
             var memArr = allocator.Apply(length);
             for (ushort j = 0; j < length; j++)
             {
-                var shift = bits.leftShiftRing(j, steps, length);
+                var shift = bits._leftShiftRing(j, steps, length);
                 memArr[shift] = array[j];
             }
 
@@ -489,7 +490,7 @@ namespace bit16
             var memArr = allocator.Apply(length);
             for (ushort j = 0; j < length; j++)
             {
-                var shift = bits.leftShiftRing(j, steps, length);
+                var shift = bits._leftShiftRing(j, steps, length);
                 memArr[shift] = array[j];
             }
 
@@ -586,7 +587,7 @@ namespace bit16
             var memArr = allocator.Apply(length);
             for (ushort j = 0; j < length; j++)
             {
-                var shift = bits.leftShiftRing(j, steps, length);
+                var shift = bits._leftShiftRing(j, steps, length);
                 memArr[shift] = array[j];
             }
 
@@ -683,7 +684,7 @@ namespace bit16
             var memArr = allocator.Apply(length);
             for (ushort j = 0; j < length; j++)
             {
-                var shift = bits.leftShiftRing(j, steps, length);
+                var shift = bits._leftShiftRing(j, steps, length);
                 memArr[shift] = array[j];
             }
 
@@ -780,7 +781,7 @@ namespace bit16
             var memArr = allocator.Apply(length);
             for (ushort j = 0; j < length; j++)
             {
-                var shift = bits.leftShiftRing(j, steps, length);
+                var shift = bits._leftShiftRing(j, steps, length);
                 memArr[shift] = array[j];
             }
 
@@ -826,9 +827,10 @@ namespace bit32
 {
     public static class bits
 	{
-	
+	    /// TODO: find best for checked/unchecked and signed/usinged for performance
+		/// expects steps < lenght
 			        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
-	 		public static uint leftShiftRing(uint current, uint steps, uint length)
+	 		public static uint _leftShiftRing(uint current, uint steps, uint length)
 			 // https://stackoverflow.com/questions/2726920/c-sharp-xor-on-two-byte-variables-will-not-compile-without-a-cast
 			 => current < steps ? (uint)(length - steps + current) : (uint)(current - steps);
 			 
@@ -908,7 +910,7 @@ namespace bit32
             var memArr = allocator.Apply(length);
             for (uint j = 0; j < length; j++)
             {
-                var shift = bits.leftShiftRing(j, steps, length);
+                var shift = bits._leftShiftRing(j, steps, length);
                 memArr[shift] = array[j];
             }
 
@@ -1005,7 +1007,7 @@ namespace bit32
             var memArr = allocator.Apply(length);
             for (uint j = 0; j < length; j++)
             {
-                var shift = bits.leftShiftRing(j, steps, length);
+                var shift = bits._leftShiftRing(j, steps, length);
                 memArr[shift] = array[j];
             }
 
@@ -1102,7 +1104,7 @@ namespace bit32
             var memArr = allocator.Apply(length);
             for (uint j = 0; j < length; j++)
             {
-                var shift = bits.leftShiftRing(j, steps, length);
+                var shift = bits._leftShiftRing(j, steps, length);
                 memArr[shift] = array[j];
             }
 
@@ -1199,7 +1201,7 @@ namespace bit32
             var memArr = allocator.Apply(length);
             for (uint j = 0; j < length; j++)
             {
-                var shift = bits.leftShiftRing(j, steps, length);
+                var shift = bits._leftShiftRing(j, steps, length);
                 memArr[shift] = array[j];
             }
 
@@ -1296,7 +1298,7 @@ namespace bit32
             var memArr = allocator.Apply(length);
             for (uint j = 0; j < length; j++)
             {
-                var shift = bits.leftShiftRing(j, steps, length);
+                var shift = bits._leftShiftRing(j, steps, length);
                 memArr[shift] = array[j];
             }
 
@@ -1393,7 +1395,7 @@ namespace bit32
             var memArr = allocator.Apply(length);
             for (uint j = 0; j < length; j++)
             {
-                var shift = bits.leftShiftRing(j, steps, length);
+                var shift = bits._leftShiftRing(j, steps, length);
                 memArr[shift] = array[j];
             }
 
@@ -1490,7 +1492,7 @@ namespace bit32
             var memArr = allocator.Apply(length);
             for (uint j = 0; j < length; j++)
             {
-                var shift = bits.leftShiftRing(j, steps, length);
+                var shift = bits._leftShiftRing(j, steps, length);
                 memArr[shift] = array[j];
             }
 
@@ -1587,7 +1589,7 @@ namespace bit32
             var memArr = allocator.Apply(length);
             for (uint j = 0; j < length; j++)
             {
-                var shift = bits.leftShiftRing(j, steps, length);
+                var shift = bits._leftShiftRing(j, steps, length);
                 memArr[shift] = array[j];
             }
 
@@ -1633,9 +1635,10 @@ namespace bit64
 {
     public static class bits
 	{
-	
+	    /// TODO: find best for checked/unchecked and signed/usinged for performance
+		/// expects steps < lenght
 			        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
-	 		public static ulong leftShiftRing(ulong current, ulong steps, ulong length)
+	 		public static ulong _leftShiftRing(ulong current, ulong steps, ulong length)
 			 // https://stackoverflow.com/questions/2726920/c-sharp-xor-on-two-byte-variables-will-not-compile-without-a-cast
 			 => current < steps ? (ulong)(length - steps + current) : (ulong)(current - steps);
 			 
@@ -1715,7 +1718,7 @@ namespace bit64
             var memArr = allocator.Apply(length);
             for (ulong j = 0; j < length; j++)
             {
-                var shift = bits.leftShiftRing(j, steps, length);
+                var shift = bits._leftShiftRing(j, steps, length);
                 memArr[shift] = array[j];
             }
 
@@ -1812,7 +1815,7 @@ namespace bit64
             var memArr = allocator.Apply(length);
             for (ulong j = 0; j < length; j++)
             {
-                var shift = bits.leftShiftRing(j, steps, length);
+                var shift = bits._leftShiftRing(j, steps, length);
                 memArr[shift] = array[j];
             }
 
@@ -1909,7 +1912,7 @@ namespace bit64
             var memArr = allocator.Apply(length);
             for (ulong j = 0; j < length; j++)
             {
-                var shift = bits.leftShiftRing(j, steps, length);
+                var shift = bits._leftShiftRing(j, steps, length);
                 memArr[shift] = array[j];
             }
 
@@ -2006,7 +2009,7 @@ namespace bit64
             var memArr = allocator.Apply(length);
             for (ulong j = 0; j < length; j++)
             {
-                var shift = bits.leftShiftRing(j, steps, length);
+                var shift = bits._leftShiftRing(j, steps, length);
                 memArr[shift] = array[j];
             }
 
@@ -2103,7 +2106,7 @@ namespace bit64
             var memArr = allocator.Apply(length);
             for (ulong j = 0; j < length; j++)
             {
-                var shift = bits.leftShiftRing(j, steps, length);
+                var shift = bits._leftShiftRing(j, steps, length);
                 memArr[shift] = array[j];
             }
 
@@ -2200,7 +2203,7 @@ namespace bit64
             var memArr = allocator.Apply(length);
             for (ulong j = 0; j < length; j++)
             {
-                var shift = bits.leftShiftRing(j, steps, length);
+                var shift = bits._leftShiftRing(j, steps, length);
                 memArr[shift] = array[j];
             }
 
@@ -2297,7 +2300,7 @@ namespace bit64
             var memArr = allocator.Apply(length);
             for (ulong j = 0; j < length; j++)
             {
-                var shift = bits.leftShiftRing(j, steps, length);
+                var shift = bits._leftShiftRing(j, steps, length);
                 memArr[shift] = array[j];
             }
 
@@ -2394,7 +2397,7 @@ namespace bit64
             var memArr = allocator.Apply(length);
             for (ulong j = 0; j < length; j++)
             {
-                var shift = bits.leftShiftRing(j, steps, length);
+                var shift = bits._leftShiftRing(j, steps, length);
                 memArr[shift] = array[j];
             }
 

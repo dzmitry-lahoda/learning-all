@@ -5,10 +5,12 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp1.1</TargetFramework>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
     <ApplicationIcon />
     <OutputTypeEx>library</OutputTypeEx>
     <StartupObject />
+    <AssemblyName>System.Collections.Unsafe</AssemblyName>
+    <RootNamespace>System.Collections.Unsafe</RootNamespace>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -25,6 +27,10 @@
       <LastGenOutput>ArrayGenerator.cs</LastGenOutput>
       <Generator>TextTemplatingFileGenerator</Generator>
     </None>
+    <None Update="stdlib.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>stdlib.cs</LastGenOutput>
+    </None>
     <None Update="StructCellGenerator.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>StructCellGenerator.cs</LastGenOutput>
@@ -40,6 +46,11 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>ArrayGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Update="stdlib.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>stdlib.tt</DependentUpon>
     </Compile>
     <Compile Update="StructCellGenerator.cs">
       <DesignTime>True</DesignTime>

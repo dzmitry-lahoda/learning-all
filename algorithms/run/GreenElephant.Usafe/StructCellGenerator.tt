@@ -10,8 +10,16 @@ using System.Collections.Generic;
 using System.Text;
 using System.Numerics;
 
-namespace GreenElephant.Usafe
+namespace System.Collections.Unsafe
 {
+
+    public enum CellError : byte
+    {
+        ok,
+        cannot_push_onto_filled_list,
+        cannot_pop_empty_list
+    }
+
 
 <#   
 foreach(var allocator in allocators)
@@ -20,6 +28,7 @@ foreach(var allocator in allocators)
 namespace <#= allocator.Item1 #>
 {
 
+using static System.Collections.Unsafe.<#= allocator.Item1 #>.stdlib;
 
 <#   
 foreach(var structName in structs)
@@ -47,21 +56,32 @@ foreach(var structName in structs)
 foreach(var structName in structs)
 {
 #>
-        public unsafe partial interface I<#= structName #>CellAllocator
-        {
-            [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
-            <#= structName #>Cell* Apply(<#= allocator.Item2 #> count);
-        }
 
-		public unsafe partial interface I<#= structName #>CellCellAllocator
-        {
-            [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
-            <#= structName #>CellCell* Apply(<#= allocator.Item2 #> count);
-        }
 
-public unsafe partial class <#= structName #>CellExtensions
+    public unsafe struct <#= structName #>Cellresult
+    {
+        public <#= structName #>Cell* __value;
+        public CellError error;
+
+        public <#= structName #>Cell* unwrap()
+        {
+            this.error.unwrap();
+            return __value;
+        }
+    }
+
+public static unsafe partial class <#= structName #>CellExtensions
   {
-    public <#= allocator.Item2 #> length(<#= structName #>Cell* cell)
+    
+	[System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static unsafe  <#= structName #>Cell* <#= structName #>CellAlloc(<#= allocator.Item2 #> count)
+		  => (<#= structName #>Cell*)malloc((<#= allocator.Item2 #>)sizeof(<#= structName #>Cell) * count);
+           
+         public static unsafe  <#= structName #>CellCell* <#= structName #>CellCellAlloc(<#= allocator.Item2 #> count)
+		  => (<#= structName #>CellCell*)malloc((<#= allocator.Item2 #>)sizeof(<#= structName #>CellCell) * count);
+
+
+    public static <#= allocator.Item2 #> length(<#= structName #>Cell* cell)
     {
             <#= allocator.Item2 #> counter = 0;
             while (cell != null)
@@ -72,15 +92,62 @@ public unsafe partial class <#= structName #>CellExtensions
             return counter;
         }
 
-        public bool equals(<#= structName #>Cell* a, <#= structName #>Cell* b)
+        public static void push(ref <#= structName #>Cell* head, <#= structName #> newData)
+            => head = newCell(newData, head);
+
+		public static void push(<#= structName #>Cell** head, <#= structName #> newData) 
+            => (*head) = newCell(newData, *head);
+
+        public static <#= structName #>Cell* newCell(<#= structName #> newData)
+        {
+            var cell = <#= structName #>CellAlloc(1);
+            cell->element = newData;
+            cell->next = NULL;
+            return cell;
+        }
+
+        public static void cellInit(ref <#= structName #>Cell cell, <#= structName #> data, ref <#= structName #>Cell next)
+        {
+            cell.element = data;
+            fixed (<#= structName #>Cell* ptr = &next)
+            {
+                cell.next = ptr;
+            }
+        }
+
+        public static void cellInit(<#= structName #>Cell* cell, <#= structName #> data, <#= structName #>Cell* next)
+        {
+            cell->element = data;
+            cell->next = next;
+        }
+
+        public static void cellInit(ref <#= structName #>Cell cell, <#= structName #> data)
+        {
+            cell.element = data;
+            cell.next = NULL;
+        }
+
+        public static void cellInit(<#= structName #>Cell* cell, <#= structName #> data)
+        {
+            cell->element = data;
+            cell->next = NULL;
+        }
+
+        public static <#= structName #>Cell* newCell(<#= structName #> element, <#= structName #>Cell* next)
+        {
+            var cell = <#= structName #>CellAlloc(1);
+            cellInit(cell, element, next);
+            return cell;        }
+
+        public static bool equals(<#= structName #>Cell* a, <#= structName #>Cell* b)
         {
             if (a == b) return true;
             while (true)
-                if (a == this.empty && b == this.empty)
+                if (a == NULL && b == NULL)
                     return true;
-                else if (a != this.empty && b == this.empty)
+                else if (a != NULL && b == NULL)
                     return false;
-                else if (a == this.empty && b != this.empty)
+                else if (a == NULL && b != NULL)
                     return false;
                 else if ((*a).element != (*b).element)
                     return false;
@@ -88,18 +155,42 @@ public unsafe partial class <#= structName #>CellExtensions
                   { a = (*a).next; b = (*b).next; };
         }
 
-    public <#= allocator.Item2 #> length(<#= structName #>CellCell* cell)
+		public static void free(<#= structName #>Cell** headRef)
+        {
+            <#= structName #>Cell* head = *headRef;
+            while (head != null)
+            {
+                var toFree = head;
+                head = head->next;
+            }
+            (*headRef) = NULL;
+        }
+
+
+
+		        public static <#= allocator.Item2 #> count(<#= structName #>Cell* head, <#= structName #> searchFor)
+        {
+                <#= allocator.Item2 #> counter = 0;
+                while (head != null)
+                {
+                    if (head->element == searchFor) counter++;
+                    head = (*head).next;
+                }
+                return counter;
+        }
+
+    public static <#= allocator.Item2 #> length(<#= structName #>CellCell* cell)
     {
             <#= allocator.Item2 #> counter = 0;
             while (cell != null)
             {
                 counter++;
                 cell = (*cell).next;
-            };
+            }
             return counter;
         }
 
-        public <#= structName #>Cell* empty
+        public static <#= structName #>Cell* NULL
         {
             get
             {
@@ -107,16 +198,16 @@ public unsafe partial class <#= structName #>CellExtensions
             }
         }
 
-		public <#= structName #> head(<#= structName #>Cell* forwardLinkedList)
+		public static <#= structName #> head(<#= structName #>Cell* forwardLinkedList)
         {
             return (*forwardLinkedList).element;
         }
 
 		
-        public <#= structName #>Array toArray(<#= structName #>Cell* abc, I<#= structName #>New allocator)
+        public static <#= structName #>Array toArray(<#= structName #>Cell* abc)
         {
-            var total = this.length(abc);
-            var arr = allocator.Apply(total);
+            var total = length(abc);
+            var arr = (<#= structName #>*)malloc((<#= allocator.Item2 #>)sizeof(<#= structName #>) * total);
             var counter = 0;
             while (abc != null)
             {
@@ -128,12 +219,12 @@ public unsafe partial class <#= structName #>CellExtensions
             return new <#= structName #>Array { lenght = total, index = arr };
         }
 
-        public <#= structName #>Cell* tail(<#= structName #>Cell* forwardLinkedList)
+        public static <#= structName #>Cell* tail(<#= structName #>Cell* forwardLinkedList)
         {
             return (*forwardLinkedList).next;
         }
 
-        public <#= structName #>Cell* last(<#= structName #>Cell* forwardLinkedList)
+        public static <#= structName #>Cell* last(<#= structName #>Cell* forwardLinkedList)
         {
             while (true)
             {
@@ -142,7 +233,33 @@ public unsafe partial class <#= structName #>CellExtensions
             }
         }
 
-        public void toCells(<#= structName #>[] array, <#= structName #>Cell* memory)
+        /// <summary>
+        /// Copies payload of <paramref name="cell"/> into newly allocated cell header, <paramref name="cells"/> is set <see cref="charCell.next"/>.
+        /// </summary>
+        /// <param name="cell"></param>
+        /// <param name="cells"></param>
+        /// <param name="allocator"></param>
+        /// <returns></returns>
+        public static <#= structName #>Cellresult push(<#= structName #>Cell cell, <#= structName #>Cell* cells)
+        {
+            var mem = <#= structName #>CellAlloc(1);
+            (*mem).element = cell.element;
+            (*mem).next = cells;
+            return new <#= structName #>Cellresult { __value = mem };
+        }
+
+
+        public static CellError push_(<#= structName #>Cell* cell, <#= structName #>Cell* cells)
+        {
+            if ((*cell).next != NULL)
+                return CellError.cannot_push_onto_filled_list;
+            _push_(cell, cells);
+            return CellError.ok;
+        }
+
+        public static void _push_(<#= structName #>Cell* cell, <#= structName #>Cell* cells) => (*cell).next = cells;
+
+        public static void toCells(<#= structName #>[] array, <#= structName #>Cell* memory)
         {
             <#= structName #>Cell* previous = null;
 

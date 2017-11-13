@@ -1,0 +1,105 @@
+﻿<#@ template debug="true" hostSpecific="true" #>
+<#@ output extension=".cs" #>
+<#@ Assembly Name="System.Core" #>
+<#@ Assembly Name="System.Windows.Forms" #>
+<#@ import namespace="System" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Diagnostics" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #> 
+<#@ include file="Configuration.ttinclude" #>
+<#
+   // insert your template code here the tempalte code will be syntaxhighlighted 
+   // and you will have intellisense for all namespaces in the full edition
+   string Greeting = "Hello";
+#>
+
+using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Numerics;
+
+namespace System.Collections.Unsafe
+{
+
+<#   
+foreach(var allocator in allocators)
+{
+#>
+namespace <#= allocator.Item1 #>
+{
+   public static  unsafe class  stdlib
+   {
+     [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+     public static void* malloc(<#= allocator.Item2 #> size)
+	 {
+	   return (void*)System.Runtime.InteropServices.Marshal.AllocHGlobal((int)size);
+	 }
+
+	    public static void free(void* mem)
+        {
+            System.Runtime.InteropServices.Marshal.FreeHGlobal((IntPtr)mem);
+        }
+
+	 [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+     public static void* malloc(int size)
+	 {
+	   return (void*)System.Runtime.InteropServices.Marshal.AllocHGlobal((int)size);
+	 }
+
+	 [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+     public static char* _(string str)
+	 {
+	   fixed(char* cString = str.ToCharArray())
+	   {
+	     return cString;
+	   }
+	 }
+	 
+
+
+	 public static   <#= allocator.Item2 #> strlen(char *s)
+ {
+     char *p = s;
+     while (*p != '\0') p++;
+     return (<#= allocator.Item2 #>)(p - s);
+ }
+           public static  void* memset (void* s, int c, <#= allocator.Item2 #> n)
+ {
+      char* us = (char*)s;
+             char uc = (char)c;
+     while (n-- != 0)
+         *us++ = uc;
+     return s;
+ }
+
+    <#   
+foreach(var structName in structs)
+{
+#>
+
+    public delegate int compare<#= structName #>(<#= structName #>* a, <#= structName #>* b);
+
+	[System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+    public static void swap(<#= structName #>* a, <#= structName #>* b)
+        {
+            <#= structName #>* c = a;
+            *a = *b;
+            *b = *c;
+        }
+
+<#   
+}
+#>
+
+   }
+
+
+
+}
+<#   
+}
+#>
+}
+

@@ -10,7 +10,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Numerics;
 
-namespace GreenElephant.Usafe
+namespace System.Collections.Unsafe
 {
 
 <#   
@@ -21,9 +21,10 @@ namespace <#= allocator.Item1 #>
 {
     public static class bits
 	{
-	
+	    /// TODO: find best for checked/unchecked and signed/usinged for performance
+		/// expects steps < lenght
 			        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
-	 		public static <#= allocator.Item2 #> leftShiftRing(<#= allocator.Item2 #> current, <#= allocator.Item2 #> steps, <#= allocator.Item2 #> length)
+	 		public static <#= allocator.Item2 #> _leftShiftRing(<#= allocator.Item2 #> current, <#= allocator.Item2 #> steps, <#= allocator.Item2 #> length)
 			 // https://stackoverflow.com/questions/2726920/c-sharp-xor-on-two-byte-variables-will-not-compile-without-a-cast
 			 => current < steps ? (<#= allocator.Item2 #>)(length - steps + current) : (<#= allocator.Item2 #>)(current - steps);
 			 
@@ -107,7 +108,7 @@ foreach(var structName in structs)
             var memArr = allocator.Apply(length);
             for (<#= allocator.Item2 #> j = 0; j < length; j++)
             {
-                var shift = bits.leftShiftRing(j, steps, length);
+                var shift = bits._leftShiftRing(j, steps, length);
                 memArr[shift] = array[j];
             }
 
