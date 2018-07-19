@@ -14,5 +14,5 @@ _ReSharper.*
 desktop.ini
 *.suo
 *.user
-
+*.vs
 
