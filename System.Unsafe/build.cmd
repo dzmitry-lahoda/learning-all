@@ -1,0 +1,1 @@
+"c:\Program Files (x86)\NUnit.org\nunit-console\nunit3-console.exe" "g:\dz\src\learning\System.Unsafe\System.Unsafe.Tests\bin\Debug\netcoreapp2.0\System.Unsafe.Tests.dll"
