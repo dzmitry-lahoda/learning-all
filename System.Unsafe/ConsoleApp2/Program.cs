@@ -27,11 +27,8 @@ namespace ConsoleApp2
         // `__internal` - do not call direcly
         // `methodCopy` - pass by value (full copy) method
         // `methodName` - pass by name (lazy evaluation method)
-        // methodZero - zero allications
-        // Rosly based resource usage checker via custom attribute [SafeUnsafe] or [UnsafeUnsafe]
-        // bit64.mut.raw - mutating method which does not check params 
-        // bit64.pure.raw - non mutating does not check params 
-        // 
+
+
         static int Main(string[] args)
         {
             var p = new CellListTests();
