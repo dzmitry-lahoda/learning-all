@@ -1,7 +1,0 @@
-﻿<#@ output extension=".cs" #>  
-<#@ assembly name="System.Core" #>  
-<#@ import namespace="System" #>  
-<# 
-var structs = new [] {"int","long","float","double", "decimal","BigInteger", "Complex","char"};
-var allocators = new [] { Tuple.Create("bit16","ushort"), Tuple.Create("bit32","uint"), Tuple.Create("bit64","ulong") } ;
-#>

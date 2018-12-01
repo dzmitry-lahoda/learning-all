@@ -1,0 +1,11 @@
+bin
+obj
+*.pidb
+*.user
+*.suo
+_ReSharper.*
+*.userprefs
+*.pidb
+packages
+Release
+Debug

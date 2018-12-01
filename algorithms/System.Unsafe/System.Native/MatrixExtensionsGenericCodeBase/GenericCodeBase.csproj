@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{4D6F802D-38BE-4C7D-AFB5-7060C3F5C9E5}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MatrixExtensionsGenericCodeBase</RootNamespace>
+    <AssemblyName>MatrixExtensionsGenericCodeBase</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\Loops\Do.cs">
+      <Link>Do.cs</Link>
+    </Compile>
+    <Compile Include="Boolean\BooleanArrayExtensions.cs" />
+    <Compile Include="Conversion\Generic\DifferentToArray2DConversionExtensions.cs" />
+    <Compile Include="Conversion\Generic\GenericArray2DConversionExtensions.cs" />
+    <Compile Include="Conversion\Generic\Specialized\GenericArray2DFuncConversionExtensions.cs" />
+    <Compile Include="Conversion\Generic\Specialized\GenericArrayFuncConversionExtensions.cs" />
+    <Compile Include="Equality\GenericArray2DEqualityExtensions.cs" />
+    <Compile Include="Equality\GenericArrayEqualityExtensions.cs" />
+    <Compile Include="Generic\GenericArray2DExtensions.cs" />
+    <Compile Include="Generic\GenericArrayExtensions.cs" />
+    <Compile Include="Manipulation\Generic\GenericArray2DManipulationExtensions.cs" />
+    <Compile Include="Manipulation\Generic\GenericArrayManipulationExtensions.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
