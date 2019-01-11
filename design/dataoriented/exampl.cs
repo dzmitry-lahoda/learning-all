@@ -5,17 +5,7 @@ using System.Memory;
 public class Program
 {
 
-  readonly struct Weapon
-  {
-      public readonly byte bullets;
-      // p1
-      // p2
-      //...
-      //...
 
-      public Weapon Shoot() => new Weapon(bullets-1,..,...,.)
-    
-  }
 
   readonly stuct Position
   {
