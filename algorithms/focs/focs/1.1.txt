@@ -1,0 +1,35 @@
+1.1-1
+Sorting:
+A-Z list of workers in payroll system.
+Convex hull:
+Build border around national park having dots were important 
+species live.
+
+1.1-2
+Memory and energy consumtion.
+Also probably portability and maintainability.
+
+1.1-3
+Linked list:
++ Fast add and delete.
+- Much memory and slow sequential access
+Array:
++ Fast sequential access, seem good for SIMD
+- Slow if need to be resized
+
+1.1-4
+Similar:
+Travel path should be as short as possible.
+Different:
+Any vs all places should be visited.
+
+1.1-5
+Best: searching specified bank account for transaction.
+Approximation: amouns of bombs needed tp cover some area.
+
+
+
+
+  
+
+

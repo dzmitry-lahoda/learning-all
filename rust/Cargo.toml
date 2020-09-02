@@ -1,6 +1,0 @@
-[package]
-name = "koans"
-version = "0.1.0"
-authors = ["dzmitry.lahoda <dzmitry.lahoda@gmail.com>"]
-
-[dependencies]

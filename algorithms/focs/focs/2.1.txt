@@ -1,0 +1,49 @@
+2.1-1
+31 41 59 26 41 58
+31 41 59 26 41 58
+31 41 59 26 41 58
+l26 r31 r41 r59  41 58
+l26 r31 r41 l41 rr59 58
+l26 r31 r41 l41 58 rrr59
+
+2.1-3
+for j=1 to A.length
+	if (A[j] == v) return j
+return NIL	
+
+loop invarian:
+At start of next iteration any element of A[1..j-1] equals v
+
+intialization: 
+we have not look any elements
+
+maintance:
+loops checks A[1], A[2], A[j-] against v
+if any of elements in A[1..j-1] is not equals v
+and if A[j] not equals then any of A[1..j]
+
+termination:
+if A[j] equals v then any before not and algorithms finishes
+if A[n] not equals then any and algorithm finishes with NIL
+
+2.1-4
+Input: 
+Arrays A and  B of length n each with binary digits
+Output: 
+Array C of length (n+1) with binary digits representing sum of A and B
+
+buffer = 0
+for j=1 to n
+    a = A[j]
+    b = b[j]
+    sum = a + b + buffer
+    if sum <=1
+    	C[j] = sum
+    	buffer = 0
+    elseif sum = 2
+    	C[j] = 0
+    	buffer = 1
+    else 
+    	C[j]=1
+    	buffer=1	
+C[n+1] = buffer

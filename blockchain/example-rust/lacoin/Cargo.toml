@@ -1,0 +1,12 @@
+[package]
+name = "lacoin"
+version = "0.1.0"
+authors = ["dzmitry.lahoda <dzmitry.lahoda@example.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+chrono = { version = "0.4", features = ["serde"] }
+sha3 = { version = "0.8.2"}
+bincode = {version = "1.2.1"}

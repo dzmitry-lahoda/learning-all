@@ -1,0 +1,1079 @@
+
+
+
+LoadBalance - NodePort
+
+Storage Class for vs AKS
+
+CertIssues (lets encryt vs lets crypt staging)
+
+ClusterIP - no external api
+
+IngresController - Istio Gatewat Control VIrutal Serive -> LoadBalance(AKS)
+
+
+IngresController  Minikube
+
+
+PS C:\Users\dlahoda> kubectl delete service hello-minikube
+service "hello-minikube" deleted
+PS C:\Users\dlahoda> kubectl delete deployment hello-minikube
+deployment.extensions "hello-minikube" deleted
+PS C:\Users\dlahoda> minikube docker-env
+You can further specify your shell with either 'cmd' or 'powershell' with the --shell flag.
+
+SET DOCKER_TLS_VERIFY=1
+SET DOCKER_HOST=tcp://192.168.88.83:2376
+SET DOCKER_CERT_PATH=C:\Users\dlahoda\.minikube\certs
+REM Run this command to configure your shell:
+REM @FOR /f "tokens=*" %i IN ('minikube docker-env') DO @%i
+PS C:\Users\dlahoda> minikube docker-env --shell powershell
+
+PS C:\Users\dlahoda> $Env:DOCKER_TLS_VERIFY = "1"
+>> $Env:DOCKER_HOST = "tcp://192.168.88.83:2376"
+>> $Env:DOCKER_CERT_PATH = "C:\Users\dlahoda\.minikube\certs"
+PS C:\Users\dlahoda> docker ps
+
+* Stopping "minikube" in hyperv ...
+* Powering off "minikube" via SSH ...
+* "minikube" stopped.
+PS C:\Users\dlahoda> kubectl run --generator=run-pod/v1 hello-minikube --image=k8s.gcr.io/echoserver:1.10 --port=8080
+Unable to connect to the server: dial tcp [::1]:8080: connectex: No connection could be made because the target machine actively refused it.
+PS C:\Users\dlahoda> minikube start --vm-driver='hyperv' --hyperv-virtual-switch='ExternalSwitch' -v 7 --alsologtostderr;
+I0917 12:49:15.112909    3080 notify.go:124] Checking for updates...
+I0917 12:49:15.334735    3080 start.go:224] hostinfo: {"hostname":"LPLA0240","uptime":516171,"bootTime":1568197584,"procs":294,"os":"windows","platform":"Microsoft Windows 10 Enterprise","platformFamily":"Standalone Workstation","platformVersion":"10.0.18362 Build 18362","kernelVersion":"","virtualizationSystem":"","virtualizationRole":"","hostid":"7c6c125a-4eae-4734-8fb3-70709d0f8b6f"}
+W0917 12:49:15.334735    3080 start.go:232] gopshost.Virtualization returned error: not implemented yet
+* minikube v1.3.1 on Microsoft Windows 10 Enterprise 10.0.18362 Build 18362
+I0917 12:49:15.347673    3080 downloader.go:59] Not caching ISO, using https://storage.googleapis.com/minikube/iso/minikube-v1.3.0.iso
+I0917 12:49:15.347673    3080 start.go:922] Saving config:
+{
+    "MachineConfig": {
+        "KeepContext": false,
+        "MinikubeISO": "https://storage.googleapis.com/minikube/iso/minikube-v1.3.0.iso",
+        "Memory": 2000,
+        "CPUs": 2,
+        "DiskSize": 20000,
+        "VMDriver": "hyperv",
+        "ContainerRuntime": "docker",
+        "HyperkitVpnKitSock": "",
+        "HyperkitVSockPorts": [],
+        "DockerEnv": null,
+        "InsecureRegistry": null,
+        "RegistryMirror": null,
+        "HostOnlyCIDR": "192.168.99.1/24",
+        "HypervVirtualSwitch": "ExternalSwitch",
+        "KVMNetwork": "default",
+        "KVMQemuURI": "qemu:///system",
+        "KVMGPU": false,
+        "KVMHidden": false,                                                                                                                                                                                                                   "DockerOpt": null,                                                                                                                                                                                                                    "DisableDriverMounts": false,                                                                                                                                                                                                         "NFSShare": [],                                                                                                                                                                                                                       "NFSSharesRoot": "/nfsshares",                                                                                                                                                                                                        "UUID": "",
+        "NoVTXCheck": false,
+        "DNSProxy": false,
+        "HostDNSResolver": true
+    },
+    "KubernetesConfig": {
+        "KubernetesVersion": "v1.15.2",
+        "NodeIP": "",
+        "NodePort": 8443,
+        "NodeName": "minikube",
+        "APIServerName": "minikubeCA",
+        "APIServerNames": null,
+        "APIServerIPs": null,
+        "DNSDomain": "cluster.local",
+        "ContainerRuntime": "docker",
+        "CRISocket": "",
+        "NetworkPlugin": "",
+        "FeatureGates": "",
+        "ServiceCIDR": "10.96.0.0/12",
+        "ImageRepository": "",
+        "ExtraOptions": null,
+        "ShouldLoadCachedImages": true,
+        "EnableDefaultCNI": false
+    }
+}
+I0917 12:49:15.347673    3080 cache_images.go:286] Attempting to cache image: gcr.io/k8s-minikube/storage-provisioner:v1.8.1 at C:\Users\dlahoda\.minikube\cache\images\gcr.io\k8s-minikube\storage-provisioner_v1.8.1
+I0917 12:49:15.347673    3080 cache_images.go:286] Attempting to cache image: k8s.gcr.io/kube-proxy:v1.15.2 at C:\Users\dlahoda\.minikube\cache\images\k8s.gcr.io\kube-proxy_v1.15.2
+I0917 12:49:15.347673    3080 cache_images.go:286] Attempting to cache image: k8s.gcr.io/kube-scheduler:v1.15.2 at C:\Users\dlahoda\.minikube\cache\images\k8s.gcr.io\kube-scheduler_v1.15.2
+I0917 12:49:15.347673    3080 cache_images.go:286] Attempting to cache image: k8s.gcr.io/kube-controller-manager:v1.15.2 at C:\Users\dlahoda\.minikube\cache\images\k8s.gcr.io\kube-controller-manager_v1.15.2
+I0917 12:49:15.347673    3080 cache_images.go:286] Attempting to cache image: k8s.gcr.io/kube-apiserver:v1.15.2 at C:\Users\dlahoda\.minikube\cache\images\k8s.gcr.io\kube-apiserver_v1.15.2
+I0917 12:49:15.347673    3080 cache_images.go:286] Attempting to cache image: k8s.gcr.io/pause:3.1 at C:\Users\dlahoda\.minikube\cache\images\k8s.gcr.io\pause_3.1
+I0917 12:49:15.347673    3080 cache_images.go:286] Attempting to cache image: k8s.gcr.io/k8s-dns-kube-dns-amd64:1.14.13 at C:\Users\dlahoda\.minikube\cache\images\k8s.gcr.io\k8s-dns-kube-dns-amd64_1.14.13
+I0917 12:49:15.347673    3080 cache_images.go:286] Attempting to cache image: k8s.gcr.io/coredns:1.3.1 at C:\Users\dlahoda\.minikube\cache\images\k8s.gcr.io\coredns_1.3.1
+I0917 12:49:15.347673    3080 cache_images.go:286] Attempting to cache image: k8s.gcr.io/kubernetes-dashboard-amd64:v1.10.1 at C:\Users\dlahoda\.minikube\cache\images\k8s.gcr.io\kubernetes-dashboard-amd64_v1.10.1
+I0917 12:49:15.347673    3080 cache_images.go:286] Attempting to cache image: k8s.gcr.io/kube-addon-manager:v9.0 at C:\Users\dlahoda\.minikube\cache\images\k8s.gcr.io\kube-addon-manager_v9.0
+I0917 12:49:15.347673    3080 cache_images.go:286] Attempting to cache image: k8s.gcr.io/etcd:3.3.10 at C:\Users\dlahoda\.minikube\cache\images\k8s.gcr.io\etcd_3.3.10
+I0917 12:49:15.347673    3080 cache_images.go:286] Attempting to cache image: k8s.gcr.io/k8s-dns-dnsmasq-nanny-amd64:1.14.13 at C:\Users\dlahoda\.minikube\cache\images\k8s.gcr.io\k8s-dns-dnsmasq-nanny-amd64_1.14.13
+I0917 12:49:15.347673    3080 cache_images.go:286] Attempting to cache image: k8s.gcr.io/k8s-dns-sidecar-amd64:1.14.13 at C:\Users\dlahoda\.minikube\cache\images\k8s.gcr.io\k8s-dns-sidecar-amd64_1.14.13
+I0917 12:49:15.353710    3080 cluster.go:98] Skipping create...Using existing machine configuration
+I0917 12:49:15.381440    3080 cache_images.go:83] Successfully cached all images.
+* Tip: Use 'minikube start -p <name>' to create a new cluster, or 'minikube delete' to delete this one.
+[executing ==>] : C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -NonInteractive ( Hyper-V\Get-VM minikube ).state
+[stdout =====>] : Off
+
+[stderr =====>] :
+I0917 12:49:15.757827    3080 cluster.go:117] Machine state:  Stopped
+* Starting existing hyperv VM for "minikube" ...
+[executing ==>] : C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -NonInteractive Hyper-V\Start-VM minikube
+[stdout =====>] :
+[stderr =====>] :
+Waiting for host to start...
+[executing ==>] : C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -NonInteractive ( Hyper-V\Get-VM minikube ).state
+[stdout =====>] : Running
+
+[stderr =====>] :
+[executing ==>] : C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -NonInteractive (( Hyper-V\Get-VM minikube ).networkadapters[0]).ipaddresses[0]
+[stdout =====>] :
+[stderr =====>] :
+[executing ==>] : C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -NonInteractive ( Hyper-V\Get-VM minikube ).state
+[stdout =====>] : Running
+
+[stderr =====>] :
+[executing ==>] : C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -NonInteractive (( Hyper-V\Get-VM minikube ).networkadapters[0]).ipaddresses[0]
+[stdout =====>] :
+[stderr =====>] :
+[executing ==>] : C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -NonInteractive ( Hyper-V\Get-VM minikube ).state
+[stdout =====>] : Running
+
+[stderr =====>] :
+[executing ==>] : C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -NonInteractive (( Hyper-V\Get-VM minikube ).networkadapters[0]).ipaddresses[0]
+[stdout =====>] :
+[stderr =====>] :
+[executing ==>] : C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -NonInteractive ( Hyper-V\Get-VM minikube ).state
+[stdout =====>] : Running
+
+[stderr =====>] :
+[executing ==>] : C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -NonInteractive (( Hyper-V\Get-VM minikube ).networkadapters[0]).ipaddresses[0]
+[stdout =====>] :
+[stderr =====>] :
+[executing ==>] : C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -NonInteractive ( Hyper-V\Get-VM minikube ).state
+[stdout =====>] : Running
+
+[stderr =====>] :
+[executing ==>] : C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -NonInteractive (( Hyper-V\Get-VM minikube ).networkadapters[0]).ipaddresses[0]
+[stdout =====>] :
+[stderr =====>] :
+[executing ==>] : C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -NonInteractive ( Hyper-V\Get-VM minikube ).state
+[stdout =====>] : Running
+
+[stderr =====>] :
+[executing ==>] : C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -NonInteractive (( Hyper-V\Get-VM minikube ).networkadapters[0]).ipaddresses[0]
+[stdout =====>] :
+[stderr =====>] :
+[executing ==>] : C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -NonInteractive ( Hyper-V\Get-VM minikube ).state
+[stdout =====>] : Running
+
+[stderr =====>] :
+[executing ==>] : C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -NonInteractive (( Hyper-V\Get-VM minikube ).networkadapters[0]).ipaddresses[0]
+[stdout =====>] :
+[stderr =====>] :
+[executing ==>] : C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -NonInteractive ( Hyper-V\Get-VM minikube ).state
+[stdout =====>] : Running
+
+[stderr =====>] :
+[executing ==>] : C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -NonInteractive (( Hyper-V\Get-VM minikube ).networkadapters[0]).ipaddresses[0]
+[stdout =====>] :
+[stderr =====>] :
+[executing ==>] : C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -NonInteractive ( Hyper-V\Get-VM minikube ).state
+[stdout =====>] : Running
+
+[stderr =====>] :
+[executing ==>] : C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -NonInteractive (( Hyper-V\Get-VM minikube ).networkadapters[0]).ipaddresses[0]
+[stdout =====>] : 192.168.88.83
+
+[stderr =====>] :
+I0917 12:49:33.533356    3080 cluster.go:135] engine options: &{ArbitraryFlags:[] DNS:[] GraphDir: Env:[] Ipv6:false InsecureRegistry:[10.96.0.0/12] Labels:[] LogLevel: StorageDriver: SelinuxEnabled:false TLSVerify:false RegistryMirror:[] InstallURL:}
+* Waiting for the host to be provisioned ...
+I0917 12:49:33.537419    3080 cluster.go:155] configureHost: *host.Host &{ConfigVersion:3 Driver:0xc000568a80 DriverName:hyperv HostOptions:0xc000614240 Name:minikube RawDriver:[123 10 32 32 32 32 32 32 32 32 34 73 80 65 100 100 114 101 115 115 34 58 32 34 49 57 50 46 49 54 56 46 56 56 46 56 51 34 44 10 32 32 32 32 32 32 32 32 34 77 97 99 104 105 110 101 78 97 109 101 34 58 32 34 109 105 110 105 107 117 98 101 34 44 10 32 32 32 32 32 32 32 32 34 83 83 72 85 115 101 114 34 58 32 34 100 111 99 107 101 114 34 44 10 32 32 32 32 32 32 32 32 34 83 83 72 80 111 114 116 34 58 32 50 50 44 10 32 32 32 32 32 32 32 32 34 83 83 72 75 101 121 80 97 116 104 34 58 32 34 67 58 92 92 85 115 101 114 115 92 92 100 108 97 104 111 100 97 92 92 46 109 105 110 105 107 117 98 101 92 92 109 97 99 104 105 110 101 115 92 92 109 105 110 105 107 117 98 101 92 92 105 100 95 114 115 97 34 44 10 32 32 32 32 32 32 32 32 34 83 116 111 114 101 80 97 116 104 34 58 32 34 67 58 92 92 85 115 101 114 115 92 92 100 108 97 104 111 100 97 92 92 46 109 105 110 105 107 117 98 101 34 44 10 32 32 32 32 32 32 32 32 34 83 119 97 114 109 77 97 115 116 101 114 34 58 32 102 97 108 115 101 44 10 32 32 32 32 32 32 32 32 34 83 119 97 114 109 72 111 115 116 34 58 32 34 34 44 10 32 32 32 32 32 32 32 32 34 83 119 97 114 109 68 105 115 99 111 118 101 114 121 34 58 32 34 34 44 10 32 32 32 32 32 32 32 32 34 66 111 111 116 50 68 111 99 107 101 114 85 82 76 34 58 32 34 102 105 108 101 58 47 47 67 58 47 85 115 101 114 115 47 100 108 97 104 111 100 97 47 46 109 105 110 105 107 117 98 101 47 99 97 99 104 101 47 105 115 111 47 109 105 110 105 107 117 98 101 45 118 49 46 51 46 48 46 105 115 111 34 44 10 32 32 32 32 32 32 32 32 34 86 83 119 105 116 99 104 34 58 32 34 69 120 116 101 114 110 97 108 83 119 105 116 99 104 34 44 10 32 32 32 32 32 32 32 32 34 68 105 115 107 83 105 122 101 34 58 32 50 48 48 48 48 44 10 32 32 32 32 32 32 32 32 34 77 101 109 83 105 122 101 34 58 32 50 48 48 48 44 10 32 32 32 32 32 32 32 32 34 67 80 85 34 58 32 50 44 10 32 32 32 32 32 32 32 32 34 77 97 99 65 100 100 114 34 58 32 34 34 44 10 32 32 32 32 32 32 32 32 34 86 76 97 110 73 68 34 58 32 48 44 10 32 32 32 32 32 32 32 32 34 68 105 115 97 98 108 101 68 121 110 97 109 105 99 77 101 109 111 114 121 34 58 32 116 114 117 101 10 32 32 32 32 125]}
+I0917 12:49:33.537419    3080 cluster.go:170] Configuring auth for driver hyperv ...
+Waiting for SSH to be available...
+Getting to WaitForSSH function...
+[executing ==>] : C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -NonInteractive ( Hyper-V\Get-VM minikube ).state
+[stdout =====>] : Running
+
+[stderr =====>] :
+[executing ==>] : C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -NonInteractive (( Hyper-V\Get-VM minikube ).networkadapters[0]).ipaddresses[0]
+[stdout =====>] : 192.168.88.83
+
+[stderr =====>] :
+Using SSH client type: native
+&{{{<nil> 0 [] [] []} docker [0x1536f30] 0x1536f00 <nil>  [] 0s} 192.168.88.83 22 <nil> <nil>}
+About to run SSH command:
+exit 0
+SSH cmd err, output: <nil>:
+Detecting the provisioner...
+[executing ==>] : C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -NonInteractive ( Hyper-V\Get-VM minikube ).state
+[stdout =====>] : Running
+
+[stderr =====>] :
+[executing ==>] : C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -NonInteractive (( Hyper-V\Get-VM minikube ).networkadapters[0]).ipaddresses[0]
+[stdout =====>] : 192.168.88.83
+
+[stderr =====>] :
+Using SSH client type: native
+&{{{<nil> 0 [] [] []} docker [0x1536f30] 0x1536f00 <nil>  [] 0s} 192.168.88.83 22 <nil> <nil>}
+About to run SSH command:
+cat /etc/os-release
+SSH cmd err, output: <nil>: NAME=Buildroot
+VERSION=2018.05.3
+ID=buildroot
+VERSION_ID=2018.05.3
+PRETTY_NAME="Buildroot 2018.05.3"
+
+found compatible host: buildroot
+setting hostname "minikube"
+[executing ==>] : C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -NonInteractive ( Hyper-V\Get-VM minikube ).state
+[stdout =====>] : Running
+
+[stderr =====>] :
+[executing ==>] : C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -NonInteractive (( Hyper-V\Get-VM minikube ).networkadapters[0]).ipaddresses[0]
+[stdout =====>] : 192.168.88.83
+
+[stderr =====>] :
+Using SSH client type: native
+&{{{<nil> 0 [] [] []} docker [0x1536f30] 0x1536f00 <nil>  [] 0s} 192.168.88.83 22 <nil> <nil>}
+About to run SSH command:
+sudo hostname minikube && echo "minikube" | sudo tee /etc/hostname
+SSH cmd err, output: <nil>: minikube
+
+[executing ==>] : C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -NonInteractive ( Hyper-V\Get-VM minikube ).state
+[stdout =====>] : Running
+
+[stderr =====>] :
+[executing ==>] : C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -NonInteractive (( Hyper-V\Get-VM minikube ).networkadapters[0]).ipaddresses[0]
+[stdout =====>] : 192.168.88.83
+
+[stderr =====>] :
+Using SSH client type: native
+&{{{<nil> 0 [] [] []} docker [0x1536f30] 0x1536f00 <nil>  [] 0s} 192.168.88.83 22 <nil> <nil>}
+About to run SSH command:
+
+                if ! grep -xq '.*\sminikube' /etc/hosts; then
+                        if grep -xq '127.0.1.1\s.*' /etc/hosts; then
+                                sudo sed -i 's/^127.0.1.1\s.*/127.0.1.1 minikube/g' /etc/hosts;
+                        else
+                                echo '127.0.1.1 minikube' | sudo tee -a /etc/hosts;
+                        fi
+                fi
+SSH cmd err, output: <nil>:
+set auth options {CertDir:C:\Users\dlahoda\.minikube CaCertPath:C:\Users\dlahoda\.minikube\certs\ca.pem CaPrivateKeyPath:C:\Users\dlahoda\.minikube\certs\ca-key.pem CaCertRemotePath:/etc/docker/ca.pem ServerCertPath:C:\Users\dlahoda\.minikube\machines\server.pem ServerKeyPath:C:\Users\dlahoda\.minikube\machines\server-key.pem ClientKeyPath:C:\Users\dlahoda\.minikube\certs\key.pem ServerCertRemotePath:/etc/docker/server.pem ServerKeyRemotePath:/etc/docker/server-key.pem ClientCertPath:C:\Users\dlahoda\.minikube\certs\cert.pem ServerCertSANs:[] StorePath:C:\Users\dlahoda\.minikube}
+setting up certificates
+[executing ==>] : C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -NonInteractive ( Hyper-V\Get-VM minikube ).state
+[stdout =====>] : Running
+
+[stderr =====>] :
+[executing ==>] : C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -NonInteractive (( Hyper-V\Get-VM minikube ).networkadapters[0]).ipaddresses[0]
+[stdout =====>] : 192.168.88.83
+
+[stderr =====>] :
+generating server cert: C:\Users\dlahoda\.minikube\machines\server.pem ca-key=C:\Users\dlahoda\.minikube\certs\ca.pem private-key=C:\Users\dlahoda\.minikube\certs\ca-key.pem org=dlahoda.minikube san=[192.168.88.83 localhost]
+[executing ==>] : C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -NonInteractive ( Hyper-V\Get-VM minikube ).state
+[stdout =====>] : Running
+
+[stderr =====>] :
+[executing ==>] : C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -NonInteractive (( Hyper-V\Get-VM minikube ).networkadapters[0]).ipaddresses[0]
+[stdout =====>] : 192.168.88.83
+
+[stderr =====>] :
+I0917 12:49:39.886570    3080 ssh_runner.go:101] SSH: sudo rm -f /etc/docker/ca.pem
+I0917 12:49:39.933475    3080 ssh_runner.go:101] SSH: sudo mkdir -p /etc/docker
+I0917 12:49:39.942457    3080 ssh_runner.go:182] Transferring 1038 bytes to ca.pem
+I0917 12:49:39.943449    3080 ssh_runner.go:195] ca.pem: copied 1038 bytes
+I0917 12:49:39.947457    3080 ssh_runner.go:101] SSH: sudo rm -f /etc/docker/server.pem
+I0917 12:49:39.954457    3080 ssh_runner.go:101] SSH: sudo mkdir -p /etc/docker
+I0917 12:49:39.965457    3080 ssh_runner.go:182] Transferring 1111 bytes to server.pem
+I0917 12:49:39.965457    3080 ssh_runner.go:195] server.pem: copied 1111 bytes
+I0917 12:49:39.970456    3080 ssh_runner.go:101] SSH: sudo rm -f /etc/docker/server-key.pem
+I0917 12:49:39.975455    3080 ssh_runner.go:101] SSH: sudo mkdir -p /etc/docker
+I0917 12:49:39.979453    3080 ssh_runner.go:182] Transferring 1675 bytes to server-key.pem
+I0917 12:49:39.980453    3080 ssh_runner.go:195] server-key.pem: copied 1675 bytes
+Setting Docker configuration on the remote daemon...
+[executing ==>] : C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -NonInteractive ( Hyper-V\Get-VM minikube ).state
+[stdout =====>] : Running
+
+[stderr =====>] :
+[executing ==>] : C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -NonInteractive (( Hyper-V\Get-VM minikube ).networkadapters[0]).ipaddresses[0]
+[stdout =====>] : 192.168.88.83
+
+[stderr =====>] :
+Using SSH client type: native
+&{{{<nil> 0 [] [] []} docker [0x1536f30] 0x1536f00 <nil>  [] 0s} 192.168.88.83 22 <nil> <nil>}
+About to run SSH command:
+sudo mkdir -p /lib/systemd/system && printf %s "[Unit]
+Description=Docker Application Container Engine
+Documentation=https://docs.docker.com
+After=network.target  minikube-automount.service docker.socket
+Requires= minikube-automount.service docker.socket
+
+[Service]
+Type=notify
+
+# DOCKER_RAMDISK disables pivot_root in Docker, using MS_MOVE instead.
+Environment=DOCKER_RAMDISK=yes
+
+
+# This file is a systemd drop-in unit that inherits from the base dockerd configuration.
+# The base configuration already specifies an 'ExecStart=...' command. The first directive
+# here is to clear out that command inherited from the base configuration. Without this,
+# the command from the base configuration and the command specified here are treated as
+# a sequence of commands, which is not the desired behavior, nor is it valid -- systemd
+# will catch this invalid input and refuse to start the service with an error like:
+#  Service has more than one ExecStart= setting, which is only allowed for Type=oneshot services.
+ExecStart=
+ExecStart=/usr/bin/dockerd -H tcp://0.0.0.0:2376 -H unix:///var/run/docker.sock --tlsverify --tlscacert /etc/docker/ca.pem --tlscert /etc/docker/server.pem --tlskey /etc/docker/server-key.pem --label provider=hyperv --insecure-registry 10.96.0.0/12
+ExecReload=/bin/kill -s HUP $MAINPID
+
+# Having non-zero Limit*s causes performance problems due to accounting overhead
+# in the kernel. We recommend using cgroups to do container-local accounting.
+LimitNOFILE=infinity
+LimitNPROC=infinity
+LimitCORE=infinity
+
+# Uncomment TasksMax if your systemd version supports it.
+# Only systemd 226 and above support this version.
+TasksMax=infinity
+TimeoutStartSec=0
+
+# set delegate yes so that systemd does not reset the cgroups of docker containers
+Delegate=yes
+
+# kill only the docker process, not all processes in the cgroup
+KillMode=process
+
+[Install]
+WantedBy=multi-user.target
+" | sudo tee /lib/systemd/system/docker.service
+SSH cmd err, output: <nil>: [Unit]
+Description=Docker Application Container Engine
+Documentation=https://docs.docker.com
+After=network.target  minikube-automount.service docker.socket
+Requires= minikube-automount.service docker.socket
+
+[Service]
+Type=notify
+
+# DOCKER_RAMDISK disables pivot_root in Docker, using MS_MOVE instead.
+Environment=DOCKER_RAMDISK=yes
+
+
+# This file is a systemd drop-in unit that inherits from the base dockerd configuration.
+# The base configuration already specifies an 'ExecStart=...' command. The first directive
+# here is to clear out that command inherited from the base configuration. Without this,
+# the command from the base configuration and the command specified here are treated as
+# a sequence of commands, which is not the desired behavior, nor is it valid -- systemd
+# will catch this invalid input and refuse to start the service with an error like:
+#  Service has more than one ExecStart= setting, which is only allowed for Type=oneshot services.
+ExecStart=
+ExecStart=/usr/bin/dockerd -H tcp://0.0.0.0:2376 -H unix:///var/run/docker.sock --tlsverify --tlscacert /etc/docker/ca.pem --tlscert /etc/docker/server.pem --tlskey /etc/docker/server-key.pem --label provider=hyperv --insecure-registry 10.96.0.0/12
+ExecReload=/bin/kill -s HUP
+
+# Having non-zero Limit*s causes performance problems due to accounting overhead
+# in the kernel. We recommend using cgroups to do container-local accounting.
+LimitNOFILE=infinity
+LimitNPROC=infinity
+LimitCORE=infinity
+
+# Uncomment TasksMax if your systemd version supports it.
+# Only systemd 226 and above support this version.
+TasksMax=infinity
+TimeoutStartSec=0
+
+# set delegate yes so that systemd does not reset the cgroups of docker containers
+Delegate=yes
+
+# kill only the docker process, not all processes in the cgroup
+KillMode=process
+
+[Install]
+WantedBy=multi-user.target
+
+setting minikube options for container-runtime
+[executing ==>] : C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -NonInteractive ( Hyper-V\Get-VM minikube ).state
+[stdout =====>] : Running
+
+[stderr =====>] :
+[executing ==>] : C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -NonInteractive (( Hyper-V\Get-VM minikube ).networkadapters[0]).ipaddresses[0]
+[stdout =====>] : 192.168.88.83
+
+[stderr =====>] :
+Using SSH client type: native
+&{{{<nil> 0 [] [] []} docker [0x1536f30] 0x1536f00 <nil>  [] 0s} 192.168.88.83 22 <nil> <nil>}
+About to run SSH command:
+sudo mkdir -p /etc/sysconfig && printf %s "
+CRIO_MINIKUBE_OPTIONS='--insecure-registry 10.96.0.0/12 '
+" | sudo tee /etc/sysconfig/crio.minikube
+SSH cmd err, output: <nil>:
+CRIO_MINIKUBE_OPTIONS='--insecure-registry 10.96.0.0/12 '
+
+[executing ==>] : C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -NonInteractive ( Hyper-V\Get-VM minikube ).state
+[stdout =====>] : Running
+
+[stderr =====>] :
+[executing ==>] : C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -NonInteractive (( Hyper-V\Get-VM minikube ).networkadapters[0]).ipaddresses[0]
+[stdout =====>] : 192.168.88.83
+
+[stderr =====>] :
+Using SSH client type: native
+&{{{<nil> 0 [] [] []} docker [0x1536f30] 0x1536f00 <nil>  [] 0s} 192.168.88.83 22 <nil> <nil>}
+About to run SSH command:
+sudo systemctl daemon-reload
+SSH cmd err, output: <nil>:
+[executing ==>] : C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -NonInteractive ( Hyper-V\Get-VM minikube ).state
+[stdout =====>] : Running
+
+[stderr =====>] :
+[executing ==>] : C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -NonInteractive (( Hyper-V\Get-VM minikube ).networkadapters[0]).ipaddresses[0]
+[stdout =====>] : 192.168.88.83
+
+[stderr =====>] :
+Using SSH client type: native
+&{{{<nil> 0 [] [] []} docker [0x1536f30] 0x1536f00 <nil>  [] 0s} 192.168.88.83 22 <nil> <nil>}
+About to run SSH command:
+sudo systemctl -f restart crio
+SSH cmd err, output: <nil>:
+[executing ==>] : C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -NonInteractive ( Hyper-V\Get-VM minikube ).state
+[stdout =====>] : Running
+
+[stderr =====>] :
+[executing ==>] : C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -NonInteractive (( Hyper-V\Get-VM minikube ).networkadapters[0]).ipaddresses[0]
+[stdout =====>] : 192.168.88.83
+
+[stderr =====>] :
+Using SSH client type: native
+&{{{<nil> 0 [] [] []} docker [0x1536f30] 0x1536f00 <nil>  [] 0s} 192.168.88.83 22 <nil> <nil>}
+About to run SSH command:
+date +%s.%N
+SSH cmd err, output: <nil>: 1568713785.793956300
+
+I0917 12:49:45.795060    3080 cluster.go:204] guest clock: 1568713785.793956300
+I0917 12:49:45.797059    3080 cluster.go:217] Guest: 2019-09-17 12:49:45.7939563 +0300 +03 Remote: 2019-09-17 12:49:44.7379269 +0300 +03 m=+29.704114601 (delta=1.0560294s)
+I0917 12:49:45.801283    3080 cluster.go:188] guest clock delta is within tolerance: 1.0560294s
+[executing ==>] : C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -NonInteractive ( Hyper-V\Get-VM minikube ).state
+[stdout =====>] : Running
+
+[stderr =====>] :
+[executing ==>] : C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -NonInteractive (( Hyper-V\Get-VM minikube ).networkadapters[0]).ipaddresses[0]
+[stdout =====>] : 192.168.88.83
+
+[stderr =====>] :
+I0917 12:49:46.733604    3080 start.go:922] Saving config:
+{
+    "MachineConfig": {
+        "KeepContext": false,
+        "MinikubeISO": "https://storage.googleapis.com/minikube/iso/minikube-v1.3.0.iso",
+        "Memory": 2000,
+        "CPUs": 2,
+        "DiskSize": 20000,
+        "VMDriver": "hyperv",
+        "ContainerRuntime": "docker",
+        "HyperkitVpnKitSock": "",
+        "HyperkitVSockPorts": [],
+        "DockerEnv": null,
+        "InsecureRegistry": null,
+        "RegistryMirror": null,
+        "HostOnlyCIDR": "192.168.99.1/24",
+        "HypervVirtualSwitch": "ExternalSwitch",
+        "KVMNetwork": "default",
+        "KVMQemuURI": "qemu:///system",
+        "KVMGPU": false,
+        "KVMHidden": false,
+        "DockerOpt": null,
+        "DisableDriverMounts": false,
+        "NFSShare": [],
+        "NFSSharesRoot": "/nfsshares",
+        "UUID": "",
+        "NoVTXCheck": false,
+        "DNSProxy": false,
+        "HostDNSResolver": true
+    },
+    "KubernetesConfig": {
+        "KubernetesVersion": "v1.15.2",
+        "NodeIP": "192.168.88.83",
+        "NodePort": 8443,
+        "NodeName": "minikube",
+        "APIServerName": "minikubeCA",
+        "APIServerNames": null,
+        "APIServerIPs": null,
+        "DNSDomain": "cluster.local",
+        "ContainerRuntime": "docker",
+        "CRISocket": "",
+        "NetworkPlugin": "",
+        "FeatureGates": "",
+        "ServiceCIDR": "10.96.0.0/12",
+        "ImageRepository": "",
+        "ExtraOptions": null,
+        "ShouldLoadCachedImages": true,
+        "EnableDefaultCNI": false
+    }
+}
+[executing ==>] : C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -NonInteractive ( Hyper-V\Get-VM minikube ).state
+[stdout =====>] : Running
+
+[stderr =====>] :
+[executing ==>] : C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -NonInteractive (( Hyper-V\Get-VM minikube ).networkadapters[0]).ipaddresses[0]
+[stdout =====>] : 192.168.88.83
+
+[stderr =====>] :
+I0917 12:49:47.712574    3080 ssh_runner.go:101] SSH: systemctl is-active --quiet service containerd
+I0917 12:49:47.758292    3080 ssh_runner.go:101] SSH: systemctl is-active --quiet service crio
+I0917 12:49:47.763259    3080 ssh_runner.go:101] SSH: sudo systemctl stop crio
+I0917 12:49:47.814521    3080 ssh_runner.go:101] SSH: systemctl is-active --quiet service crio
+I0917 12:49:47.824515    3080 ssh_runner.go:101] SSH: sudo systemctl start docker
+I0917 12:49:48.761958    3080 ssh_runner.go:137] Run with output: docker version --format '{{.Server.Version}}'
+I0917 12:49:48.781968    3080 utils.go:227] > 18.09.8
+* Preparing Kubernetes v1.15.2 on Docker 18.09.8 ...
+[executing ==>] : C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -NonInteractive ( Hyper-V\Get-VM minikube ).state
+[stdout =====>] : Running
+
+[stderr =====>] :
+[executing ==>] : C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -NonInteractive (( Hyper-V\Get-VM minikube ).networkadapters[0]).ipaddresses[0]
+[stdout =====>] : 192.168.88.83
+
+[stderr =====>] :
+I0917 12:49:49.751389    3080 cache_images.go:199] Loading image from cache: C:\Users\dlahoda\.minikube\cache\images\gcr.io\k8s-minikube\storage-provisioner_v1.8.1
+I0917 12:49:49.751389    3080 cache_images.go:199] Loading image from cache: C:\Users\dlahoda\.minikube\cache\images\k8s.gcr.io\k8s-dns-kube-dns-amd64_1.14.13
+I0917 12:49:49.751389    3080 cache_images.go:199] Loading image from cache: C:\Users\dlahoda\.minikube\cache\images\k8s.gcr.io\kube-proxy_v1.15.2
+I0917 12:49:49.751389    3080 cache_images.go:199] Loading image from cache: C:\Users\dlahoda\.minikube\cache\images\k8s.gcr.io\kube-scheduler_v1.15.2
+I0917 12:49:49.751389    3080 cache_images.go:199] Loading image from cache: C:\Users\dlahoda\.minikube\cache\images\k8s.gcr.io\kube-controller-manager_v1.15.2
+I0917 12:49:49.751389    3080 cache_images.go:199] Loading image from cache: C:\Users\dlahoda\.minikube\cache\images\k8s.gcr.io\kube-apiserver_v1.15.2
+I0917 12:49:49.751389    3080 cache_images.go:199] Loading image from cache: C:\Users\dlahoda\.minikube\cache\images\k8s.gcr.io\pause_3.1
+I0917 12:49:49.751389    3080 cache_images.go:199] Loading image from cache: C:\Users\dlahoda\.minikube\cache\images\k8s.gcr.io\etcd_3.3.10
+I0917 12:49:49.751389    3080 cache_images.go:199] Loading image from cache: C:\Users\dlahoda\.minikube\cache\images\k8s.gcr.io\k8s-dns-dnsmasq-nanny-amd64_1.14.13
+I0917 12:49:49.751389    3080 cache_images.go:199] Loading image from cache: C:\Users\dlahoda\.minikube\cache\images\k8s.gcr.io\k8s-dns-sidecar-amd64_1.14.13
+I0917 12:49:49.751389    3080 cache_images.go:199] Loading image from cache: C:\Users\dlahoda\.minikube\cache\images\k8s.gcr.io\kube-addon-manager_v9.0
+I0917 12:49:49.751389    3080 cache_images.go:199] Loading image from cache: C:\Users\dlahoda\.minikube\cache\images\k8s.gcr.io\coredns_1.3.1
+I0917 12:49:49.751389    3080 cache_images.go:199] Loading image from cache: C:\Users\dlahoda\.minikube\cache\images\k8s.gcr.io\kubernetes-dashboard-amd64_v1.10.1
+I0917 12:49:49.755256    3080 ssh_runner.go:101] SSH: sudo rm -f /tmp/storage-provisioner_v1.8.1
+I0917 12:49:49.757251    3080 ssh_runner.go:101] SSH: sudo rm -f /tmp/k8s-dns-kube-dns-amd64_1.14.13
+I0917 12:49:49.761259    3080 ssh_runner.go:101] SSH: sudo rm -f /tmp/kube-proxy_v1.15.2
+I0917 12:49:49.761259    3080 ssh_runner.go:101] SSH: sudo rm -f /tmp/kube-scheduler_v1.15.2
+I0917 12:49:49.767257    3080 ssh_runner.go:101] SSH: sudo rm -f /tmp/kube-controller-manager_v1.15.2
+I0917 12:49:49.768257    3080 ssh_runner.go:101] SSH: sudo rm -f /tmp/kube-apiserver_v1.15.2
+I0917 12:49:49.774225    3080 ssh_runner.go:101] SSH: sudo rm -f /tmp/etcd_3.3.10
+I0917 12:49:49.775230    3080 ssh_runner.go:101] SSH: sudo rm -f /tmp/pause_3.1
+I0917 12:49:49.776226    3080 ssh_runner.go:101] SSH: sudo rm -f /tmp/k8s-dns-dnsmasq-nanny-amd64_1.14.13
+I0917 12:49:49.776226    3080 ssh_runner.go:101] SSH: sudo rm -f /tmp/k8s-dns-sidecar-amd64_1.14.13
+I0917 12:49:49.776226    3080 ssh_runner.go:101] SSH: sudo rm -f /tmp/kube-addon-manager_v9.0
+I0917 12:49:49.777225    3080 ssh_runner.go:101] SSH: sudo rm -f /tmp/coredns_1.3.1
+I0917 12:49:49.779259    3080 ssh_runner.go:101] SSH: sudo rm -f /tmp/kubernetes-dashboard-amd64_v1.10.1
+I0917 12:49:49.789224    3080 ssh_runner.go:101] SSH: sudo mkdir -p /tmp
+I0917 12:49:49.790224    3080 ssh_runner.go:101] SSH: sudo mkdir -p /tmp
+I0917 12:49:49.790224    3080 ssh_runner.go:101] SSH: sudo mkdir -p /tmp
+I0917 12:49:49.793915    3080 ssh_runner.go:101] SSH: sudo mkdir -p /tmp
+I0917 12:49:49.794223    3080 ssh_runner.go:101] SSH: sudo mkdir -p /tmp
+I0917 12:49:49.800225    3080 ssh_runner.go:101] SSH: sudo mkdir -p /tmp
+I0917 12:49:49.803223    3080 ssh_runner.go:101] SSH: sudo mkdir -p /tmp
+I0917 12:49:49.807225    3080 ssh_runner.go:101] SSH: sudo mkdir -p /tmp
+I0917 12:49:49.812223    3080 ssh_runner.go:101] SSH: sudo mkdir -p /tmp
+I0917 12:49:49.815222    3080 ssh_runner.go:101] SSH: sudo mkdir -p /tmp
+I0917 12:49:49.819223    3080 ssh_runner.go:101] SSH: sudo mkdir -p /tmp
+I0917 12:49:49.821225    3080 ssh_runner.go:101] SSH: sudo mkdir -p /tmp
+I0917 12:49:49.821225    3080 ssh_runner.go:182] Transferring 14267904 bytes to k8s-dns-kube-dns-amd64_1.14.13
+I0917 12:49:49.823223    3080 ssh_runner.go:182] Transferring 20683776 bytes to storage-provisioner_v1.8.1
+I0917 12:49:49.825224    3080 ssh_runner.go:182] Transferring 29871616 bytes to kube-scheduler_v1.15.2
+I0917 12:49:49.826223    3080 ssh_runner.go:101] SSH: sudo mkdir -p /tmp
+I0917 12:49:49.832227    3080 ssh_runner.go:182] Transferring 47843328 bytes to kube-controller-manager_v1.15.2
+I0917 12:49:49.833226    3080 ssh_runner.go:182] Transferring 30113280 bytes to kube-proxy_v1.15.2
+I0917 12:49:49.834227    3080 ssh_runner.go:182] Transferring 49280512 bytes to kube-apiserver_v1.15.2
+I0917 12:49:49.834227    3080 ssh_runner.go:182] Transferring 76164608 bytes to etcd_3.3.10
+I0917 12:49:49.835224    3080 ssh_runner.go:182] Transferring 318976 bytes to pause_3.1
+I0917 12:49:49.850223    3080 ssh_runner.go:182] Transferring 30522368 bytes to kube-addon-manager_v9.0
+I0917 12:49:49.851227    3080 ssh_runner.go:182] Transferring 44910592 bytes to kubernetes-dashboard-amd64_v1.10.1
+I0917 12:49:49.851227    3080 ssh_runner.go:182] Transferring 12306944 bytes to coredns_1.3.1
+I0917 12:49:49.851227    3080 ssh_runner.go:182] Transferring 11769344 bytes to k8s-dns-dnsmasq-nanny-amd64_1.14.13
+I0917 12:49:49.866257    3080 ssh_runner.go:195] pause_3.1: copied 318976 bytes
+I0917 12:49:49.870221    3080 ssh_runner.go:182] Transferring 12207616 bytes to k8s-dns-sidecar-amd64_1.14.13
+I0917 12:49:49.873223    3080 docker.go:97] Loading image: /tmp/pause_3.1
+I0917 12:49:49.874228    3080 ssh_runner.go:101] SSH: docker load -i /tmp/pause_3.1
+I0917 12:49:49.998903    3080 utils.go:227] > Loaded image: k8s.gcr.io/pause:3.1
+I0917 12:49:50.000902    3080 ssh_runner.go:101] SSH: sudo rm -rf /tmp/pause_3.1
+I0917 12:49:50.010908    3080 cache_images.go:228] Successfully loaded image C:\Users\dlahoda\.minikube\cache\images\k8s.gcr.io\pause_3.1 from cache
+I0917 12:49:50.194463    3080 ssh_runner.go:195] coredns_1.3.1: copied 12306944 bytes
+I0917 12:49:50.198466    3080 ssh_runner.go:195] k8s-dns-dnsmasq-nanny-amd64_1.14.13: copied 11769344 bytes
+I0917 12:49:50.199432    3080 docker.go:97] Loading image: /tmp/coredns_1.3.1
+I0917 12:49:50.199432    3080 ssh_runner.go:101] SSH: docker load -i /tmp/coredns_1.3.1
+I0917 12:49:50.209433    3080 ssh_runner.go:195] k8s-dns-kube-dns-amd64_1.14.13: copied 14267904 bytes
+I0917 12:49:50.215428    3080 ssh_runner.go:195] k8s-dns-sidecar-amd64_1.14.13: copied 12207616 bytes
+I0917 12:49:50.313943    3080 ssh_runner.go:195] storage-provisioner_v1.8.1: copied 20683776 bytes
+I0917 12:49:50.404943    3080 utils.go:227] > Loaded image: k8s.gcr.io/coredns:1.3.1
+I0917 12:49:50.405945    3080 ssh_runner.go:101] SSH: sudo rm -rf /tmp/coredns_1.3.1
+I0917 12:49:50.417944    3080 cache_images.go:228] Successfully loaded image C:\Users\dlahoda\.minikube\cache\images\k8s.gcr.io\coredns_1.3.1 from cache
+I0917 12:49:50.418942    3080 docker.go:97] Loading image: /tmp/k8s-dns-dnsmasq-nanny-amd64_1.14.13
+I0917 12:49:50.418942    3080 ssh_runner.go:101] SSH: docker load -i /tmp/k8s-dns-dnsmasq-nanny-amd64_1.14.13
+I0917 12:49:50.464940    3080 ssh_runner.go:195] kube-scheduler_v1.15.2: copied 29871616 bytes
+I0917 12:49:50.476944    3080 ssh_runner.go:195] kube-proxy_v1.15.2: copied 30113280 bytes
+I0917 12:49:50.479942    3080 ssh_runner.go:195] kube-addon-manager_v9.0: copied 30522368 bytes
+I0917 12:49:50.561944    3080 utils.go:227] > Loaded image: k8s.gcr.io/k8s-dns-dnsmasq-nanny-amd64:1.14.13
+I0917 12:49:50.563941    3080 ssh_runner.go:101] SSH: sudo rm -rf /tmp/k8s-dns-dnsmasq-nanny-amd64_1.14.13
+I0917 12:49:50.578944    3080 cache_images.go:228] Successfully loaded image C:\Users\dlahoda\.minikube\cache\images\k8s.gcr.io\k8s-dns-dnsmasq-nanny-amd64_1.14.13 from cache
+I0917 12:49:50.579943    3080 docker.go:97] Loading image: /tmp/k8s-dns-kube-dns-amd64_1.14.13
+I0917 12:49:50.579943    3080 ssh_runner.go:101] SSH: docker load -i /tmp/k8s-dns-kube-dns-amd64_1.14.13
+I0917 12:49:50.614942    3080 ssh_runner.go:195] kubernetes-dashboard-amd64_v1.10.1: copied 44910592 bytes
+I0917 12:49:50.633074    3080 ssh_runner.go:195] kube-controller-manager_v1.15.2: copied 47843328 bytes
+I0917 12:49:50.642943    3080 ssh_runner.go:195] kube-apiserver_v1.15.2: copied 49280512 bytes
+I0917 12:49:50.685942    3080 utils.go:227] > Loaded image: k8s.gcr.io/k8s-dns-kube-dns-amd64:1.14.13
+I0917 12:49:50.687943    3080 ssh_runner.go:101] SSH: sudo rm -rf /tmp/k8s-dns-kube-dns-amd64_1.14.13
+I0917 12:49:50.700942    3080 cache_images.go:228] Successfully loaded image C:\Users\dlahoda\.minikube\cache\images\k8s.gcr.io\k8s-dns-kube-dns-amd64_1.14.13 from cache
+I0917 12:49:50.700942    3080 docker.go:97] Loading image: /tmp/k8s-dns-sidecar-amd64_1.14.13
+I0917 12:49:50.700942    3080 ssh_runner.go:101] SSH: docker load -i /tmp/k8s-dns-sidecar-amd64_1.14.13
+I0917 12:49:50.708461    3080 ssh_runner.go:195] etcd_3.3.10: copied 76164608 bytes
+I0917 12:49:50.789461    3080 utils.go:227] > Loaded image: k8s.gcr.io/k8s-dns-sidecar-amd64:1.14.13
+I0917 12:49:50.792461    3080 ssh_runner.go:101] SSH: sudo rm -rf /tmp/k8s-dns-sidecar-amd64_1.14.13
+I0917 12:49:50.798462    3080 cache_images.go:228] Successfully loaded image C:\Users\dlahoda\.minikube\cache\images\k8s.gcr.io\k8s-dns-sidecar-amd64_1.14.13 from cache
+I0917 12:49:50.798462    3080 docker.go:97] Loading image: /tmp/storage-provisioner_v1.8.1
+I0917 12:49:50.798462    3080 ssh_runner.go:101] SSH: docker load -i /tmp/storage-provisioner_v1.8.1
+I0917 12:49:50.901488    3080 utils.go:227] > Loaded image: gcr.io/k8s-minikube/storage-provisioner:v1.8.1
+I0917 12:49:50.905487    3080 ssh_runner.go:101] SSH: sudo rm -rf /tmp/storage-provisioner_v1.8.1
+I0917 12:49:50.910487    3080 cache_images.go:228] Successfully loaded image C:\Users\dlahoda\.minikube\cache\images\gcr.io\k8s-minikube\storage-provisioner_v1.8.1 from cache
+I0917 12:49:50.911485    3080 docker.go:97] Loading image: /tmp/kube-scheduler_v1.15.2
+I0917 12:49:50.911485    3080 ssh_runner.go:101] SSH: docker load -i /tmp/kube-scheduler_v1.15.2
+I0917 12:49:51.033554    3080 utils.go:227] > Loaded image: k8s.gcr.io/kube-scheduler:v1.15.2
+I0917 12:49:51.039767    3080 ssh_runner.go:101] SSH: sudo rm -rf /tmp/kube-scheduler_v1.15.2
+I0917 12:49:51.047534    3080 cache_images.go:228] Successfully loaded image C:\Users\dlahoda\.minikube\cache\images\k8s.gcr.io\kube-scheduler_v1.15.2 from cache
+I0917 12:49:51.047534    3080 docker.go:97] Loading image: /tmp/kube-proxy_v1.15.2
+I0917 12:49:51.048530    3080 ssh_runner.go:101] SSH: docker load -i /tmp/kube-proxy_v1.15.2
+I0917 12:49:51.180539    3080 utils.go:227] > Loaded image: k8s.gcr.io/kube-proxy:v1.15.2
+I0917 12:49:51.188536    3080 ssh_runner.go:101] SSH: sudo rm -rf /tmp/kube-proxy_v1.15.2
+I0917 12:49:51.195533    3080 cache_images.go:228] Successfully loaded image C:\Users\dlahoda\.minikube\cache\images\k8s.gcr.io\kube-proxy_v1.15.2 from cache
+I0917 12:49:51.195533    3080 docker.go:97] Loading image: /tmp/kube-addon-manager_v9.0
+I0917 12:49:51.197532    3080 ssh_runner.go:101] SSH: docker load -i /tmp/kube-addon-manager_v9.0
+I0917 12:49:51.320536    3080 utils.go:227] > Loaded image: k8s.gcr.io/kube-addon-manager:v9.0
+I0917 12:49:51.326534    3080 ssh_runner.go:101] SSH: sudo rm -rf /tmp/kube-addon-manager_v9.0
+I0917 12:49:51.332532    3080 cache_images.go:228] Successfully loaded image C:\Users\dlahoda\.minikube\cache\images\k8s.gcr.io\kube-addon-manager_v9.0 from cache
+I0917 12:49:51.333533    3080 docker.go:97] Loading image: /tmp/kubernetes-dashboard-amd64_v1.10.1
+I0917 12:49:51.333533    3080 ssh_runner.go:101] SSH: docker load -i /tmp/kubernetes-dashboard-amd64_v1.10.1
+I0917 12:49:51.492551    3080 utils.go:227] > Loaded image: k8s.gcr.io/kubernetes-dashboard-amd64:v1.10.1
+I0917 12:49:51.502550    3080 ssh_runner.go:101] SSH: sudo rm -rf /tmp/kubernetes-dashboard-amd64_v1.10.1
+I0917 12:49:51.511545    3080 cache_images.go:228] Successfully loaded image C:\Users\dlahoda\.minikube\cache\images\k8s.gcr.io\kubernetes-dashboard-amd64_v1.10.1 from cache
+I0917 12:49:51.511545    3080 docker.go:97] Loading image: /tmp/kube-controller-manager_v1.15.2
+I0917 12:49:51.512545    3080 ssh_runner.go:101] SSH: docker load -i /tmp/kube-controller-manager_v1.15.2
+I0917 12:49:51.654544    3080 utils.go:227] > Loaded image: k8s.gcr.io/kube-controller-manager:v1.15.2
+I0917 12:49:51.659544    3080 ssh_runner.go:101] SSH: sudo rm -rf /tmp/kube-controller-manager_v1.15.2
+I0917 12:49:51.665546    3080 cache_images.go:228] Successfully loaded image C:\Users\dlahoda\.minikube\cache\images\k8s.gcr.io\kube-controller-manager_v1.15.2 from cache
+I0917 12:49:51.665546    3080 docker.go:97] Loading image: /tmp/kube-apiserver_v1.15.2
+I0917 12:49:51.666543    3080 ssh_runner.go:101] SSH: docker load -i /tmp/kube-apiserver_v1.15.2
+I0917 12:49:51.823063    3080 utils.go:227] > Loaded image: k8s.gcr.io/kube-apiserver:v1.15.2
+I0917 12:49:51.828063    3080 ssh_runner.go:101] SSH: sudo rm -rf /tmp/kube-apiserver_v1.15.2
+I0917 12:49:51.834067    3080 cache_images.go:228] Successfully loaded image C:\Users\dlahoda\.minikube\cache\images\k8s.gcr.io\kube-apiserver_v1.15.2 from cache
+I0917 12:49:51.834067    3080 docker.go:97] Loading image: /tmp/etcd_3.3.10
+I0917 12:49:51.835092    3080 ssh_runner.go:101] SSH: docker load -i /tmp/etcd_3.3.10
+I0917 12:49:52.011174    3080 utils.go:227] > Loaded image: k8s.gcr.io/etcd:3.3.10
+I0917 12:49:52.019060    3080 ssh_runner.go:101] SSH: sudo rm -rf /tmp/etcd_3.3.10
+I0917 12:49:52.026095    3080 cache_images.go:228] Successfully loaded image C:\Users\dlahoda\.minikube\cache\images\k8s.gcr.io\etcd_3.3.10 from cache
+I0917 12:49:52.027069    3080 cache_images.go:110] Successfully loaded all cached images.
+I0917 12:49:52.027069    3080 kubeadm.go:502] kubelet v1.15.2 config:
+
+[Unit]
+Wants=docker.socket
+
+[Service]
+ExecStart=
+ExecStart=/usr/bin/kubelet --authorization-mode=Webhook --bootstrap-kubeconfig=/etc/kubernetes/bootstrap-kubelet.conf --cgroup-driver=cgroupfs --client-ca-file=/var/lib/minikube/certs/ca.crt --cluster-dns=10.96.0.10 --cluster-domain=cluster.local --container-runtime=docker --fail-swap-on=false --hostname-override=minikube --kubeconfig=/etc/kubernetes/kubelet.conf --pod-manifest-path=/etc/kubernetes/manifests
+
+[Install]
+I0917 12:49:52.028063    3080 cache_binaries.go:63] Not caching binary, using https://storage.googleapis.com/kubernetes-release/release/v1.15.2/bin/linux/amd64/kubeadm
+I0917 12:49:52.028063    3080 cache_binaries.go:63] Not caching binary, using https://storage.googleapis.com/kubernetes-release/release/v1.15.2/bin/linux/amd64/kubelet
+I0917 12:49:52.032065    3080 ssh_runner.go:101] SSH: sudo rm -f /usr/bin/kubelet
+I0917 12:49:52.032065    3080 ssh_runner.go:101] SSH: sudo rm -f /usr/bin/kubeadm
+I0917 12:49:52.039451    3080 ssh_runner.go:101] SSH: sudo mkdir -p /usr/bin
+I0917 12:49:52.040417    3080 ssh_runner.go:101] SSH: sudo mkdir -p /usr/bin
+I0917 12:49:52.043421    3080 ssh_runner.go:182] Transferring 119616640 bytes to kubelet
+I0917 12:49:52.045102    3080 ssh_runner.go:182] Transferring 40182208 bytes to kubeadm
+I0917 12:49:52.235418    3080 ssh_runner.go:195] kubeadm: copied 40182208 bytes
+I0917 12:49:52.421549    3080 ssh_runner.go:195] kubelet: copied 119616640 bytes
+I0917 12:49:52.424545    3080 ssh_runner.go:101] SSH: sudo rm -f /lib/systemd/system/kubelet.service
+I0917 12:49:52.428547    3080 ssh_runner.go:101] SSH: sudo mkdir -p /lib/systemd/system
+I0917 12:49:52.431547    3080 ssh_runner.go:182] Transferring 324 bytes to kubelet.service
+I0917 12:49:52.431547    3080 ssh_runner.go:195] kubelet.service: copied 324 bytes
+I0917 12:49:52.434548    3080 ssh_runner.go:101] SSH: sudo rm -f /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
+I0917 12:49:52.438546    3080 ssh_runner.go:101] SSH: sudo mkdir -p /etc/systemd/system/kubelet.service.d
+I0917 12:49:52.441546    3080 ssh_runner.go:182] Transferring 473 bytes to 10-kubeadm.conf
+I0917 12:49:52.441546    3080 ssh_runner.go:195] 10-kubeadm.conf: copied 473 bytes
+I0917 12:49:52.445348    3080 ssh_runner.go:101] SSH: sudo rm -f /var/lib/kubeadm.yaml
+I0917 12:49:52.448546    3080 ssh_runner.go:101] SSH: sudo mkdir -p /var/lib
+I0917 12:49:52.451547    3080 ssh_runner.go:182] Transferring 1138 bytes to kubeadm.yaml
+I0917 12:49:52.452548    3080 ssh_runner.go:195] kubeadm.yaml: copied 1138 bytes
+I0917 12:49:52.455548    3080 ssh_runner.go:101] SSH: sudo rm -f /etc/kubernetes/addons/dashboard-dp.yaml
+I0917 12:49:52.458546    3080 ssh_runner.go:101] SSH: sudo mkdir -p /etc/kubernetes/addons
+I0917 12:49:52.461548    3080 ssh_runner.go:182] Transferring 1570 bytes to dashboard-dp.yaml
+I0917 12:49:52.462545    3080 ssh_runner.go:195] dashboard-dp.yaml: copied 1570 bytes
+I0917 12:49:52.465546    3080 ssh_runner.go:101] SSH: sudo rm -f /etc/kubernetes/addons/dashboard-svc.yaml
+I0917 12:49:52.468547    3080 ssh_runner.go:101] SSH: sudo mkdir -p /etc/kubernetes/addons
+I0917 12:49:52.472546    3080 ssh_runner.go:182] Transferring 979 bytes to dashboard-svc.yaml
+I0917 12:49:52.472546    3080 ssh_runner.go:195] dashboard-svc.yaml: copied 979 bytes
+I0917 12:49:52.475547    3080 ssh_runner.go:101] SSH: sudo rm -f /etc/kubernetes/addons/storageclass.yaml
+I0917 12:49:52.478546    3080 ssh_runner.go:101] SSH: sudo mkdir -p /etc/kubernetes/addons
+I0917 12:49:52.482547    3080 ssh_runner.go:182] Transferring 271 bytes to storageclass.yaml
+I0917 12:49:52.482547    3080 ssh_runner.go:195] storageclass.yaml: copied 271 bytes
+I0917 12:49:52.485562    3080 ssh_runner.go:101] SSH: sudo rm -f /etc/kubernetes/addons/storage-provisioner.yaml
+I0917 12:49:52.489548    3080 ssh_runner.go:101] SSH: sudo mkdir -p /etc/kubernetes/addons
+I0917 12:49:52.492546    3080 ssh_runner.go:182] Transferring 1709 bytes to storage-provisioner.yaml
+I0917 12:49:52.493549    3080 ssh_runner.go:195] storage-provisioner.yaml: copied 1709 bytes
+I0917 12:49:52.496551    3080 ssh_runner.go:101] SSH: sudo rm -f /etc/kubernetes/manifests/addon-manager.yaml.tmpl
+I0917 12:49:52.499559    3080 ssh_runner.go:101] SSH: sudo mkdir -p /etc/kubernetes/manifests/
+I0917 12:49:52.503559    3080 ssh_runner.go:182] Transferring 1406 bytes to addon-manager.yaml.tmpl
+I0917 12:49:52.504560    3080 ssh_runner.go:195] addon-manager.yaml.tmpl: copied 1406 bytes
+I0917 12:49:52.507560    3080 ssh_runner.go:101] SSH:
+sudo systemctl daemon-reload &&
+sudo systemctl start kubelet
+I0917 12:49:52.562108    3080 certs.go:48] Setting up certificates for IP: 192.168.88.83
+I0917 12:49:52.595108    3080 ssh_runner.go:101] SSH: sudo rm -f /var/lib/minikube/certs/ca.crt
+I0917 12:49:52.600383    3080 ssh_runner.go:101] SSH: sudo mkdir -p /var/lib/minikube/certs/
+I0917 12:49:52.605394    3080 ssh_runner.go:182] Transferring 1066 bytes to ca.crt
+I0917 12:49:52.606399    3080 ssh_runner.go:195] ca.crt: copied 1066 bytes
+I0917 12:49:52.608395    3080 ssh_runner.go:101] SSH: sudo rm -f /var/lib/minikube/certs/ca.key
+I0917 12:49:52.613392    3080 ssh_runner.go:101] SSH: sudo mkdir -p /var/lib/minikube/certs/
+I0917 12:49:52.620393    3080 ssh_runner.go:182] Transferring 1679 bytes to ca.key
+I0917 12:49:52.621394    3080 ssh_runner.go:195] ca.key: copied 1679 bytes
+I0917 12:49:52.624393    3080 ssh_runner.go:101] SSH: sudo rm -f /var/lib/minikube/certs/apiserver.crt
+I0917 12:49:52.628394    3080 ssh_runner.go:101] SSH: sudo mkdir -p /var/lib/minikube/certs/
+I0917 12:49:52.632392    3080 ssh_runner.go:182] Transferring 1298 bytes to apiserver.crt
+I0917 12:49:52.632392    3080 ssh_runner.go:195] apiserver.crt: copied 1298 bytes
+I0917 12:49:52.635394    3080 ssh_runner.go:101] SSH: sudo rm -f /var/lib/minikube/certs/apiserver.key
+I0917 12:49:52.640396    3080 ssh_runner.go:101] SSH: sudo mkdir -p /var/lib/minikube/certs/
+I0917 12:49:52.644393    3080 ssh_runner.go:182] Transferring 1679 bytes to apiserver.key
+I0917 12:49:52.645396    3080 ssh_runner.go:195] apiserver.key: copied 1679 bytes
+I0917 12:49:52.649395    3080 ssh_runner.go:101] SSH: sudo rm -f /var/lib/minikube/certs/proxy-client-ca.crt
+I0917 12:49:52.653392    3080 ssh_runner.go:101] SSH: sudo mkdir -p /var/lib/minikube/certs/
+I0917 12:49:52.657393    3080 ssh_runner.go:182] Transferring 1074 bytes to proxy-client-ca.crt
+I0917 12:49:52.657393    3080 ssh_runner.go:195] proxy-client-ca.crt: copied 1074 bytes
+I0917 12:49:52.661395    3080 ssh_runner.go:101] SSH: sudo rm -f /var/lib/minikube/certs/proxy-client-ca.key
+I0917 12:49:52.664394    3080 ssh_runner.go:101] SSH: sudo mkdir -p /var/lib/minikube/certs/
+I0917 12:49:52.669393    3080 ssh_runner.go:182] Transferring 1675 bytes to proxy-client-ca.key
+I0917 12:49:52.669393    3080 ssh_runner.go:195] proxy-client-ca.key: copied 1675 bytes
+I0917 12:49:52.672395    3080 ssh_runner.go:101] SSH: sudo rm -f /var/lib/minikube/certs/proxy-client.crt
+I0917 12:49:52.676393    3080 ssh_runner.go:101] SSH: sudo mkdir -p /var/lib/minikube/certs/
+I0917 12:49:52.681395    3080 ssh_runner.go:182] Transferring 1103 bytes to proxy-client.crt
+I0917 12:49:52.682391    3080 ssh_runner.go:195] proxy-client.crt: copied 1103 bytes
+I0917 12:49:52.685395    3080 ssh_runner.go:101] SSH: sudo rm -f /var/lib/minikube/certs/proxy-client.key
+I0917 12:49:52.689396    3080 ssh_runner.go:101] SSH: sudo mkdir -p /var/lib/minikube/certs/
+I0917 12:49:52.693395    3080 ssh_runner.go:182] Transferring 1675 bytes to proxy-client.key
+I0917 12:49:52.694394    3080 ssh_runner.go:195] proxy-client.key: copied 1675 bytes
+I0917 12:49:52.697392    3080 ssh_runner.go:101] SSH: sudo rm -f /var/lib/minikube/kubeconfig
+I0917 12:49:52.701394    3080 ssh_runner.go:101] SSH: sudo mkdir -p /var/lib/minikube
+I0917 12:49:52.704394    3080 ssh_runner.go:182] Transferring 428 bytes to kubeconfig
+I0917 12:49:52.705394    3080 ssh_runner.go:195] kubeconfig: copied 428 bytes
+[executing ==>] : C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -NonInteractive ( Hyper-V\Get-VM minikube ).state
+[stdout =====>] : Running
+
+[stderr =====>] :
+[executing ==>] : C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -NonInteractive (( Hyper-V\Get-VM minikube ).networkadapters[0]).ipaddresses[0]
+[stdout =====>] : 192.168.88.83
+
+[stderr =====>] :
+I0917 12:49:53.653164    3080 kubeconfig.go:127] Using kubeconfig:  C:\Users\dlahoda/.kube/config
+* Relaunching Kubernetes using kubeadm ...
+I0917 12:49:53.662205    3080 ssh_runner.go:101] SSH: sudo kubeadm init phase certs all --config /var/lib/kubeadm.yaml
+I0917 12:49:53.688729    3080 utils.go:227] > [certs] Using certificateDir folder "/var/lib/minikube/certs/"
+I0917 12:49:53.688729    3080 utils.go:227] > [certs] Using existing front-proxy-ca certificate authority
+I0917 12:49:53.690726    3080 utils.go:227] > [certs] Using existing front-proxy-client certificate and key on disk
+I0917 12:49:53.691731    3080 utils.go:227] > [certs] Using existing etcd/ca certificate authority
+I0917 12:49:53.692727    3080 utils.go:227] > [certs] Using existing etcd/server certificate and key on disk
+I0917 12:49:53.694726    3080 utils.go:227] > [certs] Using existing etcd/peer certificate and key on disk
+I0917 12:49:53.695727    3080 utils.go:227] > [certs] Using existing etcd/healthcheck-client certificate and key on disk
+I0917 12:49:53.696727    3080 utils.go:227] > [certs] Using existing apiserver-etcd-client certificate and key on disk
+I0917 12:49:53.696727    3080 utils.go:227] > [certs] Using existing ca certificate authority
+I0917 12:49:53.697725    3080 utils.go:227] > [certs] Using existing apiserver certificate and key on disk
+I0917 12:49:53.698728    3080 utils.go:227] > [certs] Using existing apiserver-kubelet-client certificate and key on disk
+I0917 12:49:53.698728    3080 utils.go:227] > [certs] Using the existing "sa" key
+I0917 12:49:53.699727    3080 ssh_runner.go:101] SSH: sudo kubeadm init phase kubeconfig all --config /var/lib/kubeadm.yaml
+I0917 12:49:53.727729    3080 utils.go:227] > [kubeconfig] Using kubeconfig folder "/etc/kubernetes"
+I0917 12:49:54.011727    3080 utils.go:227] > [kubeconfig] Writing "admin.conf" kubeconfig file
+I0917 12:49:54.169728    3080 utils.go:227] > [kubeconfig] Writing "kubelet.conf" kubeconfig file
+I0917 12:49:54.325735    3080 utils.go:227] > [kubeconfig] Writing "controller-manager.conf" kubeconfig file
+I0917 12:49:54.416736    3080 utils.go:227] > [kubeconfig] Writing "scheduler.conf" kubeconfig file
+I0917 12:49:54.417741    3080 ssh_runner.go:101] SSH: sudo kubeadm init phase control-plane all --config /var/lib/kubeadm.yaml
+I0917 12:49:54.446735    3080 utils.go:227] > [control-plane] Using manifest folder "/etc/kubernetes/manifests"
+I0917 12:49:54.446735    3080 utils.go:227] > [control-plane] Creating static Pod manifest for "kube-apiserver"
+I0917 12:49:54.454750    3080 utils.go:227] > [control-plane] Creating static Pod manifest for "kube-controller-manager"
+I0917 12:49:54.456735    3080 utils.go:227] > [control-plane] Creating static Pod manifest for "kube-scheduler"
+I0917 12:49:54.463736    3080 ssh_runner.go:101] SSH: sudo kubeadm init phase etcd local --config /var/lib/kubeadm.yaml
+I0917 12:49:54.490735    3080 utils.go:227] > [etcd] Creating static Pod manifest for local etcd in "/etc/kubernetes/manifests"
+I0917 12:49:54.499734    3080 kubeadm.go:382] Waiting for apiserver ...
+I0917 12:49:56.503598    3080 kubeadm.go:143] https://192.168.88.83:8443/healthz response: Get https://192.168.88.83:8443/healthz: dial tcp 192.168.88.83:8443: connectex: No connection could be made because the target machine actively refused it. <nil>
+I0917 12:49:56.511600    3080 kubeadm.go:385] apiserver status: Stopped, err: <nil>
+I0917 12:49:58.818560    3080 kubeadm.go:143] https://192.168.88.83:8443/healthz response: Get https://192.168.88.83:8443/healthz: dial tcp 192.168.88.83:8443: connectex: No connection could be made because the target machine actively refused it. <nil>
+I0917 12:49:58.819577    3080 kubeadm.go:385] apiserver status: Stopped, err: <nil>
+I0917 12:50:00.921566    3080 kubeadm.go:143] https://192.168.88.83:8443/healthz response: Get https://192.168.88.83:8443/healthz: dial tcp 192.168.88.83:8443: connectex: No connection could be made because the target machine actively refused it. <nil>
+I0917 12:50:00.921566    3080 kubeadm.go:385] apiserver status: Stopped, err: <nil>
+I0917 12:50:03.018916    3080 kubeadm.go:143] https://192.168.88.83:8443/healthz response: Get https://192.168.88.83:8443/healthz: dial tcp 192.168.88.83:8443: connectex: No connection could be made because the target machine actively refused it. <nil>
+I0917 12:50:03.019961    3080 kubeadm.go:385] apiserver status: Stopped, err: <nil>
+I0917 12:50:05.118404    3080 kubeadm.go:143] https://192.168.88.83:8443/healthz response: Get https://192.168.88.83:8443/healthz: dial tcp 192.168.88.83:8443: connectex: No connection could be made because the target machine actively refused it. <nil>
+I0917 12:50:05.120400    3080 kubeadm.go:385] apiserver status: Stopped, err: <nil>
+I0917 12:50:07.219488    3080 kubeadm.go:143] https://192.168.88.83:8443/healthz response: Get https://192.168.88.83:8443/healthz: dial tcp 192.168.88.83:8443: connectex: No connection could be made because the target machine actively refused it. <nil>
+I0917 12:50:07.219488    3080 kubeadm.go:385] apiserver status: Stopped, err: <nil>
+I0917 12:50:09.319923    3080 kubeadm.go:143] https://192.168.88.83:8443/healthz response: Get https://192.168.88.83:8443/healthz: dial tcp 192.168.88.83:8443: connectex: No connection could be made because the target machine actively refused it. <nil>
+I0917 12:50:09.319923    3080 kubeadm.go:385] apiserver status: Stopped, err: <nil>
+I0917 12:50:11.422805    3080 kubeadm.go:143] https://192.168.88.83:8443/healthz response: Get https://192.168.88.83:8443/healthz: dial tcp 192.168.88.83:8443: connectex: No connection could be made because the target machine actively refused it. <nil>
+I0917 12:50:11.423819    3080 kubeadm.go:385] apiserver status: Stopped, err: <nil>
+I0917 12:50:13.521743    3080 kubeadm.go:143] https://192.168.88.83:8443/healthz response: Get https://192.168.88.83:8443/healthz: dial tcp 192.168.88.83:8443: connectex: No connection could be made because the target machine actively refused it. <nil>
+I0917 12:50:13.521743    3080 kubeadm.go:385] apiserver status: Stopped, err: <nil>
+I0917 12:50:15.618682    3080 kubeadm.go:143] https://192.168.88.83:8443/healthz response: Get https://192.168.88.83:8443/healthz: dial tcp 192.168.88.83:8443: connectex: No connection could be made because the target machine actively refused it. <nil>
+I0917 12:50:15.618682    3080 kubeadm.go:385] apiserver status: Stopped, err: <nil>
+I0917 12:50:20.410841    3080 kubeadm.go:143] https://192.168.88.83:8443/healthz response: <nil> &{Status:403 Forbidden StatusCode:403 Proto:HTTP/1.1 ProtoMajor:1 ProtoMinor:1 Header:map[Content-Length:[192] Content-Type:[application/json] Date:[Tue, 17 Sep 2019 09:50:20 GMT] X-Content-Type-Options:[nosniff]] Body:0xc000463180 ContentLength:192 TransferEncoding:[] Close:false Uncompressed:false Trailer:map[] Request:0xc000a4f100 TLS:0xc0003d1340}
+I0917 12:50:20.410841    3080 kubeadm.go:385] apiserver status: Error, err: <nil>
+I0917 12:50:20.546796    3080 kubeadm.go:143] https://192.168.88.83:8443/healthz response: <nil> &{Status:500 Internal Server Error StatusCode:500 Proto:HTTP/1.1 ProtoMajor:1 ProtoMinor:1 Header:map[Content-Length:[877] Content-Type:[text/plain; charset=utf-8] Date:[Tue, 17 Sep 2019 09:50:20 GMT] X-Content-Type-Options:[nosniff]] Body:0xc000aba280 ContentLength:877 TransferEncoding:[] Close:false Uncompressed:false Trailer:map[] Request:0xc000475e00 TLS:0xc0006fc630}
+I0917 12:50:20.597836    3080 kubeadm.go:385] apiserver status: Error, err: <nil>
+I0917 12:50:20.820784    3080 kubeadm.go:143] https://192.168.88.83:8443/healthz response: <nil> &{Status:500 Internal Server Error StatusCode:500 Proto:HTTP/1.1 ProtoMajor:1 ProtoMinor:1 Header:map[Content-Length:[856] Content-Type:[text/plain; charset=utf-8] Date:[Tue, 17 Sep 2019 09:50:20 GMT] X-Content-Type-Options:[nosniff]] Body:0xc000463380 ContentLength:856 TransferEncoding:[] Close:false Uncompressed:false Trailer:map[] Request:0xc000a4f200 TLS:0xc0003d1550}
+I0917 12:50:20.820784    3080 kubeadm.go:385] apiserver status: Error, err: <nil>
+I0917 12:50:21.124311    3080 kubeadm.go:143] https://192.168.88.83:8443/healthz response: <nil> &{Status:500 Internal Server Error StatusCode:500 Proto:HTTP/1.1 ProtoMajor:1 ProtoMinor:1 Header:map[Content-Length:[856] Content-Type:[text/plain; charset=utf-8] Date:[Tue, 17 Sep 2019 09:50:21 GMT] X-Content-Type-Options:[nosniff]] Body:0xc000463440 ContentLength:856 TransferEncoding:[] Close:false Uncompressed:false Trailer:map[] Request:0xc000a4f300 TLS:0xc0003d1600}
+I0917 12:50:21.124311    3080 kubeadm.go:385] apiserver status: Error, err: <nil>
+I0917 12:50:21.421586    3080 kubeadm.go:143] https://192.168.88.83:8443/healthz response: <nil> &{Status:500 Internal Server Error StatusCode:500 Proto:HTTP/1.1 ProtoMajor:1 ProtoMinor:1 Header:map[Content-Length:[814] Content-Type:[text/plain; charset=utf-8] Date:[Tue, 17 Sep 2019 09:50:21 GMT] X-Content-Type-Options:[nosniff]] Body:0xc000aba5c0 ContentLength:814 TransferEncoding:[] Close:false Uncompressed:false Trailer:map[] Request:0xc000a4f400 TLS:0xc0006fc9a0}
+I0917 12:50:21.421586    3080 kubeadm.go:385] apiserver status: Error, err: <nil>
+I0917 12:50:21.719336    3080 kubeadm.go:143] https://192.168.88.83:8443/healthz response: <nil> &{Status:200 OK StatusCode:200 Proto:HTTP/1.1 ProtoMajor:1 ProtoMinor:1 Header:map[Content-Length:[2] Content-Type:[text/plain; charset=utf-8] Date:[Tue, 17 Sep 2019 09:50:21 GMT] X-Content-Type-Options:[nosniff]] Body:0xc0005d5200 ContentLength:2 TransferEncoding:[] Close:false Uncompressed:false Trailer:map[] Request:0xc000475f00 TLS:0xc0003d1810}
+I0917 12:50:21.719336    3080 kubeadm.go:385] apiserver status: Running, err: <nil>
+I0917 12:50:21.721338    3080 ssh_runner.go:101] SSH: sudo kubeadm init phase addon all --config /var/lib/kubeadm.yaml
+I0917 12:50:21.920898    3080 utils.go:227] > [addons] Applied essential addon: CoreDNS
+I0917 12:50:22.028413    3080 utils.go:227] > [addons] Applied essential addon: kube-proxy
+I0917 12:50:22.029416    3080 ssh_runner.go:137] Run with output: cat /proc/$(pgrep kube-apiserver)/oom_adj
+I0917 12:50:22.037412    3080 utils.go:227] > 16
+I0917 12:50:22.037412    3080 kubeadm.go:258] apiserver oom_adj: 16
+I0917 12:50:22.037412    3080 kubeadm.go:263] adjusting apiserver oom_adj to -10
+I0917 12:50:22.038414    3080 ssh_runner.go:101] SSH: echo -10 | sudo tee /proc/$(pgrep kube-apiserver)/oom_adj
+I0917 12:50:22.049418    3080 utils.go:227] > -10
+* Waiting for: apiserverI0917 12:50:22.059417    3080 kubeadm.go:382] Waiting for apiserver ...
+I0917 12:50:22.067417    3080 kubeadm.go:143] https://192.168.88.83:8443/healthz response: <nil> &{Status:200 OK StatusCode:200 Proto:HTTP/1.1 ProtoMajor:1 ProtoMinor:1 Header:map[Content-Length:[2] Content-Type:[text/plain; charset=utf-8] Date:[Tue, 17 Sep 2019 09:50:22 GMT] X-Content-Type-Options:[nosniff]] Body:0xc000798bc0 ContentLength:2 TransferEncoding:[] Close:false Uncompressed:false Trailer:map[] Request:0xc0000e2b00 TLS:0xc000469760}
+I0917 12:50:22.068414    3080 kubeadm.go:385] apiserver status: Running, err: <nil>
+ proxyI0917 12:50:22.071413    3080 kubernetes.go:132] Waiting for pod with label "kube-system" in ns "k8s-app=kube-proxy" ...
+I0917 12:50:22.083412    3080 kubernetes.go:143] Found 1 Pods for label selector k8s-app=kube-proxy
+ etcdI0917 12:50:22.084413    3080 kubernetes.go:132] Waiting for pod with label "kube-system" in ns "component=etcd" ...
+I0917 12:50:22.087412    3080 kubernetes.go:143] Found 1 Pods for label selector component=etcd
+ schedulerI0917 12:50:22.087412    3080 kubernetes.go:132] Waiting for pod with label "kube-system" in ns "component=kube-scheduler" ...
+I0917 12:50:22.134415    3080 kubernetes.go:143] Found 1 Pods for label selector component=kube-scheduler
+ controllerI0917 12:50:22.136414    3080 kubernetes.go:132] Waiting for pod with label "kube-system" in ns "component=kube-controller-manager" ...
+I0917 12:50:22.139413    3080 kubernetes.go:143] Found 1 Pods for label selector component=kube-controller-manager
+ dnsI0917 12:50:22.139413    3080 kubernetes.go:132] Waiting for pod with label "kube-system" in ns "k8s-app=kube-dns" ...
+I0917 12:50:22.142413    3080 kubernetes.go:143] Found 2 Pods for label selector k8s-app=kube-dns
+
+* Done! kubectl is now configured to use "minikube"
+PS C:\Users\dlahoda> kubectl run --generator=run-pod/v1 hello-minikube --image=k8s.gcr.io/echoserver:1.10 --port=8080
+Error from server (AlreadyExists): pods "hello-minikube" already exists
+PS C:\Users\dlahoda> kubectl run hello-minikube
+Error: required flag(s) "image" not set
+
+
+Examples:
+  # Start a single instance of nginx.
+  kubectl run nginx --image=nginx
+
+  # Start a single instance of hazelcast and let the container expose port 5701 .
+  kubectl run hazelcast --image=hazelcast --port=5701
+
+  # Start a single instance of hazelcast and set environment variables "DNS_DOMAIN=cluster" and "POD_NAMESPACE=default" in the container.
+  kubectl run hazelcast --image=hazelcast --env="DNS_DOMAIN=cluster" --env="POD_NAMESPACE=default"
+
+  # Start a single instance of hazelcast and set labels "app=hazelcast" and "env=prod" in the container.
+  kubectl run hazelcast --image=hazelcast --labels="app=hazelcast,env=prod"
+
+  # Start a replicated instance of nginx.
+  kubectl run nginx --image=nginx --replicas=5
+
+  # Dry run. Print the corresponding API objects without creating them.
+  kubectl run nginx --image=nginx --dry-run
+
+  # Start a single instance of nginx, but overload the spec of the deployment with a partial set of values parsed from JSON.
+  kubectl run nginx --image=nginx --overrides='{ "apiVersion": "v1", "spec": { ... } }'
+
+  # Start a pod of busybox and keep it in the foreground, don't restart it if it exits.
+  kubectl run -i -t busybox --image=busybox --restart=Never
+
+  # Start the nginx container using the default command, but use custom arguments (arg1 .. argN) for that command.
+  kubectl run nginx --image=nginx -- <arg1> <arg2> ... <argN>
+
+  # Start the nginx container using a different command and custom arguments.
+  kubectl run nginx --image=nginx --command -- <cmd> <arg1> ... <argN>
+
+  # Start the perl container to compute π to 2000 places and print it out.
+  kubectl run pi --image=perl --restart=OnFailure -- perl -Mbignum=bpi -wle 'print bpi(2000)'
+
+  # Start the cron job to compute π to 2000 places and print it out every 5 minutes.
+  kubectl run pi --schedule="0/5 * * * ?" --image=perl --restart=OnFailure -- perl -Mbignum=bpi -wle 'print bpi(2000)'
+
+Options:
+      --allow-missing-template-keys=true: If true, ignore any errors in templates when a field or map key is missing in the template. Only applies to golang and jsonpath output formats.
+      --attach=false: If true, wait for the Pod to start running, and then attach to the Pod as if 'kubectl attach ...' were called.  Default false, unless '-i/--stdin' is set, in which case the default is true. With '--restart=Never' the exit code of the container process is returned.
+      --cascade=true: If true, cascade the deletion of the resources managed by this resource (e.g. Pods created by a ReplicationController).  Default true.
+      --command=false: If true and extra arguments are present, use them as the 'command' field in the container, rather than the 'args' field which is the default.
+      --dry-run=false: If true, only print the object that would be sent, without sending it.
+      --env=[]: Environment variables to set in the container
+      --expose=false: If true, a public, external service is created for the container(s) which are run
+  -f, --filename=[]: to use to replace the resource.
+      --force=false: Only used when grace-period=0. If true, immediately remove resources from API and bypass graceful deletion. Note that immediate deletion of some resources may result in inconsistency or data loss and requires confirmation.
+      --generator='': The name of the API generator to use, see http://kubernetes.io/docs/user-guide/kubectl-conventions/#generators for a list.
+      --grace-period=-1: Period of time in seconds given to the resource to terminate gracefully. Ignored if negative. Set to 1 for immediate shutdown. Can only be set to 0 when --force is true (force deletion).
+      --hostport=-1: The host port mapping for the container port. To demonstrate a single-machine container.
+      --image='': The image for the container to run.
+      --image-pull-policy='': The image pull policy for the container. If left empty, this value will not be specified by the client and defaulted by the server
+  -k, --kustomize='': Process a kustomization directory. This flag can't be used together with -f or -R.
+  -l, --labels='': Comma separated labels to apply to the pod(s). Will override previous values.
+      --leave-stdin-open=false: If the pod is started in interactive mode or with stdin, leave stdin open after the first attach completes. By default, stdin will be closed after the first attach completes.
+      --limits='': The resource requirement limits for this container.  For example, 'cpu=200m,memory=512Mi'.  Note that server side components may assign limits depending on the server configuration, such as limit ranges.
+  -o, --output='': Output format. One of: json|yaml|name|go-template|go-template-file|template|templatefile|jsonpath|jsonpath-file.
+      --overrides='': An inline JSON override for the generated object. If this is non-empty, it is used to override the generated object. Requires that the object supply a valid apiVersion field.
+      --pod-running-timeout=1m0s: The length of time (like 5s, 2m, or 3h, higher than zero) to wait until at least one pod is running
+      --port='': The port that this container exposes.  If --expose is true, this is also the port used by the service that is created.
+      --quiet=false: If true, suppress prompt messages.
+      --record=false: Record current kubectl command in the resource annotation. If set to false, do not record the command. If set to true, record the command. If not set, default to updating the existing annotation value only if one already exists.
+  -R, --recursive=false: Process the directory used in -f, --filename recursively. Useful when you want to manage related manifests organized within the same directory.
+  -r, --replicas=1: Number of replicas to create for this container. Default is 1.
+      --requests='': The resource requirement requests for this container.  For example, 'cpu=100m,memory=256Mi'.  Note that server side components may assign requests depending on the server configuration, such as limit ranges.
+      --restart='Always': The restart policy for this Pod.  Legal values [Always, OnFailure, Never].  If set to 'Always' a deployment is created, if set to 'OnFailure' a job is created, if set to 'Never', a regular pod is created. For the latter two --replicas must be 1.  Default 'Always', for CronJobs `Never`.
+      --rm=false: If true, delete resources created in this command for attached containers.
+      --save-config=false: If true, the configuration of current object will be saved in its annotation. Otherwise, the annotation will be unchanged. This flag is useful when you want to perform kubectl apply on this object in the future.
+      --schedule='': A schedule in the Cron format the job should be run with.
+      --service-generator='service/v2': The name of the generator to use for creating a service.  Only used if --expose is true
+      --service-overrides='': An inline JSON override for the generated service object. If this is non-empty, it is used to override the generated object. Requires that the object supply a valid apiVersion field.  Only used if --expose is true.
+      --serviceaccount='': Service account to set in the pod spec
+  -i, --stdin=false: Keep stdin open on the container(s) in the pod, even if nothing is attached.
+      --template='': Template string or path to template file to use when -o=go-template, -o=go-template-file. The template format is golang templates [http://golang.org/pkg/text/template/#pkg-overview].
+      --timeout=0s: The length of time to wait before giving up on a delete, zero means determine a timeout from the size of the object
+  -t, --tty=false: Allocated a TTY for each container in the pod.
+      --wait=false: If true, wait for resources to be gone before returning. This waits for finalizers.
+
+Usage:
+  kubectl run NAME --image=image [--env="key=value"] [--port=port] [--replicas=replicas] [--dry-run=bool] [--overrides=inline-json] [--command] -- [COMMAND] [args...] [options]
+
+Use "kubectl options" for a list of global command-line options (applies to all commands).
+
+required flag(s) "image" not set
+PS C:\Users\dlahoda> kubectl run hello-minikube --image=k8s.gcr.io/echoserver:1.10 --port=8080
+kubectl run --generator=deployment/apps.v1 is DEPRECATED and will be removed in a future version. Use kubectl run --generator=run-pod/v1 or kubectl create instead.
+deployment.apps/hello-minikube created
+PS C:\Users\dlahoda> kubectl get pods
+NAME                              READY   STATUS    RESTARTS   AGE
+hello-minikube                    1/1     Running   1          41m
+hello-minikube-856979d68c-g7g7n   1/1     Running   0          16s
+PS C:\Users\dlahoda> kubectl expose deployment hello-minikube --type=NodePort
+service/hello-minikube exposed
+PS C:\Users\dlahoda> kubectl delete service hello-minikube
+service "hello-minikube" deleted
+PS C:\Users\dlahoda> kubectl delete pod hello-minikube
+pod "hello-minikube" deleted
+PS C:\Users\dlahoda>
+PS C:\Users\dlahoda>
+PS C:\Users\dlahoda>
+PS C:\Users\dlahoda>
+PS C:\Users\dlahoda>
+PS C:\Users\dlahoda>
+PS C:\Users\dlahoda>
+PS C:\Users\dlahoda>
+PS C:\Users\dlahoda>
+PS C:\Users\dlahoda>
+PS C:\Users\dlahoda>
+PS C:\Users\dlahoda>
+PS C:\Users\dlahoda>
+PS C:\Users\dlahoda> kubectl run hello-minikube --image=k8s.gcr.io/echoserver:1.10 --port=8080
+PS C:\Users\dlahoda> kubectl run --generator=run-pod/v1 hello-minikube --image=k8s.gcr.io/echoserver:1.10 --port=8080
+pod/hello-minikube created
+PS C:\Users\dlahoda> kubectl expose deployment hello-minikube --type=NodePort
+service/hello-minikube exposed
+PS C:\Users\dlahoda> minikube service hello-minikube
+|-----------|----------------|----------------------------|
+| NAMESPACE |      NAME      |            URL             |
+|-----------|----------------|----------------------------|
+| default   | hello-minikube | http://192.168.88.83:30541 |
+|-----------|----------------|----------------------------|
+* Opening kubernetes service  default/hello-minikube in default browser...
+PS C:\Users\dlahoda> kubectl get service hello-minikube
+NAME             TYPE       CLUSTER-IP       EXTERNAL-IP   PORT(S)          AGE
+hello-minikube   NodePort   10.106.175.244   <none>        8080:30541/TCP   50s
+PS C:\Users\dlahoda> cd C:\Users\dlahoda\src\cncf-examples\kube\
+PS C:\Users\dlahoda\src\cncf-examples\kube> kubectl appply
+Error: unknown command "appply" for "kubectl"
+
+Did you mean this?
+        apply
+
+Run 'kubectl --help' for usage.
+unknown command "appply" for "kubectl"
+
+Did you mean this?
+        apply
+
+PS C:\Users\dlahoda\src\cncf-examples\kube> kubectl apply --help
+Apply a configuration to a resource by filename or stdin. The resource name must be specified. This resource will be
+created if it doesn't exist yet. To use 'apply', always create the resource initially with either 'apply' or 'create
+--save-config'.
+
+ JSON and YAML formats are accepted.
+
+ Alpha Disclaimer: the --prune functionality is not yet complete. Do not use unless you are aware of what the current
+state is. See https://issues.k8s.io/34274.
+
+Examples:
+  # Apply the configuration in pod.json to a pod.
+  kubectl apply -f ./pod.json
+
+  # Apply resources from a directory containing kustomization.yaml - e.g. dir/kustomization.yaml.
+  kubectl apply -k dir/
+
+  # Apply the JSON passed into stdin to a pod.
+  cat pod.json | kubectl apply -f -
+
+  # Note: --prune is still in Alpha
+  # Apply the configuration in manifest.yaml that matches label app=nginx and delete all the other resources that are
+not in the file and match label app=nginx.
+  kubectl apply --prune -f manifest.yaml -l app=nginx
+
+  # Apply the configuration in manifest.yaml and delete all the other configmaps that are not in the file.
+  kubectl apply --prune -f manifest.yaml --all --prune-whitelist=core/v1/ConfigMap
+
+Available Commands:
+  edit-last-applied Edit latest last-applied-configuration annotations of a resource/object
+  set-last-applied  Set the last-applied-configuration annotation on a live object to match the contents of a file.
+  view-last-applied View latest last-applied-configuration annotations of a resource/object
+
+Options:
+      --all=false: Select all resources in the namespace of the specified resource types.
+      --allow-missing-template-keys=true: If true, ignore any errors in templates when a field or map key is missing in
+the template. Only applies to golang and jsonpath output formats.
+      --cascade=true: If true, cascade the deletion of the resources managed by this resource (e.g. Pods created by a
+ReplicationController).  Default true.
+      --dry-run=false: If true, only print the object that would be sent, without sending it. Warning: --dry-run cannot
+accurately output the result of merging the local manifest and the server-side data. Use --server-dry-run to get the
+merged result instead.
+      --experimental-field-manager='kubectl': Name of the manager used to track field ownership. This is an alpha
+feature and flag.
+      --experimental-force-conflicts=false: If true, server-side apply will force the changes against conflicts. This is
+an alpha feature and flag.
+      --experimental-server-side=false: If true, apply runs in the server instead of the client. This is an alpha
+feature and flag.
+  -f, --filename=[]: that contains the configuration to apply
+      --force=false: Only used when grace-period=0. If true, immediately remove resources from API and bypass graceful
+deletion. Note that immediate deletion of some resources may result in inconsistency or data loss and requires
+confirmation.
+      --grace-period=-1: Period of time in seconds given to the resource to terminate gracefully. Ignored if negative.
+Set to 1 for immediate shutdown. Can only be set to 0 when --force is true (force deletion).
+  -k, --kustomize='': Process a kustomization directory. This flag can't be used together with -f or -R.
+      --openapi-patch=true: If true, use openapi to calculate diff when the openapi presents and the resource can be
+found in the openapi spec. Otherwise, fall back to use baked-in types.
+  -o, --output='': Output format. One of:
+json|yaml|name|go-template|go-template-file|template|templatefile|jsonpath|jsonpath-file.
+      --overwrite=true: Automatically resolve conflicts between the modified and live configuration by using values from
+the modified configuration
+      --prune=false: Automatically delete resource objects, including the uninitialized ones, that do not appear in the
+configs and are created by either apply or create --save-config. Should be used with either -l or --all.
+      --prune-whitelist=[]: Overwrite the default whitelist with <group/version/kind> for --prune
+      --record=false: Record current kubectl command in the resource annotation. If set to false, do not record the
+command. If set to true, record the command. If not set, default to updating the existing annotation value only if one
+already exists.
+  -R, --recursive=false: Process the directory used in -f, --filename recursively. Useful when you want to manage
+related manifests organized within the same directory.
+  -l, --selector='': Selector (label query) to filter on, supports '=', '==', and '!='.(e.g. -l key1=value1,key2=value2)
+      --server-dry-run=false: If true, request will be sent to server with dry-run flag, which means the modifications
+won't be persisted. This is an alpha feature and flag.
+      --template='': Template string or path to template file to use when -o=go-template, -o=go-template-file. The
+template format is golang templates [http://golang.org/pkg/text/template/#pkg-overview].
+      --timeout=0s: The length of time to wait before giving up on a delete, zero means determine a timeout from the
+size of the object
+      --validate=true: If true, use a schema to validate the input before sending it
+      --wait=false: If true, wait for resources to be gone before returning. This waits for finalizers.
+
+Usage:
+  kubectl apply (-f FILENAME | -k DIRECTORY) [options]
+
+Use "kubectl <command> --help" for more information about a given command.
+Use "kubectl options" for a list of global command-line options (applies to all commands).
+PS C:\Users\dlahoda\src\cncf-examples\kube> kubectl apply .\deploy.yml
+error: must specify one of -f and -k
+PS C:\Users\dlahoda\src\cncf-examples\kube> kubectl apply --filename .\deploy.yml
+persistentvolume/pv0001 created
+PS C:\Users\dlahoda\src\cncf-examples\kube>

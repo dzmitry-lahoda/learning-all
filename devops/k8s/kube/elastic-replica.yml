@@ -1,0 +1,117 @@
+# kubectl apply --filename ./kube/elastic-replica.yml --dry-run
+# kubectl apply --filename ./kube/elastic-replica.yml
+# kubectl describe statefulset elastic --namespace=dlahoda
+# kubectl describe pod elastic-0 --namespace=dlahoda
+# kubectl describe pod elastic-1 --namespace=dlahoda
+# kubectl logs elastic-0 --namespace=dlahoda
+# kubectl port-forward service/elastic 9200:9200 --namespace=dlahoda &;
+# curl --insecure "http://localhost:9200"
+# curl --insecure "http://localhost:9200/_cluster/health"
+# kubectl scale  statefulset elastic --replicas=0  --namespace=dlahoda
+# kubectl scale  statefulset elastic --replicas=3  --namespace=dlahoda
+# kubectl delete statefulset elastic --namespace=dlahoda
+# kubectl delete namespace dlahoda
+
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: dlahoda
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: elastic
+  namespace: dlahoda
+spec:
+  serviceName: elastic
+  podManagementPolicy: Parallel
+  replicas: 3
+  selector: # Pod selector
+    matchLabels: 
+      app: elastic         
+  template: # template for each Pod
+    metadata:
+      labels:
+        app: elastic
+    spec:
+      initContainers:
+      - name: init-sysctl
+        image: busybox:1.30
+        command:
+        - sysctl
+        - -w
+        - vm.max_map_count=262144
+        resources:
+          requests:
+            memory: 50Mi
+            cpu: 50m
+          limits:
+            memory: 50Mi
+            cpu: 50m
+        securityContext:
+          privileged: true
+          runAsUser: 0        
+      containers:
+        - name: elastic
+          image: "docker.elastic.co/elasticsearch/elasticsearch:6.8.3"          
+          # livenessProbe:
+          #   httpGet:
+          #     path: /_cluster/health 
+          #     port: 9200
+          # readinessProbe:
+          #   httpGet:
+          #     path: /_cluster/health
+          #     port: 9200
+          ports:
+            - containerPort: 9200
+              name: public
+              protocol: TCP
+            - containerPort: 9300
+              name: internal
+              protocol: TCP                                
+          resources:
+            requests:
+              memory: 2Gi
+            limits:
+              memory: 2Gi              
+          env:
+            - name: NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+            - name: discovery.zen.minimum_master_nodes
+              value: "2"
+            - name: cluster.name
+              value: elastic-tracing
+            - name: ES_JAVA_OPTS
+              value: -Xms1g -Xmx1g
+            - name: discovery.zen.ping.unicast.hosts
+              value: elastic-internal 
+---
+apiVersion: v1
+kind: Service 
+metadata:
+  name: elastic-public
+  namespace: dlahoda
+spec:
+  ports:
+    - name: public
+      port: 9200 # incoming
+      targetPort: public #outgoing
+      protocol: TCP     
+  selector:
+    app:  elastic # Pod selector
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: elastic-internal
+  namespace: dlahoda
+spec:
+  clusterIP: None
+  publishNotReadyAddresses: true
+  ports:
+  - name: internal
+    port: 9300 # incoming and outgoing
+  selector:
+    app:  elastic # Pod selector
