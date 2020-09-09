@@ -16,3 +16,7 @@ desktop.ini
 *.user
 *.vs
 
+# tf
+.terraform
+terraform.tfstate
+terraform.tfstate.backup
