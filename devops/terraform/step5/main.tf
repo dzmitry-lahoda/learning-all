@@ -89,3 +89,10 @@ resource "azurerm_virtual_machine" "vm" {
   }
 }
 
+module "thedashboard" {
+  source = "./modules/dashboard"
+  rgname = azurerm_resource_group.rg.name
+  location = azurerm_resource_group.rg.location
+  vmid = azurerm_virtual_machine.vm.id
+  vmname = azurerm_virtual_machine.vm.name
+}
