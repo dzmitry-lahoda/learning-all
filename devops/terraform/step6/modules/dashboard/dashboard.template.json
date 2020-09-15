@@ -73,43 +73,16 @@
           },
           %{ endfor ~}
           "123": {
-            "order": 0,
-            "parts": {
-              "0": {
-                "position": {
-                  "x": 0,
-                  "y": 0,
-                  "colSpan": 6,
-                  "rowSpan": 4
-                },
-                "metadata": {
-                  "inputs": [],
-                  "type": "Extension/HubsExtension/PartType/MarkdownPart",
-                  "settings": {}
-                }
-              },
-              "1": {
-                "position": {
-                  "x": 0,
-                  "y": 4,
-                  "colSpan": 6,
-                  "rowSpan": 4
-                },
-                "metadata": {
-                  "inputs": [],
-                  "type": "Extension/HubsExtension/PartType/MarkdownPart",
-                  "settings": {
-                    "content": {
-                      "settings": {
-                        "content": "Generated from Terraform.",
-                        "title": "AUTO GENERATED",
-                        "subtitle": "AUTO GENERATED",
-                        "markdownSource": 1
-                      }
-                    }
-                  }
-                }
-              }
+            "position": {
+              "x": 0,
+              "y": 0,
+              "colSpan": 6,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [],
+              "type": "Extension/HubsExtension/PartType/MarkdownPart",
+              "settings": {}
             }
           }
         }

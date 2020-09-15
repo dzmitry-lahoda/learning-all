@@ -1,9 +1,10 @@
-resource "azurerm_dashboard" "theboard" {
-  name                = "thedashboard"
+resource "azurerm_dashboard" "tfboard" {
+  name                = "tfboard"
   resource_group_name = var.rgname
   location            = var.location
   tags = {
-    source = "terraform"
+    source = "terraform",
+    test   = "good"
   }
   dashboard_properties = templatefile("/modules/dashboard/dashboard.template.json", {
       dashboarded =  {
