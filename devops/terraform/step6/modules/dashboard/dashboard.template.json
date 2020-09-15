@@ -3,11 +3,12 @@
       "0": {
         "order": 0,
         "parts": {
-          %{ for k, source in dashboarded ~}
-          "${source.number}": {
+
+          %{ for k, v in dashboarded ~}
+          "${v.number}": {
             "position": {
               "x": 0,
-              "y": ${source.number*3 + 3},
+              "y": ${v.number*3 + 3},
               "rowSpan": 4,
               "colSpan": 6
             },
@@ -20,18 +21,18 @@
                       "metrics": [
                         {
                           "resourceMetadata": {
-                            "id": "${source.vmid}"
+                            "id": "${v.vmid}"
                           },
                           "name": "Network In Total",
                           "aggregationType": 4,
                           "namespace": "microsoft.compute/virtualmachines",
                           "metricVisualization": {
                             "displayName": "Network In Total",
-                            "resourceDisplayName": "${source.vmname}"
+                            "resourceDisplayName": "${v.vmname}"
                           }
                         }
                       ],
-                      "title": "Avg Network In Total for ${source.vmname}",
+                      "title": "Avg Network In Total for ${v.vmname}",
                       "titleKind": 1,
                       "visualization": {
                         "chartType": 2,
@@ -69,8 +70,48 @@
               ],
               "type": "Extension/HubsExtension/PartType/MonitorChartPart"
             }
-          }
+          },
           %{ endfor ~}
+          "123": {
+            "order": 0,
+            "parts": {
+              "0": {
+                "position": {
+                  "x": 0,
+                  "y": 0,
+                  "colSpan": 6,
+                  "rowSpan": 4
+                },
+                "metadata": {
+                  "inputs": [],
+                  "type": "Extension/HubsExtension/PartType/MarkdownPart",
+                  "settings": {}
+                }
+              },
+              "1": {
+                "position": {
+                  "x": 0,
+                  "y": 4,
+                  "colSpan": 6,
+                  "rowSpan": 4
+                },
+                "metadata": {
+                  "inputs": [],
+                  "type": "Extension/HubsExtension/PartType/MarkdownPart",
+                  "settings": {
+                    "content": {
+                      "settings": {
+                        "content": "Generated from Terraform.",
+                        "title": "AUTO GENERATED",
+                        "subtitle": "AUTO GENERATED",
+                        "markdownSource": 1
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
         }
       }
     },
