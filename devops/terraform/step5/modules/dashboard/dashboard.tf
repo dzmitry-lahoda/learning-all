@@ -5,7 +5,7 @@ resource "azurerm_dashboard" "theboard" {
   tags = {
     source = "terraform"
   }
-  dashboard_properties = templatefile("dashboard.tpl",
+  dashboard_properties = templatefile("/modules/dashboard/dashboard.template.json",
   {
       vmid = var.vmid,
       vmname = var.vmname
