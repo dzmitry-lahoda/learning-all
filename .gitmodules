@@ -1,0 +1,6 @@
+[submodule "math/discrete-book"]
+	path = math/discrete-book
+	url = git@github.com:dzmitry-lahoda-forks/discrete-book.git
+[submodule "math/books/calculus-made-easy"]
+	path = math/books/calculus-made-easy
+	url = git@github.com:dzmitry-lahoda-forks/calculus-made-easy.git
