@@ -1,0 +1,17 @@
+build
+bin
+Debug
+Release
+ipch
+obj
+*.user
+*.suo
+_ReSharper.*
+desktop.ini
+packages
+.paket/paket.exe
+paket.lock
+*.pdb
+.vs
+SQLite.Interop.dll
+.vscode

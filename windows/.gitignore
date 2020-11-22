@@ -1,0 +1,13 @@
+bin
+obj
+build
+Debug
+Release
+*.user
+*.suo
+_ReSharper.*
+*.sdf
+ipch
+*.opensdf
+*.pch
+packages

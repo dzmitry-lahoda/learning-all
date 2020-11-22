@@ -1,0 +1,5 @@
+:: allow merge of dll to prevent version conflicts
+::TODO: use version from one place
+packages\ILRepack\tools\ILRepack.exe /keyfile:"NDceRpc.snk" /copyattrs /verbose /log:"merge.log"  /out:"bin\Release\net40\NDceRpc.Merged.dll" "bin\Release\net40\NDceRpc.ServiceModel.Core.dll"   "bin\Release\net40\NDceRpc.Microsoft.dll"  "bin\Release\net40\NDceRpc.ServiceModel.Protobuf.dll" "bin\Release\net40\NDceRpc.ServiceModel.Protobuf.Serializers.dll"  "packages\protobuf-net\lib\net40\protobuf-net.dll"
+
+packages\ILRepack\tools\ILRepack.exe /keyfile:"NDceRpc.snk" /copyattrs /verbose /log:"merge.log"  /out:"bin\Release\net35\NDceRpc.Merged.dll" "bin\Release\net35\NDceRpc.ServiceModel.Core.dll"    "bin\Release\net35\NDceRpc.Microsoft.dll"   "bin\Release\net35\NDceRpc.ServiceModel.Protobuf.dll" "bin\Release\net35\NDceRpc.ServiceModel.Protobuf.Serializers.dll"  "packages\protobuf-net\lib\net35\protobuf-net.dll"  "packages\TaskParallelLibrary\lib\Net35\System.Threading.dll"

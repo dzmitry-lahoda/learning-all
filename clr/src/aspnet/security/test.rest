@@ -1,0 +1,20 @@
+
+POST http://localhost:5000/WeatherForecast/login HTTP/1.1
+content-type: application/json
+
+{
+    "username": "sample",
+    "password": "testpassword"
+}
+
+###
+GET http://localhost:5000/WeatherForecast/authorized HTTP/1.1
+
+###
+
+GET http://localhost:5000/WeatherForecast/authorized HTTP/1.1
+Authorization: Bearer eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1ODQ2MzA5MzYsImlzcyI6ImxhaG9kYS1wcm8taXNzdWVyIiwiYXVkIjoibGFob2RhLXByby1hdWRpZW5jZSJ9.AZEqkG-FCAb29AnQMlLUMNrvzoWoEODvYWhZaFT8BQc
+
+###
+
+GET http://localhost:5000/WeatherForecast/anonymous HTTP/1.1

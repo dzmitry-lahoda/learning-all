@@ -1,0 +1,610 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!--This file represents the results of running a test suite-->
+<test-results name="i:\src\OpenSharp\NDceRpc\tests\DesignTests\bin\Release\DesignTests.dll" total="132" errors="9" failures="0" not-run="7" inconclusive="0" ignored="7" skipped="0" invalid="0" date="2014-05-23" time="00:21:36">
+  <environment nunit-version="2.6.3.13283" clr-version="2.0.50727.5477" os-version="Microsoft Windows NT 6.1.7601 Service Pack 1" platform="Win32NT" cwd="i:\src\OpenSharp\NDceRpc" machine-name="XPBYMINW21471" user="dzmitry_lahoda" user-domain="XPBYMINW21471" />
+  <culture-info current-culture="en-US" current-uiculture="en-US" />
+  <test-suite type="Test Project" name="" executed="True" result="Failure" success="False" time="58.959" asserts="0">
+    <results>
+      <test-suite type="Assembly" name="i:\src\OpenSharp\NDceRpc\tests\DesignTests\bin\Release\DesignTests.dll" executed="True" result="Success" success="True" time="2.133" asserts="0">
+        <results>
+          <test-suite type="Namespace" name="DesignTests" executed="True" result="Success" success="True" time="2.112" asserts="0">
+            <results>
+              <test-suite type="TestFixture" name="ProxyTests" executed="True" result="Success" success="True" time="0.824" asserts="0">
+                <results>
+                  <test-case name="DesignTests.ProxyTests.StartUpTime" executed="True" result="Success" success="True" time="0.252" asserts="1" />
+                  <test-case name="DesignTests.ProxyTests.ThroughtputTime" executed="True" result="Success" success="True" time="0.548" asserts="0" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="SerializersCompatibilityTests" executed="True" result="Success" success="True" time="0.839" asserts="0">
+                <results>
+                  <test-case name="DesignTests.SerializersCompatibilityTests.DeSerializeNoPublicEmptyConstructor" executed="True" result="Success" success="True" time="0.827" asserts="2" />
+                  <test-case name="DesignTests.SerializersCompatibilityTests.SerializeException" description="Default behaviour of Protobuf serializers does not handles Exception" executed="True" result="Success" success="True" time="0.004" asserts="0" />
+                  <test-case name="DesignTests.SerializersCompatibilityTests.SerializeNoPublicEmptyConstructor" executed="True" result="Success" success="True" time="0.003" asserts="0" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="SerializersStartUpTimeTests" executed="True" result="Success" success="True" time="0.438" asserts="0">
+                <results>
+                  <test-case name="DesignTests.SerializersStartUpTimeTests.SerializerGeneration" executed="True" result="Success" success="True" time="0.437" asserts="1" />
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="Assembly" name="i:\src\OpenSharp\NDceRpc\tests\NDceRpc.Microsoft.IntegrationTests\bin\Release\NDceRpc.IntegrationTests.dll" executed="True" result="Success" success="True" time="1.975" asserts="0">
+        <results>
+          <test-suite type="Namespace" name="NDceRpc" executed="True" result="Success" success="True" time="1.954" asserts="0">
+            <results>
+              <test-suite type="Namespace" name="Test" executed="True" result="Success" success="True" time="1.953" asserts="0">
+                <results>
+                  <test-suite type="TestFixture" name="TestConcurrency" executed="True" result="Success" success="True" time="0.497" asserts="0">
+                    <results>
+                      <test-case name="NDceRpc.Test.TestConcurrency.TestConcurentCreationOfServersAndClients" executed="True" result="Success" success="True" time="0.152" asserts="99" />
+                      <test-case name="NDceRpc.Test.TestConcurrency.TestRandomizedConcurentCreationOfServersAndClients" executed="True" result="Success" success="True" time="0.328" asserts="101" />
+                    </results>
+                  </test-suite>
+                  <test-suite type="TestFixture" name="TestPerformance" executed="True" result="Success" success="True" time="1.451" asserts="0">
+                    <results>
+                      <test-case name="NDceRpc.Test.TestPerformance.PerformanceOnLocalRpcWithSmallPayloads" executed="True" result="Success" success="True" time="0.143" asserts="0" />
+                      <test-case name="NDceRpc.Test.TestPerformance.PerformanceOnNamedPipeWithSmallPayloads" executed="True" result="Success" success="True" time="0.228" asserts="0" />
+                      <test-case name="NDceRpc.Test.TestPerformance.TestConcurentCreationOfServersAndClients2" executed="True" result="Success" success="True" time="0.010" asserts="1" />
+                      <test-case name="NDceRpc.Test.TestPerformance.TestPerformanceOnLocalRpc" executed="True" result="Success" success="True" time="0.117" asserts="0" />
+                      <test-case name="NDceRpc.Test.TestPerformance.TestPerformanceOnNamedPipe" executed="True" result="Success" success="True" time="0.321" asserts="0" />
+                      <test-case name="NDceRpc.Test.TestPerformance.TestPerformanceOnTcpip" executed="True" result="Success" success="True" time="0.409" asserts="0" />
+                      <test-case name="NDceRpc.Test.TestPerformance.TestPerformanceWithLargePayloads" executed="True" result="Success" success="True" time="0.207" asserts="0" />
+                    </results>
+                  </test-suite>
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="Assembly" name="i:\src\OpenSharp\NDceRpc\tests\NDceRpc.Microsoft.Tests\bin\Release\NDceRpc.Microsoft.Tests.dll" executed="True" result="Success" success="True" time="5.239" asserts="0">
+        <results>
+          <test-suite type="Namespace" name="NDceRpc" executed="True" result="Success" success="True" time="5.218" asserts="0">
+            <results>
+              <test-suite type="Namespace" name="Test" executed="True" result="Success" success="True" time="5.217" asserts="0">
+                <results>
+                  <test-suite type="TestFixture" name="ConcurrencyTests" executed="True" result="Success" success="True" time="0.505" asserts="0">
+                    <results>
+                      <test-case name="NDceRpc.Test.ConcurrencyTests.TestConcurentCreationOfServersAndClients" executed="True" result="Success" success="True" time="0.146" asserts="101" />
+                      <test-case name="NDceRpc.Test.ConcurrencyTests.TestRandomizedConcurentCreationOfServersAndClients" executed="True" result="Success" success="True" time="0.342" asserts="101" />
+                    </results>
+                  </test-suite>
+                  <test-suite type="TestFixture" name="ExplicitBytesClientTests" executed="True" result="Success" success="True" time="4.557" asserts="0">
+                    <results>
+                      <test-case name="NDceRpc.Test.ExplicitBytesClientTests.TestClientAbandon" executed="True" result="Success" success="True" time="0.005" asserts="0" />
+                      <test-case name="NDceRpc.Test.ExplicitBytesClientTests.TestClientCannotConnect" executed="True" result="Success" success="True" time="4.526" asserts="0" />
+                      <test-case name="NDceRpc.Test.ExplicitBytesClientTests.TestExceptionDefaultMessage" executed="True" result="Success" success="True" time="0.014" asserts="0" />
+                      <test-case name="NDceRpc.Test.ExplicitBytesClientTests.TestExceptionExplicitMessage" executed="True" result="Success" success="True" time="0.001" asserts="0" />
+                      <test-case name="NDceRpc.Test.ExplicitBytesClientTests.TestPropertyProtocol" executed="True" result="Success" success="True" time="0.003" asserts="1" />
+                    </results>
+                  </test-suite>
+                  <test-suite type="TestFixture" name="ExplicitBytesServerTests" executed="True" result="Success" success="True" time="0.025" asserts="0">
+                    <results>
+                      <test-case name="NDceRpc.Test.ExplicitBytesServerTests.LongName" executed="True" result="Success" success="True" time="0.006" asserts="0" />
+                      <test-case name="NDceRpc.Test.ExplicitBytesServerTests.TestInfiniteRecursiveCalls" executed="False" result="Ignored">
+                        <reason>
+                          <message><![CDATA[]]></message>
+                        </reason>
+                      </test-case>
+                      <test-case name="NDceRpc.Test.ExplicitBytesServerTests.TestOneRecursiveCall" executed="True" result="Success" success="True" time="0.004" asserts="0" />
+                      <test-case name="NDceRpc.Test.ExplicitBytesServerTests.TestServerWithDiblicateUuid" executed="True" result="Success" success="True" time="0.002" asserts="0" />
+                      <test-case name="NDceRpc.Test.ExplicitBytesServerTests.TestUnregisterListener" executed="True" result="Success" success="True" time="0.005" asserts="0" />
+                    </results>
+                  </test-suite>
+                  <test-suite type="TestFixture" name="NativeMethodsTests" executed="True" result="Success" success="True" time="0.015" asserts="0">
+                    <results>
+                      <test-case name="NDceRpc.Test.NativeMethodsTests.RpcBindingSetAuthInfo_null_notOk" executed="True" result="Success" success="True" time="0.009" asserts="1" />
+                      <test-case name="NDceRpc.Test.NativeMethodsTests.RpcObjectSetType_serverInterfacesRegistered_OK" executed="True" result="Success" success="True" time="0.003" asserts="2" />
+                    </results>
+                  </test-suite>
+                  <test-suite type="TestFixture" name="NdrConverterTests" executed="True" result="Success" success="True" time="0.003" asserts="0">
+                    <results>
+                      <test-case name="NDceRpc.Test.NdrConverterTests.NdrFcLong_local_theSameAsBitConverter" executed="True" result="Success" success="True" time="0.002" asserts="4" />
+                    </results>
+                  </test-suite>
+                  <test-suite type="TestFixture" name="ProtocolsTests" executed="True" result="Success" success="True" time="0.046" asserts="0">
+                    <results>
+                      <test-case name="NDceRpc.Test.ProtocolsTests.LocalRpcTest" executed="True" result="Success" success="True" time="0.009" asserts="3" />
+                      <test-case name="NDceRpc.Test.ProtocolsTests.NamedPipeTest" executed="True" result="Success" success="True" time="0.017" asserts="15" />
+                      <test-case name="NDceRpc.Test.ProtocolsTests.TcpIpTest" executed="True" result="Success" success="True" time="0.016" asserts="10" />
+                    </results>
+                  </test-suite>
+                  <test-suite type="TestFixture" name="RpcClientInfoTests" executed="True" result="Success" success="True" time="0.051" asserts="0">
+                    <results>
+                      <test-case name="NDceRpc.Test.RpcClientInfoTests.TestClientOnAnonymousPipe" executed="True" result="Success" success="True" time="0.017" asserts="12" />
+                      <test-case name="NDceRpc.Test.RpcClientInfoTests.TestClientOnLocalRpc" executed="True" result="Success" success="True" time="0.008" asserts="13" />
+                      <test-case name="NDceRpc.Test.RpcClientInfoTests.TestClientOnNamedPipe" executed="True" result="Success" success="True" time="0.006" asserts="13" />
+                      <test-case name="NDceRpc.Test.RpcClientInfoTests.TestClientOnTcpip" executed="True" result="Success" success="True" time="0.007" asserts="13" />
+                      <test-case name="NDceRpc.Test.RpcClientInfoTests.TestNestedClientImpersonate" executed="True" result="Success" success="True" time="0.005" asserts="5" />
+                    </results>
+                  </test-suite>
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="Assembly" name="i:\src\OpenSharp\NDceRpc\tests\NDceRpc.ServiceModel.Core.Tests\bin\Release\NDceRpc.ServiceModel.Core.Tests.dll" executed="True" result="Success" success="True" time="1.991" asserts="0">
+        <results>
+          <test-suite type="Namespace" name="NDceRpc" executed="True" result="Success" success="True" time="1.970" asserts="0">
+            <results>
+              <test-suite type="Namespace" name="ServiceModel" executed="True" result="Success" success="True" time="1.970" asserts="0">
+                <results>
+                  <test-suite type="Namespace" name="Core" executed="True" result="Success" success="True" time="1.969" asserts="0">
+                    <results>
+                      <test-suite type="Namespace" name="Tests" executed="True" result="Success" success="True" time="1.969" asserts="0">
+                        <results>
+                          <test-suite type="TestFixture" name="AsyncTests" executed="False" result="Ignored">
+                            <reason>
+                              <message><![CDATA[]]></message>
+                            </reason>
+                            <results>
+                              <test-case name="NDceRpc.ServiceModel.Core.Tests.AsyncTests.CallAsync_noServer_done" executed="False" result="Ignored">
+                                <reason>
+                                  <message><![CDATA[]]></message>
+                                </reason>
+                              </test-case>
+                              <test-case name="NDceRpc.ServiceModel.Core.Tests.AsyncTests.CallAsync_wait_done" executed="False" result="Ignored">
+                                <reason>
+                                  <message><![CDATA[]]></message>
+                                </reason>
+                              </test-case>
+                              <test-case name="NDceRpc.ServiceModel.Core.Tests.AsyncTests.CallbackAsyncCallback_wait_done" executed="False" result="Ignored">
+                                <reason>
+                                  <message><![CDATA[]]></message>
+                                </reason>
+                              </test-case>
+                              <test-case name="NDceRpc.ServiceModel.Core.Tests.AsyncTests.CallTask_wait_done" executed="False" result="Ignored">
+                                <reason>
+                                  <message><![CDATA[]]></message>
+                                </reason>
+                              </test-case>
+                            </results>
+                          </test-suite>
+                          <test-suite type="TestFixture" name="ChannelTests" executed="True" result="Success" success="True" time="0.809" asserts="0">
+                            <results>
+                              <test-case name="NDceRpc.ServiceModel.Core.Tests.ChannelTests.IContextChannel_operationTimeoutSetGet_Ok" executed="True" result="Success" success="True" time="0.341" asserts="1" />
+                              <test-case name="NDceRpc.ServiceModel.Core.Tests.ChannelTests.InterfaceInheritance" executed="True" result="Success" success="True" time="0.277" asserts="0" />
+                              <test-case name="NDceRpc.ServiceModel.Core.Tests.ChannelTests.InvokenBlockingWithParams_resultObtained" executed="True" result="Success" success="True" time="0.054" asserts="1" />
+                              <test-case name="NDceRpc.ServiceModel.Core.Tests.ChannelTests.InvokeOneWay_waitOnEvent_received" executed="True" result="Success" success="True" time="0.005" asserts="0" />
+                              <test-case name="NDceRpc.ServiceModel.Core.Tests.ChannelTests.InvokeOtherService" executed="True" result="Success" success="True" time="0.014" asserts="0" />
+                              <test-case name="NDceRpc.ServiceModel.Core.Tests.ChannelTests.Local" executed="True" result="Success" success="True" time="0.008" asserts="1" />
+                              <test-case name="NDceRpc.ServiceModel.Core.Tests.ChannelTests.LocalChannel_notOpenedServer_fail" executed="True" result="Success" success="True" time="0.003" asserts="1" />
+                              <test-case name="NDceRpc.ServiceModel.Core.Tests.ChannelTests.LongLocalName" executed="True" result="Success" success="True" time="0.007" asserts="1" />
+                              <test-case name="NDceRpc.ServiceModel.Core.Tests.ChannelTests.LongNamePipe" executed="True" result="Success" success="True" time="0.008" asserts="1" />
+                              <test-case name="NDceRpc.ServiceModel.Core.Tests.ChannelTests.PipeChannel_notOpenedServer_created" executed="True" result="Success" success="True" time="0.002" asserts="1" />
+                              <test-case name="NDceRpc.ServiceModel.Core.Tests.ChannelTests.PipeChannel_notOpenedServer_fail" executed="True" result="Success" success="True" time="0.014" asserts="2" />
+                              <test-case name="NDceRpc.ServiceModel.Core.Tests.ChannelTests.PipeChannel_openClose_fail" executed="True" result="Success" success="True" time="0.009" asserts="2" />
+                              <test-case name="NDceRpc.ServiceModel.Core.Tests.ChannelTests.TpcIp" executed="True" result="Success" success="True" time="0.036" asserts="1" />
+                            </results>
+                          </test-suite>
+                          <test-suite type="TestFixture" name="DispatchTableFactoryTests" executed="True" result="Success" success="True" time="0.015" asserts="0">
+                            <results>
+                              <test-case name="NDceRpc.ServiceModel.Core.Tests.DispatchTableFactoryTests.GetOperations_iterfacesWithOperationsWithId" executed="True" result="Success" success="True" time="0.006" asserts="2" />
+                              <test-case name="NDceRpc.ServiceModel.Core.Tests.DispatchTableFactoryTests.GetOperations_iterfacesWithOperationsWithoudId" executed="True" result="Success" success="True" time="0.006" asserts="2" />
+                            </results>
+                          </test-suite>
+                          <test-suite type="TestFixture" name="DuplexChannelTest" executed="True" result="Success" success="True" time="0.059" asserts="0">
+                            <results>
+                              <test-case name="NDceRpc.ServiceModel.Core.Tests.DuplexChannelTest.CallLocalService" executed="True" result="Success" success="True" time="0.038" asserts="1" />
+                              <test-case name="NDceRpc.ServiceModel.Core.Tests.DuplexChannelTest.CallServiceReturningSession2Times_sessionAreEqual" executed="True" result="Success" success="True" time="0.018" asserts="1" />
+                            </results>
+                          </test-suite>
+                          <test-suite type="TestFixture" name="EndpointBehavioursTests" executed="True" result="Success" success="True" time="0.746" asserts="0">
+                            <results>
+                              <test-case name="NDceRpc.ServiceModel.Core.Tests.EndpointBehavioursTests.ServerAncClientEndpointBehavior" executed="True" result="Success" success="True" time="0.009" asserts="4" />
+                              <test-case name="NDceRpc.ServiceModel.Core.Tests.EndpointBehavioursTests.ServerAncClientExceptionsEndpointBehavior" description="Propagates server side managed exception to client side and thows as error" executed="True" result="Success" success="True" time="0.734" asserts="1" />
+                            </results>
+                          </test-suite>
+                          <test-suite type="TestFixture" name="EndpointMapperTests" executed="True" result="Success" success="True" time="0.011" asserts="0">
+                            <results>
+                              <test-case name="NDceRpc.ServiceModel.Core.Tests.EndpointMapperTests.RpcLocalPipe_UriLocal" executed="True" result="Success" success="True" time="0.001" asserts="1" />
+                              <test-case name="NDceRpc.ServiceModel.Core.Tests.EndpointMapperTests.RpcNamedPipe_WcfNamedPipe" executed="True" result="Success" success="True" time="0.001" asserts="1" />
+                              <test-case name="NDceRpc.ServiceModel.Core.Tests.EndpointMapperTests.UriLocal_RpcLocal" executed="True" result="Success" success="True" time="0.001" asserts="2" />
+                              <test-case name="NDceRpc.ServiceModel.Core.Tests.EndpointMapperTests.WcfNamedPipe_RpcNamedPipe" executed="True" result="Success" success="True" time="0.001" asserts="2" />
+                              <test-case name="NDceRpc.ServiceModel.Core.Tests.EndpointMapperTests.WcfTcp_RpcTcp" executed="True" result="Success" success="True" time="0.001" asserts="2" />
+                            </results>
+                          </test-suite>
+                          <test-suite type="TestFixture" name="ErrorHandlingTests" executed="True" result="Success" success="True" time="0.012" asserts="0">
+                            <results>
+                              <test-case name="NDceRpc.ServiceModel.Core.Tests.ErrorHandlingTests.ServerAndClientExceptions" executed="True" result="Success" success="True" time="0.011" asserts="1" />
+                            </results>
+                          </test-suite>
+                          <test-suite type="TestFixture" name="HostTests" executed="True" result="Success" success="True" time="0.020" asserts="0">
+                            <results>
+                              <test-case name="NDceRpc.ServiceModel.Core.Tests.HostTests.Open_2Endpoints_callsBoth" executed="True" result="Success" success="True" time="0.011" asserts="0" />
+                              <test-case name="NDceRpc.ServiceModel.Core.Tests.HostTests.Open_Open_error" executed="True" result="Success" success="True" time="0.006" asserts="0" />
+                            </results>
+                          </test-suite>
+                          <test-suite type="TestFixture" name="OperationContractsTests" executed="True" result="Success" success="True" time="0.029" asserts="0">
+                            <results>
+                              <test-case name="NDceRpc.ServiceModel.Core.Tests.OperationContractsTests.Services_autoAndManualIds_Ok" executed="True" result="Success" success="True" time="0.007" asserts="0" />
+                              <test-case name="NDceRpc.ServiceModel.Core.Tests.OperationContractsTests.Services_DifferentNamespaces_differentOperations" executed="True" result="Success" success="True" time="0.011" asserts="1" />
+                              <test-case name="NDceRpc.ServiceModel.Core.Tests.OperationContractsTests.Services_DifferentNamespaces_sameOperation" executed="True" result="Success" success="True" time="0.006" asserts="0" />
+                            </results>
+                          </test-suite>
+                          <test-suite type="TestFixture" name="RpcOperationContextTests" executed="True" result="Success" success="True" time="0.027" asserts="0">
+                            <results>
+                              <test-case name="NDceRpc.ServiceModel.Core.Tests.RpcOperationContextTests.CallServiceReturningSession2Times_sessionAreEqual" executed="True" result="Success" success="True" time="0.008" asserts="1" />
+                              <test-case name="NDceRpc.ServiceModel.Core.Tests.RpcOperationContextTests.CallServiceReturningSession2TimesFor2Channels_sessionAreDifferentForDifferentChannels" executed="True" result="Success" success="True" time="0.016" asserts="3" />
+                            </results>
+                          </test-suite>
+                          <test-suite type="TestFixture" name="SerializationTests" executed="True" result="Success" success="True" time="0.093" asserts="0">
+                            <results>
+                              <test-case name="NDceRpc.ServiceModel.Core.Tests.SerializationTests.ConcurentSerialization" executed="True" result="Success" success="True" time="0.018" asserts="0" />
+                              <test-case name="NDceRpc.ServiceModel.Core.Tests.SerializationTests.DataContract_serialize_streamNotEmpty" executed="True" result="Success" success="True" time="0.002" asserts="1" />
+                              <test-case name="NDceRpc.ServiceModel.Core.Tests.SerializationTests.DataContract_serializeDeserialize_theSame" executed="True" result="Success" success="True" time="0.003" asserts="1" />
+                              <test-case name="NDceRpc.ServiceModel.Core.Tests.SerializationTests.DataContract_serializeDeserializeOtherTypeSameSignature_theSame" executed="True" result="Success" success="True" time="0.003" asserts="1" />
+                              <test-case name="NDceRpc.ServiceModel.Core.Tests.SerializationTests.DeSerializeMessage" executed="True" result="Success" success="True" time="0.007" asserts="1" />
+                              <test-case name="NDceRpc.ServiceModel.Core.Tests.SerializationTests.DeSerializeNull" executed="True" result="Success" success="True" time="0.001" asserts="1" />
+                              <test-case name="NDceRpc.ServiceModel.Core.Tests.SerializationTests.EmptyListIsNull" description="Protobuf on the wire does not distinguish empty collection and null" executed="True" result="Success" success="True" time="0.011" asserts="1" />
+                              <test-case name="NDceRpc.ServiceModel.Core.Tests.SerializationTests.NullListIsNull" executed="True" result="Success" success="True" time="0.004" asserts="1" />
+                              <test-case name="NDceRpc.ServiceModel.Core.Tests.SerializationTests.Serialize_DataMembersWithoutOrder" description="Binary serialization is order dependant" executed="True" result="Success" success="True" time="0.003" asserts="1" />
+                              <test-case name="NDceRpc.ServiceModel.Core.Tests.SerializationTests.SerializeComplextObject" executed="True" result="Success" success="True" time="0.010" asserts="4" />
+                              <test-case name="NDceRpc.ServiceModel.Core.Tests.SerializationTests.SerializeGuid" executed="True" result="Success" success="True" time="0.001" asserts="1" />
+                              <test-case name="NDceRpc.ServiceModel.Core.Tests.SerializationTests.SerializeList" executed="True" result="Success" success="True" time="0.002" asserts="1" />
+                              <test-case name="NDceRpc.ServiceModel.Core.Tests.SerializationTests.SerializeMessage" executed="True" result="Success" success="True" time="0.004" asserts="1" />
+                              <test-case name="NDceRpc.ServiceModel.Core.Tests.SerializationTests.SerializeNull" executed="True" result="Success" success="True" time="0.001" asserts="0" />
+                            </results>
+                          </test-suite>
+                          <test-suite type="TestFixture" name="SynchronizationTests" executed="True" result="Success" success="True" time="0.039" asserts="0">
+                            <results>
+                              <test-case name="NDceRpc.ServiceModel.Core.Tests.SynchronizationTests.CallbackToNotSyncContext" executed="True" result="Success" success="True" time="0.024" asserts="1" />
+                              <test-case name="NDceRpc.ServiceModel.Core.Tests.SynchronizationTests.CallbackToSyncContext" executed="True" result="Success" success="True" time="0.012" asserts="1" />
+                            </results>
+                          </test-suite>
+                          <test-suite type="TestFixture" name="TestConcurrency" executed="True" result="Success" success="True" time="0.059" asserts="0">
+                            <results>
+                              <test-case name="NDceRpc.ServiceModel.Core.Tests.TestConcurrency.TestOneWayCallbackConcurencyOnNamedPipe" executed="True" result="Success" success="True" time="0.047" asserts="0" />
+                              <test-case name="NDceRpc.ServiceModel.Core.Tests.TestConcurrency.TestOneWayConcurencyOnNamedPipe" executed="True" result="Success" success="True" time="0.009" asserts="0" />
+                            </results>
+                          </test-suite>
+                        </results>
+                      </test-suite>
+                    </results>
+                  </test-suite>
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="Assembly" name="i:\src\OpenSharp\NDceRpc\tests\NDceRpc.ServiceModel.Core.Tests\bin\Release\NDceRpc.TestsSupport.dll" executed="True" result="Inconclusive" success="False" time="0.025" asserts="0" />
+      <test-suite type="Assembly" name="i:\src\OpenSharp\NDceRpc\tests\NDceRpc.ServiceModel.IntegrationTests\bin\Release\NDceRpc.ServiceModel.IntegrationTests.dll" executed="True" result="Failure" success="False" time="0.989" asserts="0">
+        <results>
+          <test-suite type="Namespace" name="NDceRpc" executed="True" result="Failure" success="False" time="0.969" asserts="0">
+            <results>
+              <test-suite type="Namespace" name="ServiceModel" executed="True" result="Failure" success="False" time="0.969" asserts="0">
+                <results>
+                  <test-suite type="Namespace" name="IntegrationTests" executed="True" result="Failure" success="False" time="0.614" asserts="0">
+                    <results>
+                      <test-suite type="TestFixture" name="StartupTimeTests" executed="True" result="Failure" success="False" time="0.577" asserts="0">
+                        <results>
+                          <test-case name="NDceRpc.ServiceModel.IntegrationTests.StartupTimeTests.Ipc_byteArray" executed="True" result="Error" success="False" time="0.529" asserts="0">
+                            <failure>
+                              <message><![CDATA[NDceRpc.ServiceModel.EndpointNotFoundException : Failed to connect to ipc:///StartupTimeTests_Ipc_byteArray]]></message>
+                              <stack-trace><![CDATA[
+Server stack trace:
+
+
+Exception rethrown at [0]:
+at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+at NDceRpc.ServiceModel.IntegrationTests.StartupTimeTests.IService.Execute(Byte[] arg)
+at NDceRpc.ServiceModel.IntegrationTests.StartupTimeTests.DoWcfHost(Binding binding, String path) in i:\src\OpenSharp\NDceRpc\tests\NDceRpc.ServiceModel.IntegrationTests\StartupTimeTests.cs:line 177
+at NDceRpc.ServiceModel.IntegrationTests.StartupTimeTests.Ipc_byteArray() in i:\src\OpenSharp\NDceRpc\tests\NDceRpc.ServiceModel.IntegrationTests\StartupTimeTests.cs:line 136
+]]></stack-trace>
+                            </failure>
+                          </test-case>
+                          <test-case name="NDceRpc.ServiceModel.IntegrationTests.StartupTimeTests.IpcCallback" executed="True" result="Error" success="False" time="0.018" asserts="0">
+                            <failure>
+                              <message><![CDATA[NDceRpc.ServiceModel.EndpointNotFoundException : Failed to connect to ipc:///StartupTimeTests_IpcCallback]]></message>
+                              <stack-trace><![CDATA[
+Server stack trace:
+
+
+Exception rethrown at [0]:
+at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+at NDceRpc.ServiceModel.IntegrationTests.ICallbackService.Call()
+at NDceRpc.ServiceModel.IntegrationTests.StartupTimeTests.DoHostWithCallbackInternal(Reportwatch reportWatch, Binding binding, String path) in i:\src\OpenSharp\NDceRpc\tests\NDceRpc.ServiceModel.IntegrationTests\StartupTimeTests.cs:line 119
+at NDceRpc.ServiceModel.IntegrationTests.StartupTimeTests.IpcCallback() in i:\src\OpenSharp\NDceRpc\tests\NDceRpc.ServiceModel.IntegrationTests\StartupTimeTests.cs:line 61
+]]></stack-trace>
+                            </failure>
+                          </test-case>
+                          <test-case name="NDceRpc.ServiceModel.IntegrationTests.StartupTimeTests.IpcCallbackLoop" executed="True" result="Error" success="False" time="0.006" asserts="0">
+                            <failure>
+                              <message><![CDATA[NDceRpc.ServiceModel.EndpointNotFoundException : Failed to connect to ipc:///StartupTimeTests_IpcCallbackLoop]]></message>
+                              <stack-trace><![CDATA[
+Server stack trace:
+
+
+Exception rethrown at [0]:
+at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+at NDceRpc.ServiceModel.IntegrationTests.ICallbackService.Call()
+at NDceRpc.ServiceModel.IntegrationTests.StartupTimeTests.DoHostWithCallbackInternal(Reportwatch reportWatch, Binding binding, String path) in i:\src\OpenSharp\NDceRpc\tests\NDceRpc.ServiceModel.IntegrationTests\StartupTimeTests.cs:line 119
+at NDceRpc.ServiceModel.IntegrationTests.StartupTimeTests.IpcCallbackLoop() in i:\src\OpenSharp\NDceRpc\tests\NDceRpc.ServiceModel.IntegrationTests\StartupTimeTests.cs:line 72
+]]></stack-trace>
+                            </failure>
+                          </test-case>
+                        </results>
+                      </test-suite>
+                      <test-suite type="TestFixture" name="TimeoutTests" executed="True" result="Failure" success="False" time="0.032" asserts="0">
+                        <results>
+                          <test-case name="NDceRpc.ServiceModel.IntegrationTests.TimeoutTests.TestTimeoutSet" executed="True" result="Error" success="False" time="0.031" asserts="0">
+                            <failure>
+                              <message><![CDATA[NDceRpc.ServiceModel.EndpointNotFoundException : Failed to connect to net.pipe://127.0.0.1/testpipenameTestTimeoutSet]]></message>
+                              <stack-trace><![CDATA[
+Server stack trace:
+
+
+Exception rethrown at [0]:
+at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+at NDceRpc.ServiceModel.IntegrationTests.TimeoutTests.IService.Execute(TimeSpan sleep)
+at NDceRpc.ServiceModel.IntegrationTests.TimeoutTests.TestTimeoutSet() in i:\src\OpenSharp\NDceRpc\tests\NDceRpc.ServiceModel.IntegrationTests\TimeoutTests.cs:line 50
+]]></stack-trace>
+                            </failure>
+                          </test-case>
+                        </results>
+                      </test-suite>
+                    </results>
+                  </test-suite>
+                  <test-suite type="Namespace" name="Test" executed="True" result="Failure" success="False" time="0.348" asserts="0">
+                    <results>
+                      <test-suite type="TestFixture" name="MultiuserConcurrencyTests" executed="True" result="Failure" success="False" time="0.102" asserts="0">
+                        <results>
+                          <test-case name="NDceRpc.ServiceModel.Test.MultiuserConcurrencyTests.TestManyClientsConcurencyOnNamedPipe" executed="True" result="Error" success="False" time="0.027" asserts="0">
+                            <failure>
+                              <message><![CDATA[System.AggregateException : One or more errors occurred.
+  ----> NDceRpc.ServiceModel.EndpointNotFoundException : Failed to connect to net.pipe://127.0.0.1/testpipenameTestManyClientsConcurencyOnNamedPipe]]></message>
+                              <stack-trace><![CDATA[at System.Threading.Tasks.Task.WaitAll(Task[] tasks, Int32 millisecondsTimeout, CancellationToken cancellationToken)
+at NDceRpc.ServiceModel.Test.MultiuserConcurrencyTests.TestManyClientsConcurencyOnNamedPipe() in i:\src\OpenSharp\NDceRpc\tests\NDceRpc.ServiceModel.IntegrationTests\MultiuserConcurrencyTests.cs:line 230
+--EndpointNotFoundException
+
+Server stack trace:
+
+
+Exception rethrown at [0]:
+at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+at NDceRpc.ServiceModel.Test.MultiuserConcurrencyTests.IService.Execute()
+at NDceRpc.ServiceModel.Test.MultiuserConcurrencyTests.<>c__DisplayClass11.<TestManyClientsConcurencyOnNamedPipe>b__f() in i:\src\OpenSharp\NDceRpc\tests\NDceRpc.ServiceModel.IntegrationTests\MultiuserConcurrencyTests.cs:line 220
+at System.Threading.Tasks.Task.Execute()
+]]></stack-trace>
+                            </failure>
+                          </test-case>
+                          <test-case name="NDceRpc.ServiceModel.Test.MultiuserConcurrencyTests.TestManyClientsCreatingsConcurencyOnNamedPipe" executed="True" result="Error" success="False" time="0.028" asserts="0">
+                            <failure>
+                              <message><![CDATA[System.AggregateException : One or more errors occurred.
+  ----> NDceRpc.ServiceModel.EndpointNotFoundException : Failed to connect to net.pipe://127.0.0.1/testpipenameTestManyClientsCreatingsConcurencyOnNamedPipe]]></message>
+                              <stack-trace><![CDATA[at System.Threading.Tasks.Task.WaitAll(Task[] tasks, Int32 millisecondsTimeout, CancellationToken cancellationToken)
+at NDceRpc.ServiceModel.Test.MultiuserConcurrencyTests.TestManyClientsCreatingsConcurencyOnNamedPipe() in i:\src\OpenSharp\NDceRpc\tests\NDceRpc.ServiceModel.IntegrationTests\MultiuserConcurrencyTests.cs:line 263
+--EndpointNotFoundException
+
+Server stack trace:
+
+
+Exception rethrown at [0]:
+at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+at NDceRpc.ServiceModel.Test.MultiuserConcurrencyTests.IService.Execute()
+at NDceRpc.ServiceModel.Test.MultiuserConcurrencyTests.<>c__DisplayClass17.<TestManyClientsCreatingsConcurencyOnNamedPipe>b__13() in i:\src\OpenSharp\NDceRpc\tests\NDceRpc.ServiceModel.IntegrationTests\MultiuserConcurrencyTests.cs:line 253
+at System.Threading.Tasks.Task.Execute()
+]]></stack-trace>
+                            </failure>
+                          </test-case>
+                          <test-case name="NDceRpc.ServiceModel.Test.MultiuserConcurrencyTests.TestManyClientsCreatingsOneWayConcurencyOnNamedPipe" executed="True" result="Error" success="False" time="0.035" asserts="0">
+                            <failure>
+                              <message><![CDATA[System.AggregateException : One or more errors occurred.
+  ----> NDceRpc.ServiceModel.EndpointNotFoundException : Failed to connect to net.pipe://127.0.0.1/testpipenameTestManyClientsCreatingsOneWayConcurencyOnNamedPipe]]></message>
+                              <stack-trace><![CDATA[at System.Threading.Tasks.Task.WaitAll(Task[] tasks, Int32 millisecondsTimeout, CancellationToken cancellationToken)
+at NDceRpc.ServiceModel.Test.MultiuserConcurrencyTests.TestManyClientsCreatingsOneWayConcurencyOnNamedPipe() in i:\src\OpenSharp\NDceRpc\tests\NDceRpc.ServiceModel.IntegrationTests\MultiuserConcurrencyTests.cs:line 299
+--EndpointNotFoundException
+at NDceRpc.ServiceModel.ClientRuntime.RpcRealProxy.Invoke(IMessage msg) in i:\src\OpenSharp\NDceRpc\src\NDceRpc.ServiceModel.Core\ServiceModel\ClientRuntime.cs:line 319
+at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+at NDceRpc.ServiceModel.Test.MultiuserConcurrencyTests.IService.OneWayExecute()
+at NDceRpc.ServiceModel.Test.MultiuserConcurrencyTests.<>c__DisplayClass1d.<TestManyClientsCreatingsOneWayConcurencyOnNamedPipe>b__19() in i:\src\OpenSharp\NDceRpc\tests\NDceRpc.ServiceModel.IntegrationTests\MultiuserConcurrencyTests.cs:line 291
+at System.Threading.Tasks.Task.Execute()
+]]></stack-trace>
+                            </failure>
+                          </test-case>
+                          <test-case name="NDceRpc.ServiceModel.Test.MultiuserConcurrencyTests.TestManyDumplexClientsCreatingsConcurencyOnNamedPipe" executed="False" result="Ignored">
+                            <reason>
+                              <message><![CDATA[]]></message>
+                            </reason>
+                          </test-case>
+                          <test-case name="NDceRpc.ServiceModel.Test.MultiuserConcurrencyTests.TestManyDumplexServersAndClientsCreatingsConcurencyOnNamedPipe" executed="False" result="Ignored">
+                            <reason>
+                              <message><![CDATA[]]></message>
+                            </reason>
+                          </test-case>
+                        </results>
+                      </test-suite>
+                      <test-suite type="TestFixture" name="PerformanceTests" executed="True" result="Failure" success="False" time="0.244" asserts="0">
+                        <results>
+                          <test-case name="NDceRpc.ServiceModel.Test.PerformanceTests.GuidGeneration" executed="True" result="Success" success="True" time="0.021" asserts="0" />
+                          <test-case name="NDceRpc.ServiceModel.Test.PerformanceTests.Ipc_byteArray" executed="True" result="Error" success="False" time="0.108" asserts="0">
+                            <failure>
+                              <message><![CDATA[NDceRpc.ServiceModel.EndpointNotFoundException : Failed to connect to ipc:///Ipc_byteArray]]></message>
+                              <stack-trace><![CDATA[
+Server stack trace:
+
+
+Exception rethrown at [0]:
+at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+at NDceRpc.ServiceModel.Test.PerformanceTests.IService.Execute(Byte[] arg)
+at NDceRpc.ServiceModel.Test.PerformanceTests.Ipc_byteArray() in i:\src\OpenSharp\NDceRpc\tests\NDceRpc.ServiceModel.IntegrationTests\PerformanceTests.cs:line 81
+]]></stack-trace>
+                            </failure>
+                          </test-case>
+                          <test-case name="NDceRpc.ServiceModel.Test.PerformanceTests.NamedPipe_byteArray" executed="True" result="Error" success="False" time="0.109" asserts="0">
+                            <failure>
+                              <message><![CDATA[NDceRpc.ServiceModel.EndpointNotFoundException : Failed to connect to net.pipe://127.0.0.1/testpipename]]></message>
+                              <stack-trace><![CDATA[
+Server stack trace:
+
+
+Exception rethrown at [0]:
+at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+at NDceRpc.ServiceModel.Test.PerformanceTests.IService.Execute(Byte[] arg)
+at NDceRpc.ServiceModel.Test.PerformanceTests.NamedPipe_byteArray() in i:\src\OpenSharp\NDceRpc\tests\NDceRpc.ServiceModel.IntegrationTests\PerformanceTests.cs:line 49
+]]></stack-trace>
+                            </failure>
+                          </test-case>
+                        </results>
+                      </test-suite>
+                    </results>
+                  </test-suite>
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="Assembly" name="i:\src\OpenSharp\NDceRpc\tests\NDceRpc.ServiceModel.Tests\bin\Release\NDceRpc.ServiceModel.Tests.dll" executed="True" result="Success" success="True" time="0.123" asserts="0">
+        <results>
+          <test-suite type="Namespace" name="NDceRpc" executed="True" result="Success" success="True" time="0.101" asserts="0">
+            <results>
+              <test-suite type="Namespace" name="ServiceModel" executed="True" result="Success" success="True" time="0.101" asserts="0">
+                <results>
+                  <test-suite type="Namespace" name="Tests" executed="True" result="Success" success="True" time="0.100" asserts="0">
+                    <results>
+                      <test-suite type="TestFixture" name="NDceRpcServiceModelTests" executed="True" result="Success" success="True" time="0.098" asserts="0">
+                        <results>
+                          <test-case name="NDceRpc.ServiceModel.Tests.NDceRpcServiceModelTests.OperationContract_create_defaultsAreEqual" executed="True" result="Success" success="True" time="0.073" asserts="9" />
+                          <test-case name="NDceRpc.ServiceModel.Tests.NDceRpcServiceModelTests.ServiceContract_create_defaultsAreEqual" executed="True" result="Success" success="True" time="0.006" asserts="8" />
+                        </results>
+                      </test-suite>
+                    </results>
+                  </test-suite>
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="Assembly" name="i:\src\OpenSharp\NDceRpc\tests\NDceRpc.TestsSupport\bin\Release\NDceRpc.TestsSupport.dll" executed="True" result="Inconclusive" success="False" time="0.025" asserts="0" />
+      <test-suite type="Assembly" name="i:\src\OpenSharp\NDceRpc\tests\WCF.IntegrationTests\bin\Release\WCF.IntegrationTests.dll" executed="True" result="Success" success="True" time="17.172" asserts="0">
+        <results>
+          <test-suite type="Namespace" name="WCF" executed="True" result="Success" success="True" time="17.151" asserts="0">
+            <results>
+              <test-suite type="Namespace" name="IntegrationTests" executed="True" result="Success" success="True" time="17.151" asserts="0">
+                <results>
+                  <test-suite type="TestFixture" name="ApiTests" executed="True" result="Success" success="True" time="3.112" asserts="0">
+                    <results>
+                      <test-case name="WCF.IntegrationTests.ApiTests.TestTcpUrl" executed="True" result="Success" success="True" time="3.098" asserts="1" />
+                    </results>
+                  </test-suite>
+                  <test-suite type="TestFixture" name="PerformanceTests" executed="True" result="Success" success="True" time="1.092" asserts="0">
+                    <results>
+                      <test-case name="WCF.IntegrationTests.PerformanceTests.NamedPipe_byteArray" executed="True" result="Success" success="True" time="1.091" asserts="0" />
+                    </results>
+                  </test-suite>
+                  <test-suite type="TestFixture" name="StartupTimeTests" executed="True" result="Success" success="True" time="11.400" asserts="0">
+                    <results>
+                      <test-case name="WCF.IntegrationTests.StartupTimeTests.NamedPipe_byteArray" executed="True" result="Success" success="True" time="0.045" asserts="0" />
+                      <test-case name="WCF.IntegrationTests.StartupTimeTests.NamedPipeCallbackLoop" executed="True" result="Success" success="True" time="11.266" asserts="0" />
+                      <test-case name="WCF.IntegrationTests.StartupTimeTests.NamedPipeCallbck" executed="True" result="Success" success="True" time="0.016" asserts="0" />
+                    </results>
+                  </test-suite>
+                  <test-suite type="TestFixture" name="TimeoutTests" executed="True" result="Success" success="True" time="1.491" asserts="0">
+                    <results>
+                      <test-case name="WCF.IntegrationTests.TimeoutTests.TestTimeoutSet" executed="True" result="Success" success="True" time="1.490" asserts="4" />
+                    </results>
+                  </test-suite>
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="Assembly" name="i:\src\OpenSharp\NDceRpc\tests\WCF.Tests\bin\Release\NDceRpc.TestsSupport.dll" executed="True" result="Inconclusive" success="False" time="0.025" asserts="0" />
+      <test-suite type="Assembly" name="i:\src\OpenSharp\NDceRpc\tests\WCF.Tests\bin\Release\WCF.Tests.dll" executed="True" result="Success" success="True" time="24.720" asserts="0">
+        <results>
+          <test-suite type="Namespace" name="WCF" executed="True" result="Success" success="True" time="24.700" asserts="0">
+            <results>
+              <test-suite type="Namespace" name="Tests" executed="True" result="Success" success="True" time="24.699" asserts="0">
+                <results>
+                  <test-suite type="TestFixture" name="AsyncTests" executed="True" result="Success" success="True" time="3.177" asserts="0">
+                    <results>
+                      <test-case name="WCF.Tests.AsyncTests.CallAsync_noServer_done" executed="True" result="Success" success="True" time="1.272" asserts="0" />
+                      <test-case name="WCF.Tests.AsyncTests.CallAsync_wait_done" executed="True" result="Success" success="True" time="1.661" asserts="2" />
+                      <test-case name="WCF.Tests.AsyncTests.CallbackAsyncCallback_wait_done" executed="True" result="Success" success="True" time="0.156" asserts="0" />
+                      <test-case name="WCF.Tests.AsyncTests.CallTask_wait_done" executed="True" result="Success" success="True" time="0.068" asserts="1" />
+                    </results>
+                  </test-suite>
+                  <test-suite type="TestFixture" name="ChannelTests" executed="True" result="Success" success="True" time="20.625" asserts="0">
+                    <results>
+                      <test-case name="WCF.Tests.ChannelTests.IContextChannel_operationTimeoutSetGet_Ok" executed="True" result="Success" success="True" time="0.112" asserts="1" />
+                      <test-case name="WCF.Tests.ChannelTests.LongNamePipe" executed="True" result="Success" success="True" time="0.463" asserts="1" />
+                      <test-case name="WCF.Tests.ChannelTests.PipeChannel_notOpenedServer_created" executed="True" result="Success" success="True" time="0.005" asserts="1" />
+                      <test-case name="WCF.Tests.ChannelTests.PipeChannel_notOpenedServer_fail" executed="True" result="Success" success="True" time="0.005" asserts="2" />
+                      <test-case name="WCF.Tests.ChannelTests.PipeChannel_openClose_fail" executed="True" result="Success" success="True" time="10.021" asserts="2" />
+                      <test-case name="WCF.Tests.ChannelTests.PipeICommuicationObject" executed="True" result="Success" success="True" time="10.010" asserts="1" />
+                    </results>
+                  </test-suite>
+                  <test-suite type="TestFixture" name="EndpointBehavioursTests" executed="True" result="Success" success="True" time="0.458" asserts="0">
+                    <results>
+                      <test-case name="WCF.Tests.EndpointBehavioursTests.ServerAncClientEndpointBehavior" executed="True" result="Success" success="True" time="0.017" asserts="4" />
+                      <test-case name="WCF.Tests.EndpointBehavioursTests.ServerAncClientExceptionsEndpointBehavior" description="Propagates server side managed exception to client side and thows as error" executed="True" result="Success" success="True" time="0.438" asserts="1" />
+                    </results>
+                  </test-suite>
+                  <test-suite type="TestFixture" name="ErrorHandlingTests" executed="True" result="Success" success="True" time="0.060" asserts="0">
+                    <results>
+                      <test-case name="WCF.Tests.ErrorHandlingTests.ServerAncClientExceptions" executed="True" result="Success" success="True" time="0.059" asserts="1" />
+                    </results>
+                  </test-suite>
+                  <test-suite type="TestFixture" name="HostTests" executed="True" result="Success" success="True" time="0.024" asserts="0">
+                    <results>
+                      <test-case name="WCF.Tests.HostTests.Open_2Endpoints_callsBoth" executed="True" result="Success" success="True" time="0.017" asserts="0" />
+                      <test-case name="WCF.Tests.HostTests.Open_Open_error" executed="True" result="Success" success="True" time="0.004" asserts="0" />
+                    </results>
+                  </test-suite>
+                  <test-suite type="TestFixture" name="OperationContractsTests" executed="True" result="Success" success="True" time="0.033" asserts="0">
+                    <results>
+                      <test-case name="WCF.Tests.OperationContractsTests.Services_DifferentNamespaces_differentOperations" executed="True" result="Success" success="True" time="0.025" asserts="1" />
+                      <test-case name="WCF.Tests.OperationContractsTests.Services_DifferentNamespaces_sameOperation" executed="True" result="Success" success="True" time="0.006" asserts="0" />
+                    </results>
+                  </test-suite>
+                  <test-suite type="TestFixture" name="SecurityTests" executed="True" result="Success" success="True" time="0.013" asserts="0">
+                    <results>
+                      <test-case name="WCF.Tests.SecurityTests.Open_Open_error" executed="True" result="Success" success="True" time="0.011" asserts="1" />
+                    </results>
+                  </test-suite>
+                  <test-suite type="TestFixture" name="SerializerTests" executed="True" result="Success" success="True" time="0.119" asserts="0">
+                    <results>
+                      <test-case name="WCF.Tests.SerializerTests.EmptyListIsEmpty" executed="True" result="Success" success="True" time="0.109" asserts="1" />
+                      <test-case name="WCF.Tests.SerializerTests.NullListIsNull" executed="True" result="Success" success="True" time="0.006" asserts="1" />
+                    </results>
+                  </test-suite>
+                  <test-suite type="TestFixture" name="SynchronizationTests" executed="True" result="Success" success="True" time="0.068" asserts="0">
+                    <results>
+                      <test-case name="WCF.Tests.SynchronizationTests.CallbackToNotSyncContext" executed="True" result="Success" success="True" time="0.052" asserts="1" />
+                      <test-case name="WCF.Tests.SynchronizationTests.CallbackToSyncContext" executed="True" result="Success" success="True" time="0.013" asserts="1" />
+                    </results>
+                  </test-suite>
+                  <test-suite type="TestFixture" name="SystemServiceModelTests" executed="True" result="Success" success="True" time="0.100" asserts="0">
+                    <results>
+                      <test-case name="WCF.Tests.SystemServiceModelTests.CreateMessage_CopyMessage_CopiedState" executed="True" result="Success" success="True" time="0.016" asserts="2" />
+                      <test-case name="WCF.Tests.SystemServiceModelTests.CreateMessage_givenActionWithStrinParameterAndDefaults_messageContainsActionAndBody" executed="True" result="Success" success="True" time="0.026" asserts="2" />
+                      <test-case name="WCF.Tests.SystemServiceModelTests.CreateMessage_givenNotSerializableObjectAndDefaults_error" executed="True" result="Success" success="True" time="0.006" asserts="0" />
+                      <test-case name="WCF.Tests.SystemServiceModelTests.CreateMessageFault_isFaultAndCanGetFaultOutOfMessage" executed="True" result="Success" success="True" time="0.043" asserts="1" />
+                      <test-case name="WCF.Tests.SystemServiceModelTests.MessageVersionDefault_isRightAccordingVersion" executed="True" result="Success" success="True" time="0.001" asserts="2" />
+                    </results>
+                  </test-suite>
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+    </results>
+  </test-suite>
+</test-results>

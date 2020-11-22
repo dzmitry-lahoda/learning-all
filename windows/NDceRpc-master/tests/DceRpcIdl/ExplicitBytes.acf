@@ -1,0 +1,5 @@
+interface ExplicitBytes
+{
+    [comm_status, fault_status] 
+    ExplicitBytesExecute();
+}

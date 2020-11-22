@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{4F3BBC28-023C-4F6F-8DB5-4F9F92249ACA}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <OutputPath>bin\NET35\</OutputPath>
+    <IntermediateOutputPath>$(OutputPath)obj\$(AssemblyName)\</IntermediateOutputPath>
+    <DocumentationFile>$(OutputPath)$(AssemblyName).xml</DocumentationFile>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>NDceRpc</RootNamespace>
+    <AssemblyName>NDceRpc.Microsoft</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\bin\Debug\NET35\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;NET35</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\..\bin\Debug\NET35\NDceRpc.Microsoft.xml</DocumentationFile>
+    <RegisterForComInterop>false</RegisterForComInterop>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\bin\Release\NET35\</OutputPath>
+    <DefineConstants>TRACE;NET35</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\..\bin\Release\NET35\NDceRpc.Microsoft.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>..\..\NDceRpc.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Client.cs" />
+    <Compile Include="EndpointBindingInfo.cs" />
+    <Compile Include="ErrorMessages.Designer.cs" />
+    <Compile Include="Guard.cs" />
+    <Compile Include="Hosting\ClientInterfaceFactory.cs" />
+    <Compile Include="Hosting\ExplicitBytesClient.cs" />
+    <Compile Include="Hosting\ExplicitBytesConstants.cs" />
+    <Compile Include="Hosting\ExplicitBytesExecute.cs" />
+    <Compile Include="Hosting\ExplicitBytesServer.cs" />
+    <Compile Include="Hosting\Host.cs" />
+    <Compile Include="Hosting\IExplicitBytesClient.cs" />
+    <Compile Include="Hosting\IExplicitBytesServer.cs" />
+    <Compile Include="Hosting\NativeClient.cs" />
+    <Compile Include="Hosting\NativeServer.cs" />
+    <Compile Include="Hosting\ServerInterfaceFactory.cs" />
+    <Compile Include="IRpcCallInfo.cs" />
+    <Compile Include="Microsoft\Interop\CLIENT_CALL_RETURN.cs" />
+    <Compile Include="Microsoft\Interop\COMM_FAULT_OFFSETS.cs" />
+    <Compile Include="Microsoft\Interop\CONSTANTS.cs" />
+    <Compile Include="Microsoft\Interop\FunctionPtr.cs" />
+    <Compile Include="Microsoft\Interop\InterfacRegistrationFlags.cs" />
+    <Compile Include="Microsoft\Interop\MIDL_SERVER_INFO.cs" />
+    <Compile Include="Microsoft\Interop\MIDL_STUB_DESC.cs" />
+    <Compile Include="Microsoft\Interop\NativeMethods.cs" />
+    <Compile Include="Microsoft\Interop\Ptr.cs" />
+    <Compile Include="Microsoft\Interop\RpcAsync.cs" />
+    <Compile Include="Microsoft\Interop\RpcCallClientLocality.cs" />
+    <Compile Include="Microsoft\Interop\RpcCallInfo.cs" />
+    <Compile Include="Microsoft\Interop\RpcCallStatus.cs" />
+    <Compile Include="Microsoft\Interop\RpcCallType.cs" />
+    <Compile Include="Microsoft\Interop\RpcHandle.cs" />
+    <Compile Include="Microsoft\Interop\RpcLocalAddressFormat.cs" />
+    <Compile Include="Microsoft\Interop\RpcProtoseqType.cs" />
+    <Compile Include="Microsoft\Interop\RpcProtseq.cs" />
+    <Compile Include="Microsoft\Interop\RpcRuntime.cs" />
+    <Compile Include="Microsoft\Interop\RPC_ASYNC_EVENT.cs" />
+    <Compile Include="Microsoft\Interop\RPC_ASYNC_NOTIFICATION_INFO.cs" />
+    <Compile Include="Microsoft\Interop\RPC_ASYNC_STATE.cs" />
+    <Compile Include="Microsoft\Interop\RPC_CALL_ATTRIBUTES_FLAGS.cs" />
+    <Compile Include="Microsoft\Interop\RPC_CALL_ATTRIBUTES_V2.cs" />
+    <Compile Include="Microsoft\Interop\RPC_CALL_LOCAL_ADDRESS_V1.cs" />
+    <Compile Include="Microsoft\Interop\RPC_CLIENT_INTERFACE.cs" />
+    <Compile Include="Microsoft\Interop\RPC_C_AUTHN.cs" />
+    <Compile Include="Microsoft\Interop\RPC_C_AUTHN_LEVEL.cs" />
+    <Compile Include="Microsoft\Interop\RPC_C_AUTHZ.cs" />
+    <Compile Include="Microsoft\Interop\RPC_DISPATCH_FUNCTION.cs" />
+    <Compile Include="Microsoft\Interop\RPC_DISPATCH_TABLE.cs" />
+    <Compile Include="Microsoft\Interop\RPC_DISPATCH_TABLE_Entry.cs" />
+    <Compile Include="Microsoft\Interop\RPC_IF_CALLBACK_FN.cs" />
+    <Compile Include="Microsoft\Interop\RPC_IF_ID.cs" />
+    <Compile Include="Microsoft\Interop\RPC_MESSAGE.cs" />
+    <Compile Include="Microsoft\Interop\RPC_NOTIFICATION_TYPES.cs" />
+    <Compile Include="Microsoft\Interop\RPC_OBJECT_INQ_FN.cs" />
+    <Compile Include="Microsoft\Interop\RPC_PROTSEQ_ENDPOINT.cs" />
+    <Compile Include="Microsoft\Interop\RPC_SERVER_INTERFACE.cs" />
+    <Compile Include="Microsoft\Interop\RPC_STATUS.cs" />
+    <Compile Include="Microsoft\Interop\RPC_SYNTAX_IDENTIFIER.cs" />
+    <Compile Include="Microsoft\Interop\RPC_VERSION.cs" />
+    <Compile Include="Microsoft\Interop\SEC_WINNT_AUTH_IDENTITY.cs" />
+    <Compile Include="Microsoft\Interop\SYNTAX.cs" />
+    <Compile Include="Ndr\NdrConverter.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RpcException.cs" />
+    <Compile Include="RpcTrace.cs" />
+    <Compile Include="Server.cs" />
+    <Compile Include="UsageCounter.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ErrorMessages.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\NDceRpc.snk">
+      <Link>NDceRpc.snk</Link>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

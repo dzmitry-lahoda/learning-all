@@ -1,0 +1,8 @@
+zig-cache
+*.exe
+*.obj
+*.pdb
+*.zig~
+*.un~
+zig-win32
+.ionide

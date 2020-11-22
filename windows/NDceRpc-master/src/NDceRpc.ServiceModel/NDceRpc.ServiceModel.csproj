@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <ProjectGuid>{6F44BBCF-8C7C-4902-9CCC-E011BD580C51}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <OutputType>Library</OutputType>
+    <RootNamespace>NDceRpc</RootNamespace>
+    <AssemblyName>NDceRpc.ServiceModel</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <NoWin32Manifest>False</NoWin32Manifest>
+    <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
+    <NoStdLib>False</NoStdLib>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <IntermediateOutputPath>obj\$(Configuration)\NET40</IntermediateOutputPath>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Platform)' == 'AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <BaseAddress>4194304</BaseAddress>
+    <RegisterForComInterop>False</RegisterForComInterop>
+    <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
+    <FileAlignment>4096</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <OutputPath>..\..\bin\Debug\NET40</OutputPath>
+    <DebugSymbols>True</DebugSymbols>
+    <DebugType>Full</DebugType>
+    <Optimize>False</Optimize>
+    <CheckForOverflowUnderflow>True</CheckForOverflowUnderflow>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <BaseIntermediateOutputPath>obj\NET40</BaseIntermediateOutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <OutputPath>..\..\bin\Release\NET40</OutputPath>
+    <DebugSymbols>False</DebugSymbols>
+    <DebugType>None</DebugType>
+    <Optimize>True</Optimize>
+    <CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
+    <DefineConstants>TRACE</DefineConstants>
+    <BaseIntermediateOutputPath>obj\NET40</BaseIntermediateOutputPath>
+    <DocumentationFile>..\..\bin\Release\NET40\NDceRpc.ServiceModel.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>..\..\NDceRpc.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Transactions" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ServiceModel\TransferMode.cs" />
+    <Compile Include="ServiceModel\Exceptions.cs" />
+    <Compile Include="ServiceModel\IDefaultCommunicationTimeouts.cs" />
+    <Compile Include="ServiceModel\ServiceContractAttribute.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Serialization\BinaryObjectSerializer.cs" />
+    <Compile Include="ServiceModel\AllEnums.cs" />
+    <Compile Include="ServiceModel\Channels\IInputSession.cs" />
+    <Compile Include="ServiceModel\Channels\IOutputSession.cs" />
+    <Compile Include="ServiceModel\Channels\ISession.cs" />
+    <Compile Include="ServiceModel\Channels\IChannel.cs" />
+    <Compile Include="ServiceModel\CallbackBehaviorAttribute.cs" />
+    <Compile Include="ServiceModel\EndpointAddress.cs" />
+    <Compile Include="ServiceModel\ICommunicationObject.cs" />
+    <Compile Include="ServiceModel\IContextChannel.cs" />
+    <Compile Include="ServiceModel\IExtensibleObject.cs" />
+    <Compile Include="ServiceModel\IExtension.cs" />
+    <Compile Include="ServiceModel\IExtensionCollection.cs" />
+    <Compile Include="ServiceModel\OperationContractAttribute.cs" />
+    <Compile Include="ServiceModel\ServiceBehaviorAttribute.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\NDceRpc.snk">
+      <Link>NDceRpc.snk</Link>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

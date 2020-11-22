@@ -1,0 +1,1 @@
+icacls WCFServer.exe /setintegritylevel High

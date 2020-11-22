@@ -1,0 +1,1 @@
+icacls WCFClient.exe /setintegritylevel Medium

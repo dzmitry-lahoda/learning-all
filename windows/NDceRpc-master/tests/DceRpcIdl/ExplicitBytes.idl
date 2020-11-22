@@ -1,0 +1,13 @@
+[
+   uuid(00000002-EAF3-4A7A-A0F2-BCE4C30DA77E),//GUID CAN BE REPLACED DURING RUNTIME AND MATCH C# VERSION
+   version(1.0),
+   pointer_default(unique)
+]
+interface ExplicitBytes
+{
+	error_status_t  ExplicitBytesExecute(
+	   [in] handle_t clientHandle,
+	   [in] long szInput, [in,size_is(szInput)] const byte input[],
+       [out] long * szOutput,[out, size_is( , *szOutput)] byte ** output
+   );
+}

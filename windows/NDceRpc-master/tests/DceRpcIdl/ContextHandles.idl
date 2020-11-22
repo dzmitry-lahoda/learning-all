@@ -1,0 +1,18 @@
+[uuid(C65271F0-19B4-4B35-AE88-FA53D6B27080),
+	version(0.1)	
+] 
+interface ContextHandles //http://msdn.microsoft.com/en-us/library/windows/desktop/aa373953.aspx
+{
+    typedef [context_handle] void * PCONTEXT_HANDLE_TYPE;
+	typedef [ref] PCONTEXT_HANDLE_TYPE * PPCONTEXT_HANDLE_TYPE;
+    
+	short RemoteOpen([out] PPCONTEXT_HANDLE_TYPE pphContext, [in, string] unsigned char * pszFile);
+ 
+void RemoteRead(
+    [in] PCONTEXT_HANDLE_TYPE phContext,
+	[in] int cbBuf,
+    [out, size_is(cbBuf)] unsigned char achBuf[],
+    [in, out] short *pcbBuf);
+ 
+    short RemoteClose([in, out] PPCONTEXT_HANDLE_TYPE pphContext);
+}

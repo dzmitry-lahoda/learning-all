@@ -1,8 +1,0 @@
-select * from user_tab_columns where table_name = 'nullables';
-
-CREATE TABLE nullables
-    ( 
-      ValidatedColumn VARCHAR2(32) CONSTRAINT  CONSTRAINT_VALIDATED  NOT NULL,
-      NotValidatedColumn VARCHAR2(32) CONSTRAINT  CONSTRAINT_NOT_VALIDATED  NOT NULL NOVALIDATE 
-    )
-    ;

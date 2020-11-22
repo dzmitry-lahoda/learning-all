@@ -1,0 +1,220 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B467C494-558D-4C5F-9121-DA73993B2FBC}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TimeLapseExp.WinFormsGUI</RootNamespace>
+    <AssemblyName>TimeLapseExp.WinFormsGUI</AssemblyName>
+    <StartupObject>TimeLapseExp.WinFormsGUI.Program</StartupObject>
+    <ApplicationIcon>exp.ico</ApplicationIcon>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <ApplicationRevision>0</ApplicationRevision>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkSubset>Client</TargetFrameworkSubset>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Build\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ASDSystem, Version=1.0.3475.31836, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Commons.NET\ASDSystem\ASDSystem\bin\Debug\ASDSystem.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Contracts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=736440c9b414ea16, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\External\Microsoft.Contracts.dll</HintPath>
+    </Reference>
+    <Reference Include="NLog, Version=1.0.0.505, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\External\NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="PresentationFramework">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="RyeNET, Version=1.0.2638.22624, Culture=neutral">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\External\RyeNET.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WPFVisifire.Charts, Version=2.2.3.0, Culture=neutral, PublicKeyToken=99d724542e4db593, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\External\WPFVisifire.Charts.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="FormToolStripMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UIProcessComponents\CameraApplicationStates.cs" />
+    <Compile Include="FormTest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCamera.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormPresenterView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UIProcessComponents\EnvironmentSetupUtility.cs" />
+    <Compile Include="FormApplicationSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormExp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormExp.Designer.cs">
+      <DependentUpon>FormExp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormLogging.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormSessions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Helper.cs" />
+    <Compile Include="UIProcessComponents\Experiment.cs" />
+    <Compile Include="UIProcessComponents\ImageCharacteristicsEventArgs.cs" />
+    <Compile Include="UIProcessComponents\ImageCharacteristicsEventHandler.cs" />
+    <Compile Include="MDIParentExp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MDIParentExp.Designer.cs">
+      <DependentUpon>MDIParentExp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model.cs" />
+    <Compile Include="Presenter.cs" />
+    <Compile Include="PresenterEventArgs.cs" />
+    <Compile Include="UIProcessComponents\SequenceInfo.cs" />
+    <Compile Include="UIProcessComponents\SessionInfo.cs" />
+    <Compile Include="TimeLapseExpApp.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormExp.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FormExp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MDIParentExp.resx">
+      <DependentUpon>MDIParentExp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="UIProcessComponents\SequencePriorities.cs" />
+    <Compile Include="UIProcessComponents\Session.cs" />
+    <Compile Include="UIProcessComponents\SessionEventArgs.cs" />
+    <Compile Include="UIProcessComponents\SessionEventHandler.cs" />
+    <Compile Include="UIProcessComponents\SessionException.cs" />
+    <Compile Include="Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <None Include="app.config" />
+    <None Include="Cameras.ini">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TimeLapseExp.Instrumentation\TimeLapseExp.Instrumentation.csproj">
+      <Project>{C0D824DC-3B0A-45E7-A71E-23915538FB3F}</Project>
+      <Name>TimeLapseExp.Instrumentation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TimeLapseExp.Imaging\TimeLapseExp.Imaging.csproj">
+      <Project>{299F80B7-A194-4C9C-90C0-5910AA149CF1}</Project>
+      <Name>TimeLapseExp.Imaging</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TimeLapseExp.Cameras\TimeLapseExp.Cameras.csproj">
+      <Project>{2F0B49FD-B883-4561-845E-28B86175677D}</Project>
+      <Name>TimeLapseExp.Cameras</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TimeLapseExp.Imaging.Contract\TimeLapseExp.Imaging.Contract.csproj">
+      <Project>{59D8A33B-BB5E-4FD2-B336-565FB9857A91}</Project>
+      <Name>TimeLapseExp.Imaging.Contract</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AddService.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="exp.ico" />
+    <Content Include="filtject.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Licencse TimeLapseExp.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UseFiltject.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,7 @@
+[package]
+name = "asd"
+version = "0.1.0"
+authors = ["dzmitry-lahoda <dzmitry@lahoda.pro>"]
+edition = "2018"
+license = "MIT"
+description = "I like to solve problems in python, so some helpers to make rust little more like python"

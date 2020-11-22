@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" lang="ru" />
+
+    <style>
+        #p-en:lang(en) {
+            background-color: red
+        }
+
+        #p-ru:lang(ru) {
+            background-color: red
+        }
+
+        #p-ru-us:lang(en-us) {
+            background-color: red
+        }
+    </style>
+</head>
+
+<body>
+    <p id="p-en-us">Should be red if en-us </p>
+    <p id="p-en">Should be red if en </p>
+    <p id="p-ru">Should be red if ru </p>
+    <p id="p-current">1</p>
+</body>
+<script type="text/javascript"> 
+    // https://stackoverflow.com/questions/1043339/javascript-for-detecting-browser-language-preference
+    var getFirstBrowserLanguage = function () {
+        var nav = window.navigator,
+            browserLanguagePropertyKeys = ['language', 'browserLanguage', 'systemLanguage', 'userLanguage'],
+            i,
+            language;
+
+        // support for HTML 5.1 "navigator.languages"
+        if (Array.isArray(nav.languages)) {
+            for (i = 0; i < nav.languages.length; i++) {
+                language = nav.languages[i];
+                if (language && language.length) {
+                    return language;
+                }
+            }
+        }
+
+        // support for other well known properties in browsers
+        for (i = 0; i < browserLanguagePropertyKeys.length; i++) {
+            language = nav[browserLanguagePropertyKeys[i]];
+            if (language && language.length) {
+                return language;
+            }
+        }
+
+        return null;
+    };
+    console.log(getFirstBrowserLanguage());
+
+    document.getElementById("p-current").innerText = getFirstBrowserLanguage();
+
+
+
+</script>
+
+</html>

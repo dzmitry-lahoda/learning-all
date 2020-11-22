@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zadanie2.7", "Zadanie2.7\Zadanie2.7.csproj", "{3C7D22FC-CC04-4B62-95F6-7EEB5C7C8A54}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Finder", "Finder\Finder.csproj", "{6443C00F-E28A-48B0-ACAB-791383AA1B54}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3C7D22FC-CC04-4B62-95F6-7EEB5C7C8A54}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C7D22FC-CC04-4B62-95F6-7EEB5C7C8A54}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C7D22FC-CC04-4B62-95F6-7EEB5C7C8A54}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C7D22FC-CC04-4B62-95F6-7EEB5C7C8A54}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6443C00F-E28A-48B0-ACAB-791383AA1B54}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6443C00F-E28A-48B0-ACAB-791383AA1B54}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6443C00F-E28A-48B0-ACAB-791383AA1B54}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6443C00F-E28A-48B0-ACAB-791383AA1B54}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

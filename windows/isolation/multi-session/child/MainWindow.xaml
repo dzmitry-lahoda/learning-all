@@ -1,0 +1,11 @@
+﻿<Window x:Class="child.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Child" Height="350" Width="525">
+    <Grid>
+        <StackPanel>
+            <Button Click="Button_Click">Impersonate</Button>
+            <TextBox Name="logTextBox" Height="157"></TextBox>
+        </StackPanel>
+    </Grid>
+</Window>

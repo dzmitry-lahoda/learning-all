@@ -1,0 +1,6 @@
+[submodule "zig-win32"]
+	path = zig-win32
+	url = git@github.com:GoNZooo/zig-win32.git
+[submodule "zls"]
+	path = zls
+	url = git@github.com:zigtools/zls.git

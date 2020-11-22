@@ -1,0 +1,9 @@
+[uuid(3D3E6558-A499-4190-814A-7C9D58E2B8C1),
+	version(0.1),
+	//[ptr] attribute when the MIDL compiler is in DCE-compatible mode.
+	//pointer_default(ptr)
+] 
+interface Dummy
+{
+  void Do([in] handle_t hBinding);
+}

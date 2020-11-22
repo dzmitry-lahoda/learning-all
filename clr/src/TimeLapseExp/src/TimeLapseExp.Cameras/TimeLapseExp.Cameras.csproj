@@ -1,0 +1,119 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{2F0B49FD-B883-4561-845E-28B86175677D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TimeLapseExp.Cameras</RootNamespace>
+    <AssemblyName>TimeLapseExp.Cameras</AssemblyName>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkSubset>Client</TargetFrameworkSubset>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ASDSystem, Version=1.0.3475.31836, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\External\ASDSystem.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Contracts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=736440c9b414ea16, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\External\Microsoft.Contracts.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <Reference Include="Microsoft.VisualStudio.TeamSystem.Data.UnitTesting, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <Reference Include="RyeNET, Version=1.0.2638.22624, Culture=neutral">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\External\RyeNET.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Attributes\CameraEnumTypeAttribute.cs" />
+    <Compile Include="Characteristics\CaptureInfo.cs" />
+    <Compile Include="Enums\ErrorCodes.cs" />
+    <Compile Include="MockCamera\MockCameraController.cs" />
+    <Compile Include="MockCamera\MockTransport.cs.cs" />
+    <Compile Include="CameraControllerBase.cs" />
+    <Compile Include="CameraControllerFactory.cs" />
+    <Compile Include="CameraTransactionAttribute.cs" />
+    <Compile Include="FileNamingCallback.cs" />
+    <Compile Include="OlympusRye\OlympusRyeCameraController.cs" />
+    <Compile Include="CameraOperationFailureException.cs" />
+    <Compile Include="Characteristics\MemoryCardInfo.cs" />
+    <Compile Include="Enums\ISOSpeed.cs" />
+    <Compile Include="Enums\Resolutions.cs" />
+    <Compile Include="Enums\WhiteBalance.cs" />
+    <Compile Include="OlympusRye\OlympusRyeManager.cs" />
+    <Compile Include="TransportBase.cs" />
+    <Compile Include="TransportEventArgs.cs" />
+    <Compile Include="TransportingFailureException.cs" />
+    <Compile Include="TransportEventHandler.cs" />
+    <Compile Include="Characteristics\CameraInfo.cs" />
+    <Compile Include="Characteristics\Capture.cs" />
+    <Compile Include="Enums\CaptureModes.cs" />
+    <Compile Include="Characteristics\Exposure.cs" />
+    <Compile Include="Characteristics\Focus.cs" />
+    <Compile Include="Enums\ExposureModes.cs" />
+    <Compile Include="Enums\FlashModes.cs" />
+    <Compile Include="Enums\FocusModes.cs" />
+    <Compile Include="PictureFileData.cs" />
+    <Compile Include="Helper.cs" />
+    <Compile Include="OlympusRye\OlympusRyeTransport.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TimeLapseExp.Imaging\TimeLapseExp.Imaging.csproj">
+      <Project>{299F80B7-A194-4C9C-90C0-5910AA149CF1}</Project>
+      <Name>TimeLapseExp.Imaging</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TimeLapseExp.Instrumentation\TimeLapseExp.Instrumentation.csproj">
+      <Project>{C0D824DC-3B0A-45E7-A71E-23915538FB3F}</Project>
+      <Name>TimeLapseExp.Instrumentation</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="OlympusMocha\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

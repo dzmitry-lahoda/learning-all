@@ -1,0 +1,13 @@
+[uuid(78FF0D6E-10E5-4885-B1C0-89C6570EBD03),
+	version(0.1),
+	//[ptr] attribute when the MIDL compiler is in DCE-compatible mode.
+	//pointer_default(ptr)
+] 
+interface ExplicitWithCallbacks
+{
+	// called and never returns allowing server to callback client
+	void AsyncAttach([in] handle_t hBinding,  [in, string] wchar_t* szOutput ); 
+	void Request([in] handle_t hBinding,[in, string] wchar_t* szOutput);
+	[callback] void CallClient( [in, string] wchar_t* szOutput);
+
+}

@@ -1,0 +1,11 @@
+[
+explicit_handle
+]
+interface ExplicitWithCallbacks
+{
+     //NOTE: fails to do callbacks if [async] defined, need further research
+    //[async] AsyncAttach();
+
+    //NOTE: callbak cannot be async
+   // [async] CallClient();
+}

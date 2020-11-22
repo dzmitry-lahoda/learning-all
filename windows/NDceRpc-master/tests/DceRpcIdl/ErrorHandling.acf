@@ -1,0 +1,7 @@
+[
+explicit_handle
+]
+interface ErrorHandling
+{
+   [comm_status]  DoReturnErrors([fault_status]  fault_s);
+}

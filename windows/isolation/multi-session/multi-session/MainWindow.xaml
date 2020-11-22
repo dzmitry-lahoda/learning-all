@@ -1,0 +1,74 @@
+﻿<Window x:Class="multi_session.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" MinHeight="400" MinWidth="525">
+    <Grid>
+        <StackPanel>
+
+            <TextBlock FontWeight="Bold" >Named pipes</TextBlock>
+            <StackPanel Orientation="Horizontal">
+                <StackPanel>
+                    <Button Click="Button_Click_13">Start machine wide pipe server</Button>
+                    <Button Click="Button_Click_14">Use machine wide pipe server</Button>
+                </StackPanel>
+                <StackPanel>
+                    <Button Click="Button_Click_11">Start session wide pipe server</Button>
+                    <Button Click="Button_Click_15">Use session wide pipe server</Button>
+                </StackPanel>
+            </StackPanel>
+            <Separator></Separator>
+
+
+            <TextBlock FontWeight="Bold" >Wait handles</TextBlock>
+            <StackPanel Orientation="Horizontal">
+                <StackPanel>
+                    <Button Click="Button_Click_7">Create machine mutex</Button>
+                    <Button Click="Button_Click_8">Use machine mutex</Button>
+                </StackPanel>
+                <StackPanel>
+                    <Button Click="Button_Click_6">Create session mutex</Button>
+                    <Button Click="Button_Click_9">Use session mutex</Button>
+                </StackPanel>
+            </StackPanel>
+            <Separator></Separator>
+
+
+            <TextBlock FontWeight="Bold" >Shared memory</TextBlock>
+            <StackPanel Orientation="Horizontal">
+                <StackPanel>
+                    <Button  Click="Button_Click_2" >Write machine wide shared memory</Button>
+                    <Button Click="Button_Click_3">Read machine wide shared memory</Button>
+                </StackPanel>
+                <StackPanel>
+                    <Button Click="Button_Click_4">Write session wide shared memory</Button>
+                    <Button Click="Button_Click_5">Read session wide shared memory</Button>
+                </StackPanel>
+            </StackPanel>
+            <Separator></Separator>
+
+            <TextBlock FontWeight="Bold" >System information</TextBlock>
+            <StackPanel Orientation="Horizontal">
+                <Button Click="Button_Click_10">Dump user specific info</Button>
+                <Button Click="Button_Click_1">Enumerate proccess(specified in configuration)</Button>
+            </StackPanel>
+            <Separator></Separator>
+
+            <TextBlock FontWeight="Bold" >Windows</TextBlock>
+            <StackPanel Orientation="Horizontal">
+                <Button Click="Button_Click_12" >Launch child</Button>
+                <Button Click="Button_Click">Show top most with task bar</Button>
+            </StackPanel>
+            <Separator></Separator>
+            
+            <TextBox  x:Name="logTextBox" 
+                          VerticalAlignment="Stretch" HorizontalAlignment="Stretch" 
+                          Height="350"
+                          AcceptsReturn="True" TextWrapping="Wrap" VerticalScrollBarVisibility="Visible"
+                         >
+
+            </TextBox>
+
+        </StackPanel>
+
+    </Grid>
+</Window>

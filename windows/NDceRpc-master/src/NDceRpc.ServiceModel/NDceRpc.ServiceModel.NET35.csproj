@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{ED8E992C-05C3-4B98-B71B-10320332BE62}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>NDceRpc</RootNamespace>
+    <AssemblyName>NDceRpc.ServiceModel</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <IntermediateOutputPath>obj\$(Configuration)\NET35</IntermediateOutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\bin\Debug\NET35</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\bin\Release\NET35</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>..\..\NDceRpc.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Serialization\BinaryObjectSerializer.cs" />
+    <Compile Include="ServiceModel\AllEnums.cs" />
+    <Compile Include="ServiceModel\CallbackBehaviorAttribute.cs" />
+    <Compile Include="ServiceModel\Channels\IChannel.cs" />
+    <Compile Include="ServiceModel\Channels\IInputSession.cs" />
+    <Compile Include="ServiceModel\Channels\IOutputSession.cs" />
+    <Compile Include="ServiceModel\Channels\ISession.cs" />
+    <Compile Include="ServiceModel\Exceptions.cs" />
+    <Compile Include="ServiceModel\IDefaultCommunicationTimeouts.cs" />
+    <Compile Include="ServiceModel\ServiceBehaviorAttribute.cs" />
+    <Compile Include="ServiceModel\IExtension.cs" />
+    <Compile Include="ServiceModel\IExtensionCollection.cs" />
+    <Compile Include="ServiceModel\EndpointAddress.cs" />
+    <Compile Include="ServiceModel\ICommunicationObject.cs" />
+    <Compile Include="ServiceModel\IContextChannel.cs" />
+    <Compile Include="ServiceModel\IExtensibleObject.cs" />
+    <Compile Include="ServiceModel\OperationContractAttribute.cs" />
+    <Compile Include="ServiceModel\ServiceContractAttribute.cs" />
+    <Compile Include="ServiceModel\TransferMode.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\NDceRpc.snk">
+      <Link>NDceRpc.snk</Link>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

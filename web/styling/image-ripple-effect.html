@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style> 
+:root {
+  --bg-color: #eee;
+  --color:  #333;
+  --bg-content-color : #fff;
+}
+
+html {
+  font-size: 17px;
+}
+
+body {
+  background-color: var(--bg-color);
+  color:  var(--color);
+}
+
+.content-main {
+  position: relative;
+  width: 320px;
+  margin: 1rem auto;
+}
+.content-main div {
+  height: auto;
+  overflow: hidden;
+  background: var(--bg-content-color);
+}
+.content-main div:before, .content-main div:after {
+  content: "";
+  height: 0.125rem;
+  position: absolute;
+  left: 0;
+  right: 0;
+  -webkit-clip-path: polygon(0% 0%, 5% 100%, 10% 0%, 15% 100%, 20% 0%, 25% 100%, 30% 0%, 35% 100%, 40% 0%, 45% 100%, 50% 0%, 55% 100%, 60% 0%, 65% 100%, 70% 0%, 75% 100%, 80% 0%, 85% 100%, 90% 0%, 95% 100%, 100% 0%);
+}
+.content-main div:before {
+  background-color: var(--bg-color);
+  top: 0;
+}
+.content-main div:after {
+  background-color: var(--bg-content-color);
+  bottom: -0.125rem;
+}
+</style>
+</head>
+<body>
+
+
+<div class="content-main">
+  <div>
+    <img src="img_320_236.png" />
+  </div>
+</div>
+
+</body>
+</html>
