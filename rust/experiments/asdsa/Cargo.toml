@@ -1,0 +1,29 @@
+[workspace]
+members = [
+    "libs/mymacro",
+    "libs/procm",
+]
+
+[package]
+name = "asdsa"
+version = "0.1.0"
+authors = ["dzmitry-lahoda <dzmitry@lahoda.pro>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+futures = "*"
+mockall = "*"
+ambassador = "*"
+serde = { version = "*", features = ["derive"]}
+serde_json = "*"
+strum = { version = "*", features = ["derive", "strum_macros"] }
+strum_macros = {version = "*", features = ["verbose-intostaticstr-name"]}
+url = "*"
+mymacro = { path = "libs/mymacro" }
+procm = { path = "libs/procm" }
+derive-new = "*"
+plotters = "*"
+frunk = "*"
+frunk_derives = "*"

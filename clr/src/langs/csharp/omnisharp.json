@@ -1,6 +1,9 @@
 {
   "script": {
     "enableScriptNuGetReferences": true,
-    "defaultTargetFramework": "netcoreapp2.1"
+    "defaultTargetFramework": "netcoreapp3.1"
+  },
+  "RoslynExtensionsOptions": {
+      "enableDecompilationSupport": true
   }
 }

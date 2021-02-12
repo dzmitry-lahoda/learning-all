@@ -8,6 +8,7 @@ sp - [шп]
 ei - [ай]
 u - ue
 
+Zahlen - number
 Klempnerarbeit - сантехника
 Liebesbrief - любовное письмо
 glückliche - счастливого

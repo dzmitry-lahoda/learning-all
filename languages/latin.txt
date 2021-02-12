@@ -1,5 +1,10 @@
 ﻿
 
+
+liber - book
+filisu  - son
+dorsal - back
+ventral - front
 malorum - злы
 premedetatio - представление
 definire - to limit
