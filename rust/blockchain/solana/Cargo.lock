@@ -2901,7 +2901,6 @@ dependencies = [
 name = "solana-test"
 version = "0.1.0"
 dependencies = [
- "clap",
  "console 0.14.0",
  "serde_json",
  "solana-account-decoder",

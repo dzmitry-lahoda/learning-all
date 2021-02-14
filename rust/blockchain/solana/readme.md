@@ -1,14 +1,8 @@
-
-
-
-Config File: C:\Users\dz\.config\solana\cli\config.yml
-RPC URL: https://devnet.solana.com
-WebSocket URL: wss://devnet.solana.com/ (computed)
-Keypair Path: C:\Users\dz\.config\solana\id.json
-
 ```
-solana config get
-solana airdrop 10 BDhwBerjCPBbT6NpcwwQ4m923JCB56vC1fauSxfdhYHy
+# create token type(mint) 
+spl-token create-token .\token --verbose
+# create account for specified token type
+spl-token create-account .\token --verbose
+# mint some token values onto account
+spl-token mint DULVM8xXMycrsTUhVyAbywqQdSJRtdusxM37kxoQGuoB 0.0000001
 ```
-
-1. (Продвинутый левел) Добавить создание минта, токен аккаунта и заминтить чуть-чуть токена на этот новый токен аккаунт
